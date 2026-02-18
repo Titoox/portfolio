@@ -1,367 +1,518 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Basheer El Kurdi, Etudiant en première année d'un BUT MMI à l'IUT de Troyes.">
-<title>Portfolio</title>
-<link rel="stylesheet" href="./css/styles.css">
-<link rel="stylesheet" href="./css/responsive.css">
-<link rel="stylesheet" href="./css/scroll.css"> <!-- css for the animation JS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> <!-- import the link for the icons -->
-<link rel="icon" type="image/png" href="./images/favicon.png">
-</head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="GAUCHER Titouan, Etudiant en première année d'un BUT MMI à l'IUT de Troyes." />
+		<title>Portfolio</title>
+		<link rel="stylesheet" href="./css/styles.css" />
+		<link rel="stylesheet" href="./css/responsive.css" />
+		<link rel="stylesheet" href="./css/scroll.css" />
+		<!-- css for the animation JS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+		<!-- import the link for the icons -->
+		<link rel="icon" type="image/png" href="./images/favicon.png" />
+	</head>
 
-<body>
+	<body>
+		<!-- HEADER -->
+		<header>
+			<a class="logo" href="#hero"><span>P</span>ortfolio</a>
+			<!--Span for change the font of the letter 'P'-->
+			<nav>
+				<ul>
+					<li><a href="#profile">About</a></li>
+					<li><a href="#project">Work</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- End header -->
 
-<!-- HEADER -->
-<header>
-      <a class="logo" href="#hero"><span>P</span>ortfolio</a> <!--Span for change the font of the letter 'P'-->
-      <nav>
-        <ul>
-          <li><a  href="#profile">About</a></li>
-          <li><a  href="#project">Work</a></li>
-          <li><a  href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-</header>
-<!-- End header -->
+		<!-- *****HERO AND BACKGROUND***** -->
+		<div class="back" id="hero">
+			<!--Content before waves-->
+			<div class="inner-header flex">
+				<div class="main scroll">
+					<h2>Welcome to my portfolio<br /><span>GAUCHER Titouan</span></h2>
+					<h3>Web developer - junior</h3>
+					<!-- Your specialty-->
+					<button onclick="window.location.href = '#profile'" class="main-btn">
+						Who i am ?
+					</button>
 
-<!-- *****HERO AND BACKGROUND***** -->
-<div class="back" id="hero">
-  <!--Content before waves-->
-  <div class="inner-header flex">
-    <div class="main scroll">
-      <h2>Welcome to my portfolio<br><span>Your name here</span></h2>
-      <h3>Web developer Full stack - junior</h3> <!-- Your specialty-->
-      <button onclick="window.location.href = '#profile';" class="main-btn">Who i am ?</button>
+					<!--Icons social media / github / profiles-->
+					<div class="ss-icons">
+						<a
+							href="https://www.linkedin.com/in/titouan-gaucher/"
+							target="_blank"
+							aria-label="See my profile"
+							><i class="fa-brands fa-linkedin"></i
+						></a>
 
-      <!--Icons social media / github / profiles-->
-      <div class="ss-icons">
-        <a href="#Link-Your-Account-Here" target="_blank" aria-label="See my profile"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#Link-Your-Account-Here" target="_blank" aria-label="Contact me on X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="#Link-Your-Account-Here" target="_blank" aria-label="my projects"><i class="fa-brands fa-github"></i></a>
+						<a
+							href="https://github.com/Titoox"
+							target="_blank"
+							aria-label="my projects"
+							><i class="fa-brands fa-github"></i
+						></a>
 
-        <!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
+						<!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
+					</div>
+				</div>
+			</div>
 
-      </div>
-    </div>
-  </div>
-  
-  <!--Waves Container-->
-  <div>
-    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-      <defs>
-      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-      </defs>
-      <g class="parallax">
-      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgb(18, 14, 14)" />
-      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgb(18, 116, 91)" />
-      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-      </g>
-    </svg>
-  </div>
-  <!--Waves end-->
-  </div>
-  <!--Header ends-->
-  <!--Content starts-->
-  <div class="cont flex">
-  </div>
-  <!--Content ends-->
-<!-- ************** END HERO AND BACKGROUND ************** -->
+			<!--Waves Container-->
+			<div>
+				<svg
+					class="waves"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					viewBox="0 24 150 28"
+					preserveAspectRatio="none"
+					shape-rendering="auto">
+					<defs>
+						<path
+							id="gentle-wave"
+							d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+					</defs>
+					<g class="parallax">
+						<use
+							xlink:href="#gentle-wave"
+							x="48"
+							y="0"
+							fill="rgb(18, 14, 14)" />
+						<use
+							xlink:href="#gentle-wave"
+							x="48"
+							y="3"
+							fill="rgb(18, 116, 91)" />
+						<use
+							xlink:href="#gentle-wave"
+							x="48"
+							y="5"
+							fill="rgba(255,255,255,0.3)" />
+					</g>
+				</svg>
+			</div>
+			<!--Waves end-->
+		</div>
+		<!--Header ends-->
+		<!--Content starts-->
+		<div class="cont flex"></div>
+		<!--Content ends-->
+		<!-- ************** END HERO AND BACKGROUND ************** -->
 
-<!-- button go to top-->
-<button onclick="topFunction()" id="myBtn" title="Go to top">
-  <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
-    <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
-  </svg>
-</button>
-<!-- End Button -->
+		<!-- button go to top-->
+		<button onclick="topFunction()" id="myBtn" title="Go to top">
+			<svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+				<path
+					d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+			</svg>
+		</button>
+		<!-- End Button -->
 
-<!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
-<!--************** Section profile ****************** -->
-<section id="profile" class="profile">
-  <h2 class="scroll"><i class="fa-solid fa-user"></i> ABOUT ME</h2>
-  <br>
-  <div class="about-profile">
-    <div class="text-profile">
-    <p>I am a software engineer, ui/ux designer, product planner, mentor, student, minimalist, eternal optimist, crypto enthusiast and sarcasm connoisseur.</p> <br>
-    <p>I love to both build and break things. I am motivated by challenging projects with self-guided research and dynamic problem solving. My true passion is crafting creative front end designs with unique takes on color, typography and motion.</p> <br> <br>
-    <a class="cv_button" href="#Put-your-cv-here.pdf" target="_blank">My CV</a> <!-- YOUR CV PDF -->
-  </div>
-    <div id="img"><img src="images/man.png" alt="That's me"></div> <!--== Your photo ==-->
-  </div>
+		<!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
+		<!--************** Section profile ****************** -->
+		<section id="profile" class="profile">
+			<h2 class="scroll"><i class="fa-solid fa-user"></i> ABOUT ME</h2>
+			<br />
+			<div class="about-profile">
+				<div class="text-profile">
+					<p>
+						I am a software engineer, ui/ux designer, product planner, mentor,
+						student, minimalist, eternal optimist, crypto enthusiast and sarcasm
+						connoisseur.
+					</p>
+					<br />
+					<p>
+						I love to both build and break things. I am motivated by challenging
+						projects with self-guided research and dynamic problem solving. My
+						true passion is crafting creative front end designs with unique
+						takes on color, typography and motion.
+					</p>
+					<br />
+					<br />
+					<a class="cv_button" href="Titouan_Gaucher_CV.pdf" target="_blank"
+						>My CV</a
+					>
+					<!-- YOUR CV PDF -->
+				</div>
+				<div id="img"><img src="images/man.png" alt="That's me" /></div>
+				<!--== Your photo ==-->
+			</div>
 
-<!--************** Section Skills ****************** -->
-<h2 class="scroll"><i class="fa-solid fa-book"></i>  SKILLS</h2>
-<section class="title-skills">
-  <h3>I have built products ranging from marketing and ecommerce websites to complex enterprise apps with focus on delivering fast, elegant code along with delightful user interfaces.</h3>
-</section>
+			<!--************** Section Skills ****************** -->
+			<h2 class="scroll"><i class="fa-solid fa-book"></i> SKILLS</h2>
+			<section class="title-skills">
+				<h3>
+					I have built products ranging from marketing and ecommerce websites to
+					complex enterprise apps with focus on delivering fast, elegant code
+					along with delightful user interfaces.
+				</h3>
+			</section>
 
-  <section class="skills-child">
-    <div class="skills-container">
-      <div class="skills-content">
+			<section class="skills-child">
+				<div class="skills-container">
+					<div class="skills-content">
+						<div class="card">
+							<h4>
+								<i class="fa-solid fa-code"></i> <br />
+								Languages
+							</h4>
+							<div class="icon-skills">
+								<p>
+									<i class="fa-brands fa-html5" style="color: #e96227"></i> HTML
+								</p>
+								<p>
+									<i class="fa-brands fa-css3" style="color: #254bde"></i> CSS
+								</p>
+								<p>
+									<i class="fa-brands fa-php" style="color: #7277ad"></i> PHP
+								</p>
+								<p>
+									<i class="fa-brands fa-js" style="color: #efd81d"></i>
+									JavaScript
+								</p>
+								<p>
+									<i class="fa-brands fa-wordpress" style="color: #1e7095"></i>
+									Wordpress
+								</p>
+							</div>
+						</div>
 
-        <div class="card"><h4><i class="fa-solid fa-code"></i> <br> Languages</h4> 
-          <div class="icon-skills">
-            <p><i class="fa-brands fa-html5" style="color: #E96227"></i> HTML</p>
-            <p><i class="fa-brands fa-css3" style="color: #254BDE;"></i> CSS</p>
-            <p><i class="fa-brands fa-php" style="color: #7277AD;"></i> PHP</p>
-            <p><i class="fa-brands fa-js" style="color: #EFD81D ;"></i> JavaScript</p>
-            <p><i class="fa-brands fa-wordpress" style="color: #1e7095;"></i> Wordpress</p>
-            </div>
-          </div>
+						<div class="card">
+							<h4>
+								<i class="fa-solid fa-gear"></i> <br />
+								Tools
+							</h4>
+							<div class="icon-skills">
+								<p>
+									<i class="fa-brands fa-docker" style="color: #3d78ee"></i>
+									Docker
+								</p>
+								<p>
+									<i class="fa-brands fa-ubuntu" style="color: #df5222"></i>
+									Ubuntu
+								</p>
+								<p>
+									<i class="fa-solid fa-database" style="color: #0f2f70"></i>
+									SQL
+								</p>
+								<p>
+									<i class="fa-brands fa-bootstrap" style="color: #8812f5"></i>
+									Bootstrap
+								</p>
+								<p>
+									<i class="fa-solid fa-server" style="color: green"></i> Server
+								</p>
+							</div>
+						</div>
 
-        <div class="card"><h4><i class="fa-solid fa-gear"></i> <br> Tools</h4>
-          <div class="icon-skills">
-            <p><i class="fa-brands fa-docker" style="color: #3D78EE;"></i> Docker</p>
-            <p><i class="fa-brands fa-ubuntu" style="color: #DF5222;"></i> Ubuntu</p>
-            <p><i class="fa-solid fa-database" style="color: #0f2f70;"></i> SQL</p>
-            <p><i class="fa-brands fa-bootstrap" style="color: #8812F5;"></i> Bootstrap</p>
-            <p><i class="fa-solid fa-server" style="color: green;"></i> Server</p>
-          </div>
-        </div>
+						<div class="card">
+							<h4>
+								<i class="fa-solid fa-paintbrush"></i> <br />
+								Design
+							</h4>
+							<div class="icon-skills">
+								<p>
+									<img src="./images/adobe-photoshop.256x256.png" alt="PS" />
+									Photoshop
+								</p>
+								<!-- image icon photoshop -->
+								<p>
+									<img src="./images/adobe-illustrator.256x256.png" alt="AI" />
+									Illustrator
+								</p>
+								<!-- image icon illustrator -->
+								<p><i class="fa-brands fa-figma"></i> Figma</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+		<!--************** END PROFILE ****************** -->
 
-        <div class="card"><h4><i class="fa-solid fa-paintbrush"></i> <br> Design</h4>
-          <div class="icon-skills">
-          <p><img src="./images/adobe-photoshop.256x256.png" alt="PS"> Photoshop</p> <!-- image icon photoshop -->
-          <p><img src="./images/adobe-illustrator.256x256.png" alt="AI"> Illustrator</p> <!-- image icon illustrator -->
-          <p><i class="fa-brands fa-figma"></i> Figma</p>
-          </div>
-        </div>
+		<!--************** Section Projects ****************** -->
+		<section class="project" id="project">
+			<h2 class="title scroll"><i class="fa-solid fa-laptop"></i> Work</h2>
+			<div class="content">
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<!--PROJECT 1-->
 
-      </div>
-    </div>
-  </section>
-</section>
-<!--************** END PROFILE ****************** -->
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 1" />
+						<!--picture of your project / website-->
+					</div>
 
-<!--************** Section Projects ****************** -->
-<section class="project" id="project">
-<h2 class="title scroll"><i class="fa-solid fa-laptop"></i>  Work</h2>
-<div class="content">
-  <!--==================================================================================================-->
-  <div class="project-card"> <!--PROJECT 1-->
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-    <div class="project-img">
-      <img src="./images/web.png" alt="project 1"> <!--picture of your project / website-->
-    </div>
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-html5" style="color: #e96227"></i>
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-php" style="color: #7277ad"></i>
+							</span>
 
-    <div class="project-info">
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 2" />
+						<!--Here this is a title for your project or website-->
+					</div>
 
-      <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-      <strong class="project-title">
-        <span class="icon-span">
-          <i class="fa-brands fa-html5" style="color: #E96227"></i> 
-          <i class="fa-brands fa-css3" style="color: #254BDE;"></i> 
-          <i class="fa-brands fa-php" style="color: #7277AD;"></i> 
-        </span>
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-html5" style="color: #e96227"></i>
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-php" style="color: #7277ad"></i>
+								<i class="fa-brands fa-js" style="color: #efd81d"></i>
+							</span>
 
-        <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<!-- PROJECT 3 -->
 
-      </strong>
-    </div>
-  </div>
-<!--==================================================================================================-->
-  <div class="project-card">
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 3" />
+						<!--Here this is a title for your project or website-->
+					</div>
 
-    <div class="project-img">
-      <img src="./images/web.png" alt="project 2"> <!--Here this is a title for your project or website-->
-    </div>
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-    <div class="project-info">
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-wordpress" style="color: #1e7095"></i>
+								<i class="fa-brands fa-bootstrap" style="color: #8812f5"></i>
+							</span>
 
-      <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<!-- PROJECT 4 -->
 
-      <strong class="project-title">
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 4" />
+						<!--Here this is a title for your project or website-->
+					</div>
 
-        <span class="icon-span">
-          <i class="fa-brands fa-html5" style="color: #E96227"></i>
-          <i class="fa-brands fa-css3" style="color: #254BDE;"></i> 
-          <i class="fa-brands fa-php" style="color: #7277AD;"></i>
-          <i class="fa-brands fa-js" style="color: #EFD81D ;"></i>
-        </span>
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-        <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-html5" style="color: #e96227"></i>
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-js" style="color: #efd81d"></i>
+								<i class="fa-brands fa-php" style="color: #7277ad"></i>
+								<i class="fa-solid fa-database" style="color: #0f2f70"></i>
+							</span>
 
-    </strong>
-    </div>
-  </div>
-<!--==================================================================================================-->
-  <div class="project-card"> <!-- PROJECT 3 -->
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<!--PROJECT 5-->
 
-    <div class="project-img">
-      <img src="./images/web.png" alt="project 3"> <!--Here this is a title for your project or website-->
-    </div>
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 1" />
+						<!--picture of your project / website-->
+					</div>
 
-    <div class="project-info">
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-      <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-html5" style="color: #e96227"></i>
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-php" style="color: #7277ad"></i>
+							</span>
 
-      <strong class="project-title">
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+				<!--==================================================================================================-->
+				<div class="project-card">
+					<!--PROJECT 6-->
 
-        <span class="icon-span">
-          <i class="fa-brands fa-css3" style="color: #254BDE;"></i> 
-          <i class="fa-brands fa-wordpress" style="color: #1e7095;"></i>
-          <i class="fa-brands fa-bootstrap" style="color: #8812F5;"></i>
-        </span>
+					<div class="project-img">
+						<img src="./images/web.png" alt="project 1" />
+						<!--picture of your project / website-->
+					</div>
 
-        <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
+					<div class="project-info">
+						<p class="project-text">Lorem ipsum dolor sit amet</p>
+						<!--Here this is a title for your project or website-->
 
-    </strong>
-    </div>
-  </div>
-<!--==================================================================================================-->
-  <div class="project-card"> <!-- PROJECT 4 -->
+						<strong class="project-title">
+							<span class="icon-span">
+								<i class="fa-brands fa-html5" style="color: #e96227"></i>
+								<i class="fa-brands fa-css3" style="color: #254bde"></i>
+								<i class="fa-brands fa-php" style="color: #7277ad"></i>
+							</span>
 
-    <div class="project-img">
-      <img src="./images/web.png" alt="project 4"> <!--Here this is a title for your project or website-->
-    </div>
+							<!--==Put the link of your project here== -->
+							<a class="link-project" href="#Link_your_project" target="_blank"
+								><span>VISIT</span></a
+							>
+						</strong>
+					</div>
+				</div>
+				<!--==================================================================================================-->
+			</div>
+		</section>
 
-    <div class="project-info">
+		<!--************** Section Contact ****************** -->
+		<section id="contact" class="contact">
+			<h2 class="scroll">
+				<i class="fa-solid fa-phone"></i> <span class="separator">|</span>
+				<i class="fa-solid fa-envelope"></i>
+			</h2>
 
-      <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
+			<div class="background">
+				<div class="container">
+					<div class="screen">
+						<div class="screen-header">
+							<div class="screen-header-left">
+								<div class="screen-header-button close"></div>
+								<div class="screen-header-button maximize"></div>
+								<div class="screen-header-button minimize"></div>
+							</div>
 
-      <strong class="project-title">
+							<div class="screen-header-right">
+								<div class="screen-header-ellipsis"></div>
+								<div class="screen-header-ellipsis"></div>
+								<div class="screen-header-ellipsis"></div>
+							</div>
+						</div>
 
-        <span class="icon-span">
-          <i class="fa-brands fa-html5" style="color: #E96227"></i>
-          <i class="fa-brands fa-css3" style="color: #254BDE;"></i>
-          <i class="fa-brands fa-js" style="color: #EFD81D ;"></i>
-          <i class="fa-brands fa-php" style="color: #7277AD;"></i>
-          <i class="fa-solid fa-database" style="color: #0f2f70;"></i>
-        </span>
+						<div class="screen-body">
+							<div class="screen-body-item left">
+								<div class="app-title">
+									<span>CONTACT ME</span>
+								</div>
+								<div class="app-contact">
+									+33 X XX XX XX XX <br />
+									<br />
+									<!--number example-->
+									example@mail.com
+								</div>
+								<!-- email -->
+							</div>
+							<div class="screen-body-item">
+								<div class="app-form">
+									<div class="app-form-group">
+										<input
+											class="app-form-control"
+											placeholder="NAME*"
+											required />
+									</div>
+									<div class="app-form-group">
+										<input
+											class="app-form-control"
+											placeholder="EMAIL*"
+											required />
+									</div>
+									<div class="app-form-group">
+										<input
+											class="app-form-control"
+											placeholder="SUBJECT*"
+											required />
+									</div>
+									<div class="app-form-group message">
+										<input
+											class="app-form-control"
+											placeholder="MESSAGE*"
+											required />
+									</div>
+									<div class="app-form-group buttons">
+										<button class="app-form-button">SEND</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-        <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
+				<!--Google maps-->
+				<div class="map" style="padding: 25px">
+					<iframe
+						title="Maps"
+						width="300"
+						height="430"
+						style="border-radius: 12px"
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.77845048119!2d2.264462564445498!3d48.8589383126065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1714475971927!5m2!1sfr!2sfr"
+						allowfullscreen=""
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+			</div>
+		</section>
 
-    </strong>
-    </div>
-  </div>
-<!--==================================================================================================-->
-  <div class="project-card"> <!--PROJECT 5-->
-
-    <div class="project-img">
-      <img src="./images/web.png" alt="project 1"> <!--picture of your project / website-->
-    </div>
-
-    <div class="project-info">
-
-      <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
-
-      <strong class="project-title">
-        <span class="icon-span">
-          <i class="fa-brands fa-html5" style="color: #E96227"></i> 
-          <i class="fa-brands fa-css3" style="color: #254BDE;"></i> 
-          <i class="fa-brands fa-php" style="color: #7277AD;"></i> 
-        </span>
-
-        <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
-        
-      </strong>
-    </div>
-  </div>
-<!--==================================================================================================-->
-<!--==================================================================================================-->
-<div class="project-card"> <!--PROJECT 6-->
-
-  <div class="project-img">
-    <img src="./images/web.png" alt="project 1"> <!--picture of your project / website-->
-  </div>
-
-  <div class="project-info">
-
-    <p class="project-text">Lorem ipsum dolor sit amet</p> <!--Here this is a title for your project or website-->
-
-    <strong class="project-title">
-      <span class="icon-span">
-        <i class="fa-brands fa-html5" style="color: #E96227"></i> 
-        <i class="fa-brands fa-css3" style="color: #254BDE;"></i> 
-        <i class="fa-brands fa-php" style="color: #7277AD;"></i> 
-      </span>
-
-       <!--==Put the link of your project here== -->
-       <a class="link-project" href="#Link_your_project" target="_blank"><span>VISIT</span></a>
-      
-    </strong>
-  </div>
-</div>
-<!--==================================================================================================-->
- </div>
-</section>
-
-<!--************** Section Contact ****************** -->
-<section id="contact" class="contact">
-  <h2 class="scroll"><i class="fa-solid fa-phone"></i> <span class="separator">|</span> <i class="fa-solid fa-envelope"></i></h2>
-
-  <div class="background">
-    <div class="container">
-      <div class="screen">
-        <div class="screen-header">
-
-          <div class="screen-header-left">
-            <div class="screen-header-button close"></div>
-            <div class="screen-header-button maximize"></div>
-            <div class="screen-header-button minimize"></div>
-          </div>
-
-          <div class="screen-header-right">
-            <div class="screen-header-ellipsis"></div>
-            <div class="screen-header-ellipsis"></div>
-            <div class="screen-header-ellipsis"></div>
-          </div>
-        </div>
-
-        <div class="screen-body">
-          <div class="screen-body-item left">
-            <div class="app-title">
-              <span>CONTACT ME</span>
-            </div>
-            <div class="app-contact">+33 X XX XX XX XX <br> <br> <!--number example-->
-              example@mail.com</div> <!-- email -->
-          </div>
-          <div class="screen-body-item">
-            <div class="app-form">
-              <div class="app-form-group">
-                <input class="app-form-control" placeholder="NAME*" required>
-              </div>
-              <div class="app-form-group">
-                <input class="app-form-control" placeholder="EMAIL*" required>
-              </div>
-              <div class="app-form-group">
-                <input class="app-form-control" placeholder="SUBJECT*" required>
-              </div>
-              <div class="app-form-group message">
-                <input class="app-form-control" placeholder="MESSAGE*" required>
-              </div>
-              <div class="app-form-group buttons">
-                <button class="app-form-button">SEND</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-
-    <!--Google maps-->
-    <div class="map" style="padding: 25px;">
-      <iframe title="Maps" width="300" height="430" style="border-radius: 12px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.77845048119!2d2.264462564445498!3d48.8589383126065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1714475971927!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-
-  </div>
-
-</section>
-
-
-<footer class="footer">
-<p class="footer-title">© 2024 Created by <span class="nom">Basheer El Kurdi</span> <span class="p-span">|</span> All rights reserved</p>
-<div class="ss-icons">
-  <a href="https://www.linkedin.com/in/basheer-elkurdi/" target="_blank" aria-label="voir mon profil"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://discordapp.com/users/basheer_11" target="_blank" aria-label="contactez moi sur discord"><i class="fa-brands fa-discord"></i></a>
-</div>
-</footer>
-<script defer src="scroll.js"></script>
-</body>
+		<footer class="footer">
+			<p class="footer-title">
+				© 2024 Created by <span class="nom">Basheer El Kurdi</span>
+				<span class="p-span">|</span> All rights reserved
+			</p>
+			<div class="ss-icons">
+				<a
+					href="https://www.linkedin.com/in/basheer-elkurdi/"
+					target="_blank"
+					aria-label="voir mon profil"
+					><i class="fa-brands fa-linkedin"></i
+				></a>
+				<a
+					href="https://discordapp.com/users/basheer_11"
+					target="_blank"
+					aria-label="contactez moi sur discord"
+					><i class="fa-brands fa-discord"></i
+				></a>
+			</div>
+		</footer>
+		<script defer src="scroll.js"></script>
+	</body>
 </html>
