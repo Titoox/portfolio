@@ -83,7 +83,7 @@ header nav a {
 	}
 }
 header nav a:hover {
-	color: #5b5299; /* Changé */
+	color: #7a66d1; /* punché */
 	font-variation-settings: "wght" 582;
 	letter-spacing: 2px;
 }
@@ -110,7 +110,6 @@ section {
 }
 
 .flex {
-	/*Flexbox for containers*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -121,12 +120,10 @@ section {
 	position: relative;
 	width: 100%;
 	height: 20vh;
-	margin-bottom: -7px; /*Fix for safari gap*/
+	margin-bottom: -7px;
 	min-height: 100px;
 	max-height: 150px;
 }
-
-/* Animation */
 
 .parallax > use {
 	animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
@@ -152,14 +149,13 @@ section {
 		transform: translate3d(85px, 0, 0);
 	}
 }
-/*Shrinking for mobile*/
+
 @media (max-width: 768px) {
 	.waves {
 		height: 80px;
 		min-height: 50px;
 	}
 }
-/************************************/
 
 /*************** SECTION 1 HERO ************/
 .main {
@@ -197,7 +193,7 @@ section {
 	transition: 0.2s;
 }
 .ss-icons a:hover {
-	color: #5b5299; /* Changé */
+	color: #7a66d1; /* punché */
 }
 .main-btn {
 	font-size: 1.2rem;
@@ -211,7 +207,7 @@ section {
 	color: rgb(234, 234, 234);
 	font-weight: 700;
 	transition: 0.6s;
-	box-shadow: 0px 0px 60px #5b5299; /* Changé */
+	box-shadow: 0px 0px 60px #7a66d1; /* punché */
 	-webkit-box-reflect: below 10px
 		linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }
@@ -221,15 +217,13 @@ section {
 }
 
 .main-btn:hover {
-	background: #5b5299; /* Changé */
 	background: linear-gradient(
 		270deg,
-		#5b5299 0%,
-		rgba(130, 121, 188, 0.591) 60%
-	); /* Changé */
+		#7a66d1 0%,
+		rgba(150, 135, 200, 0.75) 60%
+	); /* punché */
 	color: rgb(4, 4, 38);
 }
-/************************ END HERO ***************************/
 
 /************** SECTION 2 PROFILE ******************/
 .profile {
@@ -260,14 +254,14 @@ section {
 #img img {
 	width: 200px;
 	border-radius: 20px;
-	box-shadow: 0 8px 8px -4px #5b5299; /* Changé */
+	box-shadow: 0 8px 8px -4px #7a66d1; /* punché */
 }
-/*** Button cv - Profile ***/
+
 .cv_button {
 	position: relative;
 	padding: 10px 20px;
 	border-radius: 7px;
-	border: 1px solid #5b5299; /* Changé */
+	border: 1px solid #7a66d1; /* punché */
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -283,17 +277,12 @@ section {
 }
 
 .cv_button:hover {
-	background: #5b5299; /* Changé */
-	box-shadow: 0 0 30px 5px rgba(91, 82, 153, 0.6); /* Changé */
-	-webkit-transition: all 0.2s ease-out;
-	-moz-transition: all 0.2s ease-out;
-	transition: all 0.2s ease-out;
+	background: #7a66d1; /* punché */
+	box-shadow: 0 0 30px 5px rgba(122, 102, 209, 0.6); /* punché */
 	text-shadow: 4px 4px 8px rgb(0, 0, 0);
 }
 
 .cv_button:hover::before {
-	-webkit-animation: sh02 0.5s 0s linear;
-	-moz-animation: sh02 0.5s 0s linear;
 	animation: sh02 0.5s 0s linear;
 }
 
@@ -308,10 +297,6 @@ section {
 	opacity: 0;
 	background: #ffffff36;
 	box-shadow: 0 0 50px 30px #ffffff3a;
-	-webkit-transform: skewX(-20deg);
-	-moz-transform: skewX(-20deg);
-	-ms-transform: skewX(-20deg);
-	-o-transform: skewX(-20deg);
 	transform: skewX(-20deg);
 }
 
@@ -333,16 +318,13 @@ section {
 
 .cv_button:active {
 	box-shadow: 0 0 0 0 transparent;
-	-webkit-transition: box-shadow 0.2s ease-in;
-	-moz-transition: box-shadow 0.2s ease-in;
 	transition: box-shadow 0.2s ease-in;
 }
-/************************* END PROFILE ************************/
 
-/********************* SECTION 3 SKILLS ***************/
+/********************* SECTION 3 SKILLS ******************/
 .title-skills {
 	background-color: rgb(14, 14, 14);
-	box-shadow: 5px 0 8px -4px #5b5299; /* Changé */
+	box-shadow: 5px 0 8px -4px #7a66d1; /* punché */
 	border-radius: 15px;
 }
 .title-skills h3 {
@@ -357,7 +339,7 @@ section {
 	text-align: center;
 	display: grid;
 	grid-template-rows: 180px 180px 180px;
-	box-shadow: 0 5px 8px -4px #5b5299; /* Changé */
+	box-shadow: 0 5px 8px -4px #7a66d1; /* punché */
 	width: 360px;
 }
 .card h4 {
@@ -388,7 +370,7 @@ section {
 	padding: 17px 3px;
 	border-radius: 50px;
 	margin-bottom: 20px;
-	color: #5b5299; /* Changé */
+	color: #7a66d1; /* punché */
 }
 .icon-skills p {
 	font-size: 1.2em;
@@ -402,18 +384,13 @@ section {
 .card img {
 	width: 27px;
 }
-.card .fa-code {
-	font-size: 1.8em;
-}
-.card .fa-gear {
-	font-size: 1.8em;
-}
+.card .fa-code,
+.card .fa-gear,
 .card .fa-paintbrush {
 	font-size: 1.8em;
 }
-/************************ END SKILLS ************************/
 
-/*************** SECTION 4 PROJECT *************/
+/**************** SECTION 4 PROJECT ******************/
 .content {
 	display: grid;
 	grid-template-columns: 350px 350px 350px;
@@ -447,8 +424,8 @@ section {
 }
 .project-card:hover {
 	box-shadow:
-		rgba(91, 82, 153, 0.407) 0px 2px 5px -1px,
-		rgba(91, 82, 153, 0.3) 0px 1px 3px -1px; /* Changé */
+		rgba(122, 102, 209, 0.407) 0px 2px 5px -1px,
+		rgba(122, 102, 209, 0.3) 0px 1px 3px -1px; /* punché */
 	background-color: rgba(29, 29, 29, 0.212);
 }
 .project-img img {
@@ -456,11 +433,6 @@ section {
 }
 .project-text {
 	margin-bottom: 15px;
-}
-.project-info {
-	padding: 1em;
-}
-.project-text {
 	font-size: 0.9em;
 	color: #fafafa;
 	backface-visibility: hidden;
@@ -478,12 +450,10 @@ section {
 }
 .link-project {
 	text-decoration: none;
-	color: #8279bc; /* Changé (plus clair pour lisibilité) */
+	color: #a99ff3; /* punché */
 	margin: 0 -0.25rem;
 	padding: 0 0.25rem;
-	transition:
-		color 0.3s ease-in-out,
-		box-shadow 0.3s ease-in-out;
+	transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 	box-shadow: inset 0 0 0 0 #fafafa;
 	border-radius: 5px;
 }
@@ -497,17 +467,8 @@ section {
 	color: rgb(14, 14, 14);
 	border-radius: 5px;
 }
-/************************* END PROJECT *******************/
 
-/**************** SECTION 4 CONTACT *********************/
-*,
-*:before,
-*:after {
-	box-sizing: border-box;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
+/**************** SECTION 5 CONTACT ******************/
 body,
 button,
 input {
@@ -522,19 +483,16 @@ input {
 	display: flex;
 	margin-top: 10px;
 }
-
 .container {
 	flex: 0 1 700px;
 	margin: auto;
 	padding: 10px;
 }
-
 .screen {
 	position: relative;
 	background: #1a1a1a;
 	border-radius: 15px;
 }
-
 .screen:after {
 	content: "";
 	display: block;
@@ -544,10 +502,9 @@ input {
 	right: 20px;
 	bottom: 0;
 	border-radius: 15px;
-	box-shadow: 0 20px 40px rgba(91, 82, 153, 0.428); /* Changé */
+	box-shadow: 0 20px 40px rgba(122, 102, 209, 0.428); /* punché */
 	z-index: -1;
 }
-
 .screen-header {
 	display: flex;
 	align-items: center;
@@ -556,11 +513,9 @@ input {
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 }
-
 .screen-header-left {
 	margin-right: auto;
 }
-
 .screen-header-button {
 	display: inline-block;
 	width: 8px;
@@ -569,23 +524,18 @@ input {
 	border-radius: 8px;
 	background: white;
 }
-
 .screen-header-button.close {
 	background: #ed1c6f;
 }
-
 .screen-header-button.maximize {
 	background: #e8e925;
 }
-
 .screen-header-button.minimize {
 	background: #74c54f;
 }
-
 .screen-header-right {
 	display: flex;
 }
-
 .screen-header-ellipsis {
 	width: 3px;
 	height: 3px;
@@ -593,21 +543,17 @@ input {
 	border-radius: 8px;
 	background: #999;
 }
-
 .screen-body {
 	display: flex;
 }
-
 .screen-body-item {
 	flex: 1;
 	padding: 70px;
 }
-
 .screen-body-item.left {
 	display: flex;
 	flex-direction: column;
 }
-
 .app-title {
 	display: flex;
 	flex-direction: column;
@@ -616,7 +562,6 @@ input {
 	font-size: 26px;
 	text-shadow: 5px 5px 4px #000;
 }
-
 .app-title:after {
 	content: "";
 	display: block;
@@ -625,57 +570,48 @@ input {
 	bottom: -10px;
 	width: 25px;
 	height: 4px;
-	background: #5b5299; /* Changé */
+	background: #7a66d1; /* punché */
 }
-
 .app-contact {
 	margin-top: auto;
 	font-size: 12px;
 	color: #a6a6a6;
 }
-
 .app-form-group {
 	margin-bottom: 15px;
 }
-
 .app-form-group.message {
 	margin-top: 40px;
 }
-
 .app-form-group.buttons {
 	margin-bottom: 0;
 	text-align: right;
 }
-
 .app-form-control {
 	width: 100%;
 	padding: 10px 0;
 	background: none;
 	border: none;
 	border-bottom: 1px solid #666;
-	color: rgba(91, 82, 153, 0.75); /* Changé avec opacité */
+	color: rgba(122, 102, 209, 0.75); /* punché */
 	font-size: 14px;
 	outline: none;
 	transition: border-color 0.2s;
 }
-
 .app-form-control::placeholder {
 	color: #a6a6a6;
 }
-
 .app-form-control:focus {
-	border-bottom-color: #5b5299; /* Changé */
+	border-bottom-color: #7a66d1; /* punché */
 }
-
 .app-form-button {
 	background: none;
 	border: none;
-	color: #5b5299; /* Changé */
+	color: #7a66d1; /* punché */
 	font-size: 14px;
 	cursor: pointer;
 	outline: none;
 }
-
 .app-form-button:hover {
 	color: #fafafad2;
 }
@@ -732,31 +668,5 @@ iframe {
 }
 .map {
 }
-/********************* END CONTACT ******************/
 
-/***************** FOOTER ********************/
-.footer {
-	background-color: #1a1a1a;
-	color: #fafafa;
-	padding: 0.7em;
-	display: flex;
-	justify-content: space-evenly;
-}
-.p-span {
-	color: #ffffff;
-	font-weight: 500;
-	font-size: 20px;
-}
-.footer .ss-icons a {
-	font-size: 22px;
-	padding: 0 12px 0 0;
-	overflow: hidden;
-}
-.nom {
-	color: #8279bc; /* Changé */
-}
-
-.footer .ss-icons a:hover {
-	color: #8279bc; /* Changé */
-	overflow: hidden;
-}
+/***************** FOOTER ****************
