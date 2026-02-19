@@ -25,7 +25,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 7px 200px;
-	background-color: rgba(0, 0, 0, 0.321);
+	background-color: rgba(0, 0, 0, 1);
 	box-shadow: none;
 }
 .logo {
