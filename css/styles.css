@@ -453,7 +453,9 @@ section {
 	color: #a99ff3; /* punché */
 	margin: 0 -0.25rem;
 	padding: 0 0.25rem;
-	transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	transition:
+		color 0.3s ease-in-out,
+		box-shadow 0.3s ease-in-out;
 	box-shadow: inset 0 0 0 0 #fafafa;
 	border-radius: 5px;
 }
@@ -669,4 +671,27 @@ iframe {
 .map {
 }
 
-/***************** FOOTER ****************
+.footer {
+	background-color: #1a1a1a;
+	color: #fafafa;
+	padding: 0.7em;
+	display: flex;
+	justify-content: space-evenly;
+}
+.p-span {
+	color: #ffffff;
+	font-weight: 500;
+	font-size: 20px;
+}
+.footer .ss-icons a {
+	font-size: 22px;
+	padding: 0 12px 0 0;
+	overflow: hidden;
+}
+.nom {
+	color: #8279bc; /* Changé */
+}
+.footer .ss-icons a:hover {
+	color: #8279bc; /* Changé */
+	overflow: hidden;
+}
