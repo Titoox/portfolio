@@ -1,526 +1,561 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta
-			name="description"
-			content="GAUCHER Titouan, Etudiant en première année d'un BUT MMI à l'IUT de Troyes." />
-		<title>Portfolio</title>
-		<link rel="stylesheet" href="./css/styles.css" />
-		<link rel="stylesheet" href="./css/responsive.css" />
-		<link rel="stylesheet" href="./css/scroll.css" />
-		<!-- css for the animation JS -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-		<!-- import the link for the icons -->
-		<link rel="icon" type="image/png" href="./images/favicon.png" />
-	</head>
 
-	<body>
-		<!-- HEADER -->
-		<header>
-			<a class="logo" href="#hero"><span>P</span>ortfolio</a>
-			<!--Span for change the font of the letter 'P'-->
-			<nav>
-				<ul>
-					<li><a href="#profile">About</a></li>
-					<li><a href="#project">Work</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
-		<!-- End header -->
+<head>
+  <!-- ============================================================
+    HEAD — Informations invisibles pour le navigateur
+    Tout ce qui est ici ne s'affiche PAS à l'écran,
+    mais c'est indispensable pour que la page fonctionne bien.
+  ============================================================ -->
 
-		<!-- *****HERO AND BACKGROUND***** -->
-		<div class="back" id="hero">
-			<!--Content before waves-->
-			<div class="inner-header flex">
-				<div class="main scroll">
-					<h2>Bienvenue sur mon portfolio<br /><span>GAUCHER Titouan</span></h2>
-					<h3>Web developer - junior</h3>
-					<!-- Your specialty-->
-					<button onclick="window.location.href = '#profile'" class="main-btn">
-						Qui suis-je ?
-					</button>
+  <!-- Encodage des caractères : permet d'afficher les accents français -->
+  <meta charset="UTF-8" />
 
-					<!--Icons social media / github / profiles-->
-					<div class="ss-icons">
-						<a
-							href="https://www.linkedin.com/in/titouan-gaucher/"
-							target="_blank"
-							aria-label="See my profile"
-							><i class="fa-brands fa-linkedin"></i
-						></a>
+  <!-- Rend la page responsive (adaptée aux mobiles) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-						<a
-							href="https://github.com/Titoox"
-							target="_blank"
-							aria-label="my projects"
-							><i class="fa-brands fa-github"></i
-						></a>
+  <!-- Description visible dans les résultats Google -->
+  <meta name="description" content="Portfolio de GAUCHER Titouan, étudiant en BUT MMI à l'IUT de Troyes." />
 
-						<!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
-					</div>
-				</div>
-			</div>
+  <!-- Titre affiché dans l'onglet du navigateur -->
+  <title>Portfolio · Titouan Gaucher</title>
 
-			<!--Waves Container-->
-			<div>
-				<svg
-					class="waves"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink"
-					viewBox="0 24 150 28"
-					preserveAspectRatio="none"
-					shape-rendering="auto">
-					<defs>
-						<path
-							id="gentle-wave"
-							d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-					</defs>
-					<g class="parallax">
-						<use
-							xlink:href="#gentle-wave"
-							x="48"
-							y="0"
-							fill="rgb(14, 14, 14)" />
-						<use
-							xlink:href="#gentle-wave"
-							x="48"
-							y="3"
-							fill="rgba(91, 82, 153, 0.6)" />
-						<use
-							xlink:href="#gentle-wave"
-							x="48"
-							y="5"
-							fill="rgba(130, 121, 188, 0.3)" />
-					</g>
-				</svg>
-			</div>
-			<!--Waves end-->
-		</div>
-		<!--Header ends-->
-		<!--Content starts-->
-		<div class="cont flex"></div>
-		<!--Content ends-->
-		<!-- ************** END HERO AND BACKGROUND ************** -->
+  <!-- ── STYLES CSS ──────────────────────────────────────────── -->
+  <!-- Chaque fichier CSS a un rôle précis -->
+  <link rel="stylesheet" href="styles.css" />       <!-- Styles principaux -->
+  <link rel="stylesheet" href="responsive.css" />   <!-- Adaptations mobile/tablette -->
+  <link rel="stylesheet" href="scroll.css" />       <!-- Animations au défilement + bouton haut -->
 
-		<!-- button go to top-->
-		<button onclick="topFunction()" id="myBtn" title="Go to top">
-			<svg height="1.2em" class="arrow" viewBox="0 0 512 512">
-				<path
-					d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
-			</svg>
-		</button>
-		<!-- End Button -->
+  <!-- Bibliothèque d'icônes Font Awesome (via CDN = hébergée sur internet) -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-		<!-- You can find any icon in this website : 'https://fontawesome.com/icons' and you can take the link <i> to put it here -->
-		<!--************** Section profile ****************** -->
-		<section id="profile" class="profile">
-			<h2 class="scroll"><i class="fa-solid fa-user"></i> ABOUT ME</h2>
-			<br />
-			<div class="about-profile">
-				<div class="text-profile">
-					<p>
-						Étudiant en BUT MMI, je conçois des interfaces web avec HTML5, CSS3
-						et PHP. Je m'attache à produire un code propre et structuré, en
-						transformant chaque maquette en une expérience fonctionnelle.
-					</p>
-					<br />
-					<p>
-						Passionné de photographie, j'apporte un soin particulier à la
-						composition et à l'esthétique visuelle. Cette double approche me
-						permet d'allier rigueur technique et sensibilité artistique dans
-						tous mes projets numériques.
-					</p>
-					<br />
-					<br />
-					<a
-						class="cv_button"
-						href="images/Titouan_Gaucher_CV.pdf"
-						target="_blank"
-						>Mon CV</a
-					>
-					<!-- YOUR CV PDF -->
-				</div>
-				<div id="img">
-					<img src="images/photo_profil.png" alt="That's me" />
-				</div>
-				<!--== Your photo ==-->
-			</div>
+  <!-- Icône dans l'onglet du navigateur (le petit logo) -->
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+</head>
 
-			<!--************** Section Skills ****************** -->
-			<h2 class="scroll"><i class="fa-solid fa-book"></i> SKILLS</h2>
-			<section class="title-skills">
-				<h3>
-					Côté code, je maîtrise les bases du web (HTML5/CSS3) et je dynamise
-					mes pages en PHP procédural et JavaScript, tout en veillant à la
-					sécurité (XSS) et à la structure. Côté image, ma pratique de la
-					photographie m'apporte un œil affûté pour la composition et la
-					colorimétrie, me permettant de créer des visuels web optimisés et
-					esthétiques.
-				</h3>
-			</section>
+<body>
 
-			<section class="skills-child">
-				<div class="skills-container">
-					<div class="skills-content">
-						<div class="card">
-							<h4>
-								<i class="fa-solid fa-code"></i> <br />
-								Languages
-							</h4>
-							<div class="icon-skills">
-								<p>
-									<i class="fa-brands fa-html5" style="color: #e96227"></i> HTML
-								</p>
-								<p>
-									<i class="fa-brands fa-css3" style="color: #254bde"></i> CSS
-								</p>
-								<p>
-									<i class="fa-brands fa-php" style="color: #7277ad"></i> PHP
-								</p>
-								<p>
-									<i class="fa-brands fa-js" style="color: #efd81d"></i>
-									JavaScript
-								</p>
-								<p>
-									<i class="fa-brands fa-wordpress" style="color: #1e7095"></i>
-									Wordpress
-								</p>
-							</div>
-						</div>
+  <!-- ============================================================
+    HEADER — Barre de navigation fixe en haut de page
+    Elle reste visible même quand on défile grâce au CSS (position: fixed)
+  ============================================================ -->
+  <header class="en-tete">
 
-						<div class="card">
-							<h4>
-								<i class="fa-solid fa-gear"></i> <br />
-								Tools
-							</h4>
-							<div class="icon-skills">
-								<p>
-									<i class="fa-brands fa-docker" style="color: #3d78ee"></i>
-									Docker
-								</p>
-								<p>
-									<i class="fa-brands fa-ubuntu" style="color: #df5222"></i>
-									Ubuntu
-								</p>
-								<p>
-									<i class="fa-solid fa-database" style="color: #0f2f70"></i>
-									SQL
-								</p>
-								<p>
-									<i class="fa-brands fa-bootstrap" style="color: #8812f5"></i>
-									Bootstrap
-								</p>
-								<p>
-									<i class="fa-solid fa-server" style="color: green"></i> Server
-								</p>
-							</div>
-						</div>
+    <!-- Logo : un lien qui renvoie en haut de page (#hero = ancre) -->
+    <a class="logo" href="#hero">
+      <!-- Le <span> sert à mettre la première lettre dans une police différente -->
+      <span>P</span>ortfolio
+    </a>
 
-						<div class="card">
-							<h4>
-								<i class="fa-solid fa-paintbrush"></i> <br />
-								Design
-							</h4>
-							<div class="icon-skills">
-								<p>
-									<img src="./images/adobe-photoshop.256x256.png" alt="PS" />
-									Photoshop
-								</p>
-								<!-- image icon photoshop -->
-								<p>
-									<img src="./images/adobe-illustrator.256x256.png" alt="AI" />
-									Illustrator
-								</p>
-								<!-- image icon illustrator -->
-								<p><i class="fa-brands fa-figma"></i> Figma</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</section>
-		<!--************** END PROFILE ****************** -->
+    <!-- Navigation principale -->
+    <nav class="navigation">
+      <ul class="navigation__liste">
+        <li><a href="#profil">À propos</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-		<!--************** Section Projects ****************** -->
-		<section class="project" id="project">
-			<h2 class="title scroll"><i class="fa-solid fa-laptop"></i> Work</h2>
-			<div class="content">
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<!--PROJECT 1-->
+  </header>
+  <!-- FIN HEADER -->
 
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 1" />
-						<!--picture of your project / website-->
-					</div>
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+  <!-- ============================================================
+    SECTION HÉRO — La grande section d'accueil
+    C'est la première chose que voit le visiteur.
+    Elle contient : nom, spécialité, bouton et icônes réseaux sociaux.
+  ============================================================ -->
+  <div class="hero" id="hero">
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-html5" style="color: #e96227"></i>
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-php" style="color: #7277ad"></i>
-							</span>
+    <!-- Contenu centré au milieu de la section héro -->
+    <div class="hero__contenu scroll">
 
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 2" />
-						<!--Here this is a title for your project or website-->
-					</div>
+      <!-- Titre de bienvenue -->
+      <h2 class="hero__bienvenue">
+        Bienvenue sur mon portfolio<br />
+        <!-- Le <span> met le nom en gros et en couleur différente -->
+        <span class="hero__nom">GAUCHER Titouan</span>
+      </h2>
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+      <!-- Sous-titre : spécialité -->
+      <h3 class="hero__specialite">Développeur Web Junior</h3>
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-html5" style="color: #e96227"></i>
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-php" style="color: #7277ad"></i>
-								<i class="fa-brands fa-js" style="color: #efd81d"></i>
-							</span>
+      <!-- Bouton qui fait défiler vers la section profil -->
+      <!-- onclick="..." = exécute du JavaScript au clic -->
+      <button onclick="window.location.href = '#profil'" class="bouton-principal">
+        Qui suis-je ?
+      </button>
 
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<!-- PROJECT 3 -->
+      <!-- Icônes réseaux sociaux / GitHub -->
+      <div class="icones-reseaux">
 
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 3" />
-						<!--Here this is a title for your project or website-->
-					</div>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank"
+           aria-label="Voir mon profil LinkedIn">
+          <!-- <i> = icône Font Awesome. La classe "fa-brands fa-linkedin" choisit l'icône -->
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+        <!-- GitHub -->
+        <a href="https://github.com/Titoox" target="_blank"
+           aria-label="Voir mes projets sur GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-wordpress" style="color: #1e7095"></i>
-								<i class="fa-brands fa-bootstrap" style="color: #8812f5"></i>
-							</span>
+        <!-- Tu peux trouver d'autres icônes sur https://fontawesome.com/icons -->
 
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<!-- PROJECT 4 -->
+      </div>
+    </div>
+    <!-- FIN hero__contenu -->
 
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 4" />
-						<!--Here this is a title for your project or website-->
-					</div>
+    <!-- ── Vagues SVG animées ──────────────────────────────────
+      SVG = format d'image vectorielle directement dans le HTML
+      Ces vagues séparent le héro de la section suivante de façon fluide.
+      L'animation est gérée dans styles.css avec @keyframes move-forever.
+    ─────────────────────────────────────────────────────────── -->
+    <div class="vagues-conteneur">
+      <svg class="vagues" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <!-- On définit la forme d'une vague réutilisable -->
+          <path id="vague-douce"
+            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <!-- On utilise la forme 3 fois avec des décalages différents pour l'effet de profondeur -->
+        <g class="parallaxe">
+          <use href="#vague-douce" x="48" y="0" fill="#ffffff" />
+          <use href="#vague-douce" x="48" y="3" fill="rgba(122, 102, 209, 0.22)" />
+          <use href="#vague-douce" x="48" y="5" fill="rgba(122, 102, 209, 0.12)" />
+        </g>
+      </svg>
+    </div>
+    <!-- FIN vagues -->
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+  </div>
+  <!-- FIN HÉRO -->
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-html5" style="color: #e96227"></i>
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-js" style="color: #efd81d"></i>
-								<i class="fa-brands fa-php" style="color: #7277ad"></i>
-								<i class="fa-solid fa-database" style="color: #0f2f70"></i>
-							</span>
 
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<!--PROJECT 5-->
+  <!-- ============================================================
+    BOUTON "RETOUR EN HAUT"
+    Apparaît quand on a défilé plus de 20px vers le bas.
+    Le JS dans scroll.js gère son apparition/disparition.
+    onclick="topFunction()" = appelle la fonction définie dans scroll.js
+  ============================================================ -->
+  <button onclick="topFunction()" id="bouton-haut" title="Retour en haut">
+    <!-- Flèche vers le haut en SVG -->
+    <svg height="1.2em" viewBox="0 0 512 512">
+      <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3
+               s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0
+               s-12.5-32.8 0-45.3l192-192z" />
+    </svg>
+  </button>
 
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 1" />
-						<!--picture of your project / website-->
-					</div>
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+  <!-- ============================================================
+    SECTION PROFIL — À propos de moi
+    Contient : texte de présentation, photo, bouton CV, et compétences.
+    L'ancre id="profil" permet au menu de scroller jusqu'ici.
+  ============================================================ -->
+  <section id="profil" class="section-profil">
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-html5" style="color: #e96227"></i>
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-php" style="color: #7277ad"></i>
-							</span>
+    <!-- Titre de section avec classe "scroll" pour l'animation d'apparition -->
+    <h2 class="titre-section scroll">
+      <i class="fa-solid fa-user"></i> À PROPOS
+    </h2>
 
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-				<!--==================================================================================================-->
-				<div class="project-card">
-					<!--PROJECT 6-->
+    <!-- Grille deux colonnes : texte à gauche, photo à droite -->
+    <div class="profil-grille">
 
-					<div class="project-img">
-						<img src="./images/web.png" alt="project 1" />
-						<!--picture of your project / website-->
-					</div>
+      <!-- Colonne texte -->
+      <div class="profil-texte">
+        <p>
+          Étudiant en BUT MMI, je conçois des interfaces web avec HTML5, CSS3
+          et PHP. Je m'attache à produire un code propre et structuré, en
+          transformant chaque maquette en une expérience fonctionnelle.
+        </p>
+        <br />
+        <p>
+          Passionné de photographie, j'apporte un soin particulier à la
+          composition et à l'esthétique visuelle. Cette double approche me
+          permet d'allier rigueur technique et sensibilité artistique dans
+          tous mes projets numériques.
+        </p>
+        <br /><br />
 
-					<div class="project-info">
-						<p class="project-text">Lorem ipsum dolor sit amet</p>
-						<!--Here this is a title for your project or website-->
+        <!-- Lien vers le CV PDF — s'ouvre dans un nouvel onglet -->
+        <a class="bouton-cv" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
+          Mon CV
+        </a>
+      </div>
 
-						<strong class="project-title">
-							<span class="icon-span">
-								<i class="fa-brands fa-html5" style="color: #e96227"></i>
-								<i class="fa-brands fa-css3" style="color: #254bde"></i>
-								<i class="fa-brands fa-php" style="color: #7277ad"></i>
-							</span>
+      <!-- Colonne photo de profil -->
+      <div class="profil-photo">
+        <img src="images/photo_profil.png" alt="Photo de profil de Titouan Gaucher" />
+      </div>
 
-							<!--==Put the link of your project here== -->
-							<a class="link-project" href="#Link_your_project" target="_blank"
-								><span>VISIT</span></a
-							>
-						</strong>
-					</div>
-				</div>
-				<!--==================================================================================================-->
-			</div>
-		</section>
+    </div>
+    <!-- FIN profil-grille -->
 
-		<!--************** Section Contact ****************** -->
-		<section id="contact" class="contact">
-			<h2 class="scroll">
-				<i class="fa-solid fa-phone"></i> <span class="separator">|</span>
-				<i class="fa-solid fa-envelope"></i>
-			</h2>
 
-			<div class="background">
-				<div class="container">
-					<div class="screen">
-						<div class="screen-header">
-							<div class="screen-header-left">
-								<div class="screen-header-button close"></div>
-								<div class="screen-header-button maximize"></div>
-								<div class="screen-header-button minimize"></div>
-							</div>
+    <!-- ── Sous-section Compétences ─────────────────────────── -->
+    <h2 class="titre-section scroll">
+      <i class="fa-solid fa-book"></i> COMPÉTENCES
+    </h2>
 
-							<div class="screen-header-right">
-								<div class="screen-header-ellipsis"></div>
-								<div class="screen-header-ellipsis"></div>
-								<div class="screen-header-ellipsis"></div>
-							</div>
-						</div>
+    <!-- Texte introductif sur les compétences -->
+    <p class="competences-intro">
+      Côté code, je maîtrise les bases du web (HTML5/CSS3) et je dynamise
+      mes pages en PHP et JavaScript. Côté image, ma pratique de la
+      photographie m'apporte un œil affûté pour la composition et la
+      colorimétrie.
+    </p>
 
-						<div class="screen-body">
-							<div class="screen-body-item left">
-								<div class="app-title">
-									<span>CONTACT ME</span>
-								</div>
-								<div class="app-contact">
-									+33 X XX XX XX XX <br />
-									<br />
-									<!--number example-->
-									example@mail.com
-								</div>
-								<!-- email -->
-							</div>
-							<div class="screen-body-item">
-								<div class="app-form">
-									<div class="app-form-group">
-										<input
-											class="app-form-control"
-											placeholder="NAME*"
-											required />
-									</div>
-									<div class="app-form-group">
-										<input
-											class="app-form-control"
-											placeholder="EMAIL*"
-											required />
-									</div>
-									<div class="app-form-group">
-										<input
-											class="app-form-control"
-											placeholder="SUBJECT*"
-											required />
-									</div>
-									<div class="app-form-group message">
-										<input
-											class="app-form-control"
-											placeholder="MESSAGE*"
-											required />
-									</div>
-									<div class="app-form-group buttons">
-										<button class="app-form-button">SEND</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+    <!-- Grille de 3 cartes de compétences -->
+    <div class="competences-grille">
 
-				<!--Google maps-->
-				<div class="map" style="padding: 25px">
-					<iframe
-						title="Maps"
-						width="300"
-						height="430"
-						style="border-radius: 12px"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26794.28593749092!2d4.055534977380537!3d48.292421463726306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee9857e787b7b1%3A0x57dd125566e84f75!2s10000%20Troyes!5e1!3m2!1sfr!2sfr!4v1771401657102!5m2!1sfr!2sfr"
-						allowfullscreen=""
-						loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade">
-					</iframe>
-				</div>
-			</div>
-		</section>
+      <!-- ── Carte 1 : Langages ── -->
+      <div class="carte-competence">
+        <!-- Icône ronde en haut de la carte -->
+        <h4>
+          <i class="fa-solid fa-code"></i><br />
+          Langages
+        </h4>
+        <!-- Liste des technos avec leur icône colorée -->
+        <div class="competence-liste">
+          <p><i class="fa-brands fa-html5" style="color:#e96227"></i> HTML</p>
+          <p><i class="fa-brands fa-css3" style="color:#254bde"></i> CSS</p>
+          <p><i class="fa-brands fa-php" style="color:#7277ad"></i> PHP</p>
+          <p><i class="fa-brands fa-js" style="color:#efd81d"></i> JavaScript</p>
+          <p><i class="fa-brands fa-wordpress" style="color:#1e7095"></i> WordPress</p>
+        </div>
+      </div>
 
-		<footer class="footer">
-			<p class="footer-title">
-				© 2026 Created by <span class="nom">GAUCHER Titouan</span>
-				<span class="p-span">|</span> All rights reserved
-			</p>
-			<div class="ss-icons">
-				<a
-					href="https://www.linkedin.com/in/basheer-elkurdi/"
-					target="_blank"
-					aria-label="voir mon profil"
-					><i class="fa-brands fa-linkedin"></i
-				></a>
-				<a
-					href="https://discordapp.com/users/basheer_11"
-					target="_blank"
-					aria-label="contactez moi sur discord"
-					><i class="fa-brands fa-discord"></i
-				></a>
-			</div>
-		</footer>
-		<script defer src="scroll.js"></script>
-	</body>
+      <!-- ── Carte 2 : Outils ── -->
+      <div class="carte-competence">
+        <h4>
+          <i class="fa-solid fa-gear"></i><br />
+          Outils
+        </h4>
+        <div class="competence-liste">
+          <p><i class="fa-brands fa-docker" style="color:#3d78ee"></i> Docker</p>
+          <p><i class="fa-brands fa-ubuntu" style="color:#df5222"></i> Ubuntu</p>
+          <p><i class="fa-solid fa-database" style="color:#0f2f70"></i> SQL</p>
+          <p><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i> Bootstrap</p>
+          <p><i class="fa-solid fa-server" style="color:green"></i> Serveur</p>
+        </div>
+      </div>
+
+      <!-- ── Carte 3 : Design ── -->
+      <div class="carte-competence">
+        <h4>
+          <i class="fa-solid fa-paintbrush"></i><br />
+          Design
+        </h4>
+        <div class="competence-liste">
+          <!-- Icône image pour Photoshop (Font Awesome n'a pas l'icône Adobe) -->
+          <p>
+            <img src="./images/adobe-photoshop.256x256.png" alt="Photoshop" />
+            Photoshop
+          </p>
+          <p>
+            <img src="./images/adobe-illustrator.256x256.png" alt="Illustrator" />
+            Illustrator
+          </p>
+          <p><i class="fa-brands fa-figma"></i> Figma</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- FIN competences-grille -->
+
+  </section>
+  <!-- FIN SECTION PROFIL -->
+
+
+  <!-- ============================================================
+    SECTION PROJETS — Galerie des réalisations
+    Chaque projet = une carte avec image, description et lien.
+  ============================================================ -->
+  <section id="projets" class="section-projets">
+
+    <h2 class="titre-section scroll">
+      <i class="fa-solid fa-laptop"></i> PROJETS
+    </h2>
+
+    <!-- Grille de cartes projets -->
+    <div class="projets-grille">
+
+      <!-- ── Carte projet 1 ─────────────────────────────────── -->
+      <!-- Pour ajouter un projet : copie-colle ce bloc et modifie le contenu -->
+      <div class="carte-projet">
+        <!-- Image du projet (capture d'écran ou maquette) -->
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 1" />
+        </div>
+        <!-- Infos du projet -->
+        <div class="projet-infos">
+          <!-- Description courte -->
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <!-- Barre du bas : icônes des technos + lien -->
+          <div class="projet-pied">
+            <!-- Icônes des langages/frameworks utilisés -->
+            <span class="projet-technos">
+              <i class="fa-brands fa-html5" style="color:#e96227"></i>
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-js" style="color:#efd81d"></i>
+            </span>
+            <!-- Lien "Visiter" vers le projet en ligne -->
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Carte projet 2 ── -->
+      <div class="carte-projet">
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 2" />
+        </div>
+        <div class="projet-infos">
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <div class="projet-pied">
+            <span class="projet-technos">
+              <i class="fa-brands fa-html5" style="color:#e96227"></i>
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-php" style="color:#7277ad"></i>
+              <i class="fa-brands fa-js" style="color:#efd81d"></i>
+            </span>
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Carte projet 3 ── -->
+      <div class="carte-projet">
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 3" />
+        </div>
+        <div class="projet-infos">
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <div class="projet-pied">
+            <span class="projet-technos">
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-wordpress" style="color:#1e7095"></i>
+              <i class="fa-brands fa-bootstrap" style="color:#8812f5"></i>
+            </span>
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Carte projet 4 ── -->
+      <div class="carte-projet">
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 4" />
+        </div>
+        <div class="projet-infos">
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <div class="projet-pied">
+            <span class="projet-technos">
+              <i class="fa-brands fa-html5" style="color:#e96227"></i>
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-js" style="color:#efd81d"></i>
+              <i class="fa-brands fa-php" style="color:#7277ad"></i>
+            </span>
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Carte projet 5 ── -->
+      <div class="carte-projet">
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 5" />
+        </div>
+        <div class="projet-infos">
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <div class="projet-pied">
+            <span class="projet-technos">
+              <i class="fa-brands fa-html5" style="color:#e96227"></i>
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-php" style="color:#7277ad"></i>
+            </span>
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Carte projet 6 ── -->
+      <div class="carte-projet">
+        <div class="projet-image">
+          <img src="./images/web.png" alt="Aperçu du projet 6" />
+        </div>
+        <div class="projet-infos">
+          <p class="projet-description">Lorem ipsum dolor sit amet</p>
+          <div class="projet-pied">
+            <span class="projet-technos">
+              <i class="fa-brands fa-html5" style="color:#e96227"></i>
+              <i class="fa-brands fa-css3" style="color:#254bde"></i>
+              <i class="fa-brands fa-php" style="color:#7277ad"></i>
+            </span>
+            <a class="lien-projet" href="#lien_de_ton_projet" target="_blank">
+              <span>Visiter</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- FIN projets-grille -->
+
+  </section>
+  <!-- FIN SECTION PROJETS -->
+
+
+  <!-- ============================================================
+    SECTION CONTACT — Formulaire + carte Google Maps
+  ============================================================ -->
+  <section id="contact" class="section-contact">
+
+    <!-- Titre avec icônes téléphone + enveloppe -->
+    <h2 class="titre-section scroll">
+      <i class="fa-solid fa-phone"></i>
+      <span class="separateur">|</span>
+      <i class="fa-solid fa-envelope"></i>
+    </h2>
+
+    <!-- Zone principale : fenêtre de formulaire + carte -->
+    <div class="contact-zone">
+
+      <!-- ── Fausse fenêtre macOS (style éditeur de code) ── -->
+      <!-- C'est juste du CSS pur ! Pas de vrai système d'exploitation. -->
+      <div class="formulaire-fenetre">
+
+        <!-- Barre supérieure avec les 3 boutons ronds -->
+        <div class="fenetre-barre">
+          <div class="fenetre-boutons">
+            <div class="fenetre-btn fermer"></div>   <!-- Rouge -->
+            <div class="fenetre-btn agrandir"></div> <!-- Jaune -->
+            <div class="fenetre-btn reduire"></div>  <!-- Vert -->
+          </div>
+          <div class="fenetre-points">
+            <div class="fenetre-point"></div>
+            <div class="fenetre-point"></div>
+            <div class="fenetre-point"></div>
+          </div>
+        </div>
+
+        <!-- Corps de la fenêtre : infos à gauche + formulaire à droite -->
+        <div class="fenetre-corps">
+
+          <!-- Colonne gauche : coordonnées -->
+          <div class="contact-infos">
+            <div class="contact-titre">
+              <span>ME CONTACTER</span>
+            </div>
+            <div class="contact-coordonnees">
+              +33 X XX XX XX XX<br /><br />
+              <!-- Remplace par ton email -->
+              ton.email@exemple.fr
+            </div>
+          </div>
+
+          <!-- Colonne droite : formulaire -->
+          <div class="formulaire-champs">
+            <!-- Chaque group = un champ de saisie -->
+            <div class="champ-groupe">
+              <input class="champ-saisie" placeholder="NOM*" required />
+            </div>
+            <div class="champ-groupe">
+              <input class="champ-saisie" placeholder="EMAIL*" type="email" required />
+            </div>
+            <div class="champ-groupe">
+              <input class="champ-saisie" placeholder="SUJET*" required />
+            </div>
+            <!-- Champ message plus haut que les autres grâce à la classe "message" -->
+            <div class="champ-groupe champ-message">
+              <input class="champ-saisie" placeholder="MESSAGE*" required />
+            </div>
+            <!-- Bouton d'envoi aligné à droite -->
+            <div class="champ-groupe champ-boutons">
+              <button class="bouton-envoyer">ENVOYER</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- FIN fenetre-corps -->
+
+      </div>
+      <!-- FIN formulaire-fenetre -->
+
+      <!-- ── Carte Google Maps intégrée ── -->
+      <!-- L'iframe embarque une page extérieure (ici Google Maps) -->
+      <div class="contact-carte">
+        <iframe
+          title="Carte Google Maps - Troyes"
+          width="300"
+          height="430"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26794.28593749092!2d4.055534977380537!3d48.292421463726306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee9857e787b7b1%3A0x57dd125566e84f75!2s10000%20Troyes!5e1!3m2!1sfr!2sfr!4v1771401657102!5m2!1sfr!2sfr"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+    </div>
+    <!-- FIN contact-zone -->
+
+  </section>
+  <!-- FIN SECTION CONTACT -->
+
+
+  <!-- ============================================================
+    FOOTER — Pied de page
+    Contient les mentions légales + icônes réseaux sociaux.
+  ============================================================ -->
+  <footer class="pied-de-page">
+
+    <!-- Texte de copyright -->
+    <p class="pied-copyright">
+      © 2026 Créé par
+      <span class="pied-nom">GAUCHER Titouan</span>
+      <span class="pied-separateur">|</span>
+      Tous droits réservés
+    </p>
+
+    <!-- Icônes réseaux sociaux dans le footer -->
+    <div class="icones-reseaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/"
+         target="_blank" aria-label="Mon LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox"
+         target="_blank" aria-label="Mon GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+
+  </footer>
+  <!-- FIN FOOTER -->
+
+
+  <!-- ============================================================
+    JAVASCRIPT — Doit être chargé EN BAS du body
+    Pourquoi ? Pour que tout le HTML soit déjà chargé quand le JS s'exécute.
+    Si on le mettait dans le <head>, le JS chercherait des éléments HTML
+    qui n'existent pas encore → erreur !
+  ============================================================ -->
+  <script src="scroll.js"></script>
+
+</body>
 </html>
