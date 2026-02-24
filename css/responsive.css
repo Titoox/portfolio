@@ -1,378 +1,269 @@
+/* ================================================================
+   responsive.css — Adaptations pour les petits écrans
+   ──────────────────────────────────────────────────────────────
+   Les @media queries = des "conditions" CSS.
+   "Si l'écran est plus petit que X, alors applique ces styles."
+
+   On a 2 breakpoints (points de rupture) :
+   ① max-width: 1023px → Mobile (moins de 1024px de large)
+   ② min-width: 480px and max-width: 900px → Tablette
+================================================================ */
+
+
+/* ================================================================
+   ① MOBILE — Écrans inférieurs à 1024px
+   (smartphones, petits tablettes en portrait)
+================================================================ */
 @media screen and (max-width: 1023px) {
-	/************** Header *************/
-	/******/
-	header {
-		padding: 12px 20px;
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		background-color: rgb(14, 14, 14);
-	}
-	.logo {
-		font-size: 18px;
-	}
-	nav ul {
-		display: flex;
-		justify-content: space-between;
-		margin: 8px;
-	}
-	header nav a {
-		font-size: 16px;
-		margin: 0px 0.8rem;
-	}
-	#myBtn {
-		margin-bottom: 10px;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
 
-	/************** Section Hero 1 *************/
-	/**************/
-	section {
-		padding: 80px 20px;
-	}
-	.main h2 {
-		font-size: 1.1em;
-	}
-	.main h2 span {
-		font-size: 1.7em;
-	}
-	.main h3 {
-		font-size: 1em;
-		font-weight: 500;
-	}
-	.main-btn {
-		font-size: 1em;
-	}
+  /* ── Header ─────────────────────────────────────────── */
+  .en-tete {
+    padding         : 12px 20px;   /* Moins de padding sur les côtés */
+    flex-direction  : column;      /* Logo AU-DESSUS de la nav */
+    position        : relative;    /* Plus fixe sur mobile (évite les problèmes) */
+    background-color: #ffffff;
+  }
+  .logo {
+    font-size : 1.4em;
+  }
+  /* Les liens de navigation se répartissent horizontalement */
+  .navigation__liste {
+    display         : flex;
+    justify-content : space-between;
+    margin          : 8px 0;
+    padding         : 0;
+  }
+  .navigation__liste a {
+    font-size : 0.9em;
+    margin    : 0 0.8rem;
+  }
 
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
 
-	/************** Section Profile 2 *************/
-	/**************/
-	.profile h2 {
-		font-size: 1.3em;
-	}
-	.fa-solid {
-		font-size: 1em;
-	}
-	.about-profile {
-		display: grid;
-		display: flex;
-		grid-template-columns: 200px;
-		flex-direction: column-reverse;
-	}
-	.text-profile {
-		font-size: 1em;
-		text-align: left;
-		line-height: 25px;
-	}
-	#img img {
-		width: 190px; /*profile img*/
-		border-radius: 40px;
-	}
-	#img {
-		display: flex;
-		justify-content: center;
-		padding-bottom: 30px;
-	}
-	/***** Child section Skills *****/
-	.title-skills h3 {
-		font-size: 18px;
-		line-height: 35px;
-		padding-bottom: 20px;
-	}
-	.card {
-		text-align: center;
-		display: grid;
-		grid-template-columns: 300px;
-		gap: 0px;
-		color: #fafafa;
-		width: 250px;
-		justify-content: center;
-	}
-	.card h4 {
-		font-size: 1.4em;
-		text-align: center;
-		margin-top: 30px;
-		color: #fafafa;
-	}
-	.fa-code,
-	.fa-gear,
-	.fa-paintbrush {
-		width: 60px;
-		height: 60px;
-		padding: 15px 5px;
-		background-color: #eceaea; /*background logo languages/tools..*/
-		color: #5b5299; /* Changé */
-	}
-	.icon-skills p {
-		font-size: 1.1em;
-		text-align: center;
-		line-height: 55px;
-		color: #fafafa;
-	}
-	.icon-skills .fa-brands,
-	.fa-server {
-		font-size: 1.4em;
-	}
-	.card img {
-		width: 25px; /* LOGO ADOBE */
-	}
-	.skills-content {
-		display: grid;
-		justify-content: center;
-	}
-	.skills-container {
-		border-radius: 10px;
-		background-color: transparent;
-		padding-top: 29px;
-	}
-	.card .fa-code {
-		font-size: 1.3em;
-	}
-	.card .fa-gear {
-		font-size: 1.3em;
-	}
-	.card .fa-paintbrush {
-		font-size: 1.3em;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
+  /* ── Section Héro ─────────────────────────────────── */
+  section {
+    padding : 60px 20px; /* Beaucoup moins de marges */
+  }
+  .section-profil,
+  .section-projets,
+  .section-contact {
+    padding : 60px 20px;
+  }
+  .hero__bienvenue {
+    font-size : 1em;
+  }
+  .hero__nom {
+    font-size : 1.6em;
+  }
+  .hero__specialite {
+    font-size : 1em;
+    font-weight: 500;
+  }
+  .bouton-principal {
+    font-size : 0.95em;
+  }
 
-	/************** Section Projects 3 *************/
-	/**************/
-	.project h2 {
-		font-size: 1.3em;
-		margin-top: 8px;
-	}
-	.content {
-		display: grid;
-		grid-template-columns: 350px;
-		justify-content: center;
-		gap: 8px;
-	}
-	.project-img img {
-		width: 150px; /* You can control the size of your project image */
-	}
-	.fa-database {
-		font-size: 1.4em;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/************** Section Contact 4 *************/
-	/**************/
-	.background {
-		display: grid;
-		justify-content: center;
-	}
-	.contact .fa-phone,
-	.fa-envelope {
-		font-size: 1.3em;
-	}
-	.app-contact {
-		padding-top: 35px;
-	}
-	iframe {
-		width: 275px;
-		height: 350px;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/********* Footer ******/
-	.footer {
-		padding: 0.5em;
-	}
-	.footer-title {
-		font-size: 0.9em;
-		text-align: center;
-	}
-	.footer .ss-icons a {
-		font-size: 0px;
-		padding: 0 0 0 0;
-	}
 
-	.arrow {
-		/*button top*/
-		font-size: 15px;
-	}
+  /* ── Section Profil ──────────────────────────────── */
+  .titre-section {
+    font-size : 1.2em;
+  }
+  /* En mobile : photo EN DESSUS du texte (on inverse l'ordre) */
+  .profil-grille {
+    display         : flex;
+    flex-direction  : column-reverse; /* Photo en premier, texte ensuite */
+    align-items     : center;
+    gap             : 25px;
+  }
+  .profil-texte {
+    font-size   : 0.95em;
+    text-align  : left;
+    line-height : 1.7;
+  }
+  .profil-photo img {
+    width : 180px; /* Photo plus petite */
+  }
+
+
+  /* ── Section Compétences ─────────────────────────── */
+  .carte-competence {
+    width : 230px; /* Cartes plus étroites */
+  }
+  .competence-liste p {
+    font-size : 1em;
+    line-height : 2;
+  }
+  /* Les cartes passent en colonne sur très petit écran */
+  .competences-grille {
+    flex-direction : column;
+    align-items    : center;
+  }
+
+
+  /* ── Section Projets ─────────────────────────────── */
+  /* 1 seule colonne de projets */
+  .projets-grille {
+    grid-template-columns : 320px;
+  }
+  .titre-section {
+    margin-top : 8px;
+  }
+
+
+  /* ── Section Contact ─────────────────────────────── */
+  .contact-zone {
+    flex-direction  : column;
+    align-items     : center;
+  }
+  .contact-carte iframe {
+    width  : 280px;
+    height : 300px;
+  }
+
+
+  /* ── Footer ──────────────────────────────────────── */
+  .pied-de-page {
+    flex-direction : column;
+    gap            : 10px;
+    padding        : 14px;
+    text-align     : center;
+  }
+  .pied-copyright {
+    font-size : 0.8em;
+  }
+  /* Cache les icônes du footer sur très petit écran */
+  .pied-de-page .icones-reseaux a {
+    font-size : 0; /* Largeur 0 = invisible */
+  }
+
+  /* ── Bouton retour en haut ───────────────────────── */
+  #bouton-haut {
+    margin-bottom : 10px;
+  }
+
 }
+/* FIN @media mobile */
 
-/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-/********* Tablette ******/
+
+/* ================================================================
+   ② TABLETTE — Écrans entre 480px et 900px
+   (tablettes en portrait/paysage, grands smartphones en paysage)
+   Ces règles s'ajoutent aux règles mobile et les surchargent.
+================================================================ */
 @media only screen and (min-width: 480px) and (max-width: 900px) {
-	/************** Header *************/
-	/******/
-	header {
-		flex-direction: row;
-	}
-	header nav a {
-		font-size: 1.4em;
-	}
-	.logo {
-		font-size: 1.8em;
-	}
-	.main h2 {
-		font-size: 1.8em;
-	}
-	.main h2 span {
-		font-size: 1.9em;
-	}
-	.main h3 {
-		font-size: 1.7em;
-		font-weight: 500;
-	}
-	.main-btn {
-		font-size: 1.8em;
-	}
-	.ss-icons a {
-		font-size: 2.3em;
-	}
-	#myBtn {
-		margin-bottom: 15px;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/************** Section Profile 2 *************/
-	/**************/
-	.profile h2,
-	.project h2 {
-		font-size: 2em;
-		margin-top: 8px;
-	}
-	.text-profile {
-		font-size: 1.3em;
-		text-align: left;
-		line-height: 32px;
-	}
-	#img img {
-		width: 240px; /*profile img*/
-	}
-	#img {
-		display: flex;
-		justify-content: center;
-		padding-bottom: 38px;
-	}
-	.cv_button {
-		padding: 20px 40px;
-		font-size: 20px;
-		border-color: #5b5299; /* Changé */
-	}
-	.cv_button:hover {
-		background-color: #5b5299; /* Changé */
-	}
-	/***** Child section Skills *****/
-	.title-skills h3 {
-		font-size: 1.5em;
-		line-height: 40px;
-	}
-	.card {
-		display: grid;
-		grid-template-rows: 170px 170px 170px;
-		width: 240px;
-	}
-	.card h4 {
-		font-size: 1.7em;
-	}
-	.fa-code,
-	.fa-gear,
-	.fa-paintbrush {
-		width: 80px;
-		height: 70px;
-		color: #5b5299; /* Changé */
-	}
-	.icon-skills p {
-		font-size: 1.5em;
-	}
-	.fa-database {
-		font-size: 1.4em;
-	}
-	.card img {
-		width: 35px; /* LOGO ADOBE */
-	}
-	.skills-content {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/************** Section Projects 3 *************/
-	/**************/
-	.content {
-		display: grid;
-		grid-template-columns: 370px 370px;
-		justify-content: center;
-		gap: 8px;
-	}
-	.project-img img {
-		width: 275px; /* You can control the size of your project image */
-	}
-	.project-text {
-		font-size: 1.4em;
-	}
-	.icon-span .fa-brands {
-		font-size: 1.8em;
-	}
-	.icon-span .fa-solid {
-		font-size: 1.8em;
-	}
-	.project-info {
-		padding: 1em;
-		display: grid;
-		grid-template-rows: 75px;
-	}
-	.link-project {
-		color: #8279bc; /* Changé */
-	}
-	.link-project span {
-		font-size: 1.3em;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/************** Section Contact 4 *************/
-	/**************/
-	.background {
-		display: grid;
-		justify-content: center;
-	}
-	.contact .fa-phone,
-	.fa-envelope {
-		font-size: 1.5em;
-	}
-	.app-contact {
-		padding-top: 35px;
-	}
-	.app-contact,
-	.contact span {
-		font-size: 1.2em;
-	}
-	.app-form-control {
-		font-size: 1.3em;
-		color: #5b5299; /* Changé */
-	}
-	.app-form-control::placeholder {
-		font-size: 1em;
-	}
-	.app-form-button {
-		font-size: 1.3em;
-		color: #5b5299; /* Changé */
-	}
-	iframe {
-		width: 400px;
-		height: 350px;
-	}
-	.map {
-		display: flex;
-		justify-content: center;
-	}
-	/*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*/
-	/********* Footer ******/
-	.footer {
-		padding: 1.3em;
-	}
-	.footer-title {
-		font-size: 1.3em;
-		text-align: center;
-	}
-	.footer .ss-icons a {
-		font-size: 0px;
-		padding: 0 0 0 0;
-	}
-	.arrow {
-		/*button top*/
-		font-size: 25px;
-	}
+
+  /* ── Header ─────────────────────────────────────── */
+  /* Sur tablette, logo et nav sont à nouveau côte à côte */
+  .en-tete {
+    flex-direction : row;
+  }
+  .navigation__liste a {
+    font-size : 1.1em;
+  }
+  .logo {
+    font-size : 1.6em;
+  }
+
+
+  /* ── Héro ────────────────────────────────────────── */
+  .hero__bienvenue {
+    font-size : 1.5em;
+  }
+  .hero__nom {
+    font-size : 1.9em;
+  }
+  .hero__specialite {
+    font-size : 1.4em;
+    font-weight: 500;
+  }
+  .bouton-principal {
+    font-size : 1.2em;
+  }
+  .icones-reseaux a {
+    font-size : 1.8em;
+  }
+
+
+  /* ── Profil ──────────────────────────────────────── */
+  .titre-section {
+    font-size : 1.6em;
+    margin-top : 8px;
+  }
+  .profil-texte {
+    font-size   : 1.1em;
+    line-height : 1.9;
+  }
+  .profil-photo img {
+    width : 220px;
+  }
+  .bouton-cv {
+    padding   : 14px 30px;
+    font-size : 16px;
+  }
+
+
+  /* ── Compétences ─────────────────────────────────── */
+  .carte-competence {
+    width : 220px;
+  }
+  .carte-competence h4 {
+    font-size : 1.2em;
+  }
+  .competence-liste p {
+    font-size : 1.2em;
+  }
+  /* Sur tablette : les cartes s'affichent à nouveau en ligne */
+  .competences-grille {
+    flex-direction  : row;
+    justify-content : space-evenly;
+  }
+
+
+  /* ── Projets ─────────────────────────────────────── */
+  /* 2 colonnes sur tablette */
+  .projets-grille {
+    grid-template-columns : 340px 340px;
+  }
+  .projet-description {
+    font-size : 1.1em;
+  }
+  .projet-technos .fa-brands,
+  .projet-technos .fa-solid {
+    font-size : 1.5em;
+  }
+  .lien-projet {
+    font-size : 1em;
+  }
+
+
+  /* ── Contact ─────────────────────────────────────── */
+  .contact-coordonnees,
+  .contact-infos span {
+    font-size : 1em;
+  }
+  .champ-saisie {
+    font-size : 1.1em;
+  }
+  .bouton-envoyer {
+    font-size : 1.1em;
+  }
+  .contact-carte iframe {
+    width  : 380px;
+    height : 320px;
+  }
+
+
+  /* ── Footer ──────────────────────────────────────── */
+  .pied-de-page {
+    flex-direction : row; /* Logo et icônes côte à côte */
+    padding        : 14px 30px;
+  }
+  .pied-copyright {
+    font-size : 1em;
+    text-align : center;
+  }
+  .pied-de-page .icones-reseaux a {
+    font-size : 0; /* Toujours caché sur petits formats */
+  }
+
 }
+/* FIN @media tablette */
