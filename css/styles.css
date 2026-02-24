@@ -1,717 +1,863 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* ================================================================
+   styles.css — Feuille de style principale du portfolio
+   ──────────────────────────────────────────────────────────────
+   Structure du fichier :
+   1.  Imports de polices Google Fonts
+   2.  Variables CSS (la "palette" du projet)
+   3.  Reset universel
+   4.  Header / Navigation
+   5.  Section Héro (accueil)
+   6.  Bouton principal
+   7.  Section Profil
+   8.  Bouton CV
+   9.  Section Compétences
+   10. Section Projets
+   11. Bouton Visiter
+   12. Section Contact
+   13. Footer
+================================================================ */
+
+
+/* ================================================================
+   1. POLICES GOOGLE FONTS
+   On importe 2 polices depuis Google :
+   - Poppins   : police principale, lisible et moderne
+   - Space Grotesk : pour les titres, plus géométrique et impactante
+   - Sedan     : pour la lettre "P" du logo (italique élégant)
+================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sedan:ital@1&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Basic&display=swap");
 
+
+/* ================================================================
+   2. VARIABLES CSS — La palette du projet
+   ──────────────────────────────────────────────────────────────
+   Les variables CSS commencent par "--".
+   On les déclare dans :root (= le niveau le plus haut de la page).
+   Ensuite on les utilise partout avec var(--nom-de-la-variable).
+   Avantage : changer une seule ligne change toute la couleur du site !
+================================================================ */
+:root {
+  /* ── Couleurs principales ── */
+  --violet         : #7a66d1;       /* Violet principal */
+  --violet-clair   : #9b87ff;       /* Violet plus lumineux (hover, liens) */
+  --violet-transparent : rgba(122, 102, 209, 0.14); /* Violet très transparent (fonds) */
+
+  /* ── Couleurs de fond ── */
+  --fond-page      : #f7f7ff;       /* Fond général légèrement violet */
+  --fond-blanc     : #ffffff;       /* Blanc pur */
+  --fond-alt       : #f1efff;       /* Blanc légèrement teinté (sections alternées) */
+
+  /* ── Couleurs du texte ── */
+  --texte-sombre   : #0f172a;       /* Quasi-noir (titres, corps) */
+  --texte-discret  : #475569;       /* Gris bleuté (paragraphes secondaires) */
+  --bordure        : rgba(15, 23, 42, 0.12); /* Ligne très discrète */
+
+  /* ── Polices ── */
+  --police-corps   : "Poppins", system-ui, sans-serif;
+  --police-titres  : "Space Grotesk", system-ui, sans-serif;
+}
+
+
+/* ================================================================
+   3. RESET UNIVERSEL
+   ──────────────────────────────────────────────────────────────
+   Par défaut, chaque navigateur (Chrome, Firefox, Safari…) applique
+   ses propres marges et styles. Le reset supprime tout ça pour partir
+   d'une base identique partout.
+   * = sélectionne TOUS les éléments HTML
+================================================================ */
 * {
-	font-family: "Poppins", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	scroll-behavior: smooth;
+  font-family  : var(--police-corps);
+  font-weight  : 400;
+  margin       : 0;          /* Supprime les marges par défaut */
+  padding      : 0;          /* Supprime les espaces internes par défaut */
+  box-sizing   : border-box; /* Le padding ne déborde plus de la largeur définie */
+  scroll-behavior: smooth;   /* Défilement fluide lors des clics sur ancres (#profil etc.) */
 }
+
+/* Corps de la page */
 body {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  background-color : var(--fond-page);
+  color            : var(--texte-sombre);
+  /* Meilleur rendu du texte sur écran */
+  -webkit-font-smoothing : antialiased;
 }
 
-/************************** Header ********************************/
-header {
-	width: 100%;
-	position: fixed;
-	z-index: 999;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 7px 200px;
-	background-color: rgba(0, 0, 0, 0.321);
-	box-shadow: none;
+
+/* ================================================================
+   4. HEADER / NAVIGATION
+   ──────────────────────────────────────────────────────────────
+   L'en-tête est fixe : elle reste collée en haut quand on défile.
+   position: fixed + z-index: 999 la place par-dessus tout le reste.
+================================================================ */
+.en-tete {
+  width      : 100%;
+  position   : fixed;       /* Reste en haut même en défilant */
+  z-index    : 999;         /* Au-dessus de tout le contenu */
+  display    : flex;
+  justify-content : space-between;  /* Logo à gauche, nav à droite */
+  align-items     : center;
+  padding    : 7px 200px;
+  background : rgba(255, 255, 255, 0.88); /* Blanc semi-transparent */
+  backdrop-filter: blur(12px);            /* Effet "verre dépoli" moderne */
+  border-bottom   : 1px solid var(--bordure);
 }
+
+/* ── Logo ── */
 .logo {
-	text-decoration: none;
-	color: #fafafa;
-	font-weight: 700;
-	font-size: 1.8em;
+  text-decoration : none;
+  color           : var(--texte-sombre);
+  font-weight     : 700;
+  font-size       : 1.8em;
+  font-family     : var(--police-titres);
 }
+/* La première lettre du logo en violet et en italic */
 .logo span {
-	font-family: "Sedan", serif;
-	font-style: italic;
-	color: #fafafa;
-	font-weight: 700;
-	font-size: 1.2em;
-}
-nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+  font-family  : "Sedan", serif;
+  font-style   : italic;
+  color        : var(--violet);
+  font-size    : 1.2em;
 }
 
-nav li {
-	display: inline-flex;
+/* ── Liste de navigation ── */
+.navigation__liste {
+  list-style : none; /* Supprime les puces */
+  display    : flex; /* Les éléments s'alignent horizontalement */
 }
 
-header nav a {
-	position: relative;
-	padding: 0.5rem 0 0.1rem;
-	margin: 0 1.5rem;
-	color: white;
-	text-decoration: none;
-	text-transform: uppercase;
-	transition: 700ms ease;
-	font-variation-settings: "wght" 311;
-
-	outline: none;
-
-	&::after {
-		content: "";
-		position: absolute;
-		left: 50%;
-		bottom: 0;
-		transform: translateX(-50%) scaleX(0);
-		transform-origin: 50% 50%;
-		width: 100%;
-		height: 1px;
-		background-color: rgba(255, 255, 255, 0.8);
-		transition: transform 250ms;
-	}
-
-	&:hover {
-		&::after {
-			transform: translateX(-50%) scaleX(1);
-		}
-	}
+/* ── Liens de navigation ── */
+.navigation__liste a {
+  position        : relative;
+  padding         : 0.5rem 0 0.1rem;
+  margin          : 0 1.5rem;
+  color           : var(--texte-discret);
+  text-decoration : none;
+  text-transform  : uppercase;
+  font-size       : 0.85em;
+  font-weight     : 500;
+  letter-spacing  : 1px;
+  transition      : color 0.3s ease;
 }
-header nav a:hover {
-	color: #7a66d1;
-	font-variation-settings: "wght" 582;
-	letter-spacing: 2px;
+/* Ligne animée qui apparaît sous le lien au survol */
+.navigation__liste a::after {
+  content    : "";
+  position   : absolute;
+  left       : 50%;
+  bottom     : 0;
+  transform  : translateX(-50%) scaleX(0); /* Réduit à 0 par défaut */
+  width      : 100%;
+  height     : 1px;
+  background : var(--violet);
+  transition : transform 0.25s ease;
 }
-/************************** End Header ********************************/
-
-/************************ Sections *************************************/
-section {
-	padding: 100px 200px;
+.navigation__liste a:hover {
+  color : var(--violet);
 }
-/************ SECTION 1 [BACKGROUND] ***********/
-
-.back {
-	position: relative;
-	text-align: center;
-	background: linear-gradient(60deg, rgb(18, 14, 14) 5%, rgb(14, 14, 14) 100%);
-	color: white;
+/* La ligne s'étend à la largeur complète au survol */
+.navigation__liste a:hover::after {
+  transform : translateX(-50%) scaleX(1);
 }
 
-.inner-header {
-	height: 80vh;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+
+/* ================================================================
+   5. SECTION HÉRO — Page d'accueil
+   ──────────────────────────────────────────────────────────────
+   Grande section avec dégradé violet doux en fond.
+   Les vagues SVG sont animées grâce à @keyframes move-forever.
+================================================================ */
+
+/* Fond de la section héro */
+.hero {
+  position   : relative;
+  text-align : center;
+  /* Dégradé : violet discret en haut à gauche + blanc vers le bas */
+  background :
+    radial-gradient(circle at top left, rgba(122, 102, 209, 0.18), transparent 55%),
+    linear-gradient(180deg, var(--fond-blanc) 0%, var(--fond-alt) 100%);
+  color : var(--texte-sombre);
 }
 
-.flex {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+/* Zone de contenu centré (nom, bouton, icônes) */
+.hero__contenu {
+  height          : 80vh;  /* Occupe 80% de la hauteur de l'écran */
+  display         : flex;
+  flex-direction  : column;
+  justify-content : center;
+  align-items     : center;
+  padding-top     : 75px;  /* Décale vers le bas pour passer sous le header fixe */
 }
 
-.waves {
-	position: relative;
-	width: 100%;
-	height: 20vh;
-	margin-bottom: -7px;
-	min-height: 100px;
-	max-height: 150px;
+/* "Bienvenue sur mon portfolio" */
+.hero__bienvenue {
+  color       : var(--texte-discret);
+  font-size   : 1.4em;
+  font-weight : 500;
+  font-family : var(--police-titres);
+  line-height : 1.4;
 }
 
-.parallax > use {
-	animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-.parallax > use:nth-child(1) {
-	animation-delay: -2s;
-	animation-duration: 7s;
-}
-.parallax > use:nth-child(2) {
-	animation-delay: -3s;
-	animation-duration: 10s;
-}
-.parallax > use:nth-child(3) {
-	animation-delay: -4s;
-	animation-duration: 13s;
+/* GAUCHER Titouan — grand nom */
+.hero__nom {
+  display     : block;
+  margin-top  : 10px;
+  color       : var(--texte-sombre);
+  font-size   : 2.7em;
+  font-weight : 700;
 }
 
-@keyframes move-forever {
-	0% {
-		transform: translate3d(-90px, 0, 0);
-	}
-	100% {
-		transform: translate3d(85px, 0, 0);
-	}
+/* Titre de spécialité (Développeur Web Junior) */
+.hero__specialite {
+  color         : var(--violet);
+  font-size     : 1.7em;
+  font-weight   : 700;
+  letter-spacing: 1px;
+  margin-top    : 10px;
+  margin-bottom : 30px;
+  font-family   : var(--police-titres);
 }
 
-@media (max-width: 768px) {
-	.waves {
-		height: 80px;
-		min-height: 50px;
-	}
+/* Icônes LinkedIn, GitHub etc. */
+.icones-reseaux {
+  padding-top : 60px;
+}
+.icones-reseaux a {
+  color       : var(--texte-sombre);
+  font-size   : 1.7em;
+  padding-right : 13px;
+  display     : inline-block;
+  transition  : color 0.2s ease;
+  text-decoration: none;
+}
+.icones-reseaux a:hover {
+  color : var(--violet);
 }
 
-/*************** SECTION 1 HERO ************/
-.main {
-	padding-top: 75px;
+/* ── Vagues SVG ── */
+.vagues-conteneur {
+  line-height : 0; /* Supprime l'espace blanc sous le SVG */
 }
-.main h2 {
-	color: #fafafa;
-	font-size: 1.4em;
-	font-weight: 500;
-}
-.main h2 span {
-	display: inline-block;
-	margin-top: 10px;
-	color: #fafafa;
-	font-size: 2.7em;
-	font-weight: 600;
-	text-shadow: 1px 1px 2px rgb(14, 14, 14);
-}
-.main h3 {
-	color: #fafafa;
-	font-size: 1.7em;
-	font-weight: 700;
-	letter-spacing: 1px;
-	margin-top: 10px;
-	margin-bottom: 30px;
-}
-.main .ss-icons {
-	padding-top: 80px;
-}
-.ss-icons a {
-	color: #fafafa;
-	font-size: 1.7em;
-	padding-right: 13px;
-	display: inline-block;
-	transition: 0.2s;
-}
-.ss-icons a:hover {
-	color: #7a66d1;
-}
-.main-btn {
-	font-size: 1.2rem;
-	padding: 1rem 2.5rem;
-	border: none;
-	outline: none;
-	border-radius: 0.4rem;
-	cursor: pointer;
-	text-transform: uppercase;
-	background-color: rgb(14, 14, 14);
-	color: rgb(234, 234, 234);
-	font-weight: 700;
-	transition: 0.6s;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	-webkit-box-reflect: below 10px
-		linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+.vagues {
+  position   : relative;
+  width      : 100%;
+  height     : 20vh;
+  min-height : 100px;
+  max-height : 150px;
 }
 
-.main-btn:active {
-	scale: 0.92;
+/* Animation des vagues : chaque couche se déplace à vitesse différente */
+.parallaxe > use {
+  animation : mouvement-infini 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallaxe > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallaxe > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallaxe > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+
+/* Définition de l'animation : translation horizontale en boucle */
+@keyframes mouvement-infini {
+  0%   { transform: translate3d(-90px, 0, 0); }
+  100% { transform: translate3d(85px, 0, 0); }
 }
 
-.main-btn:hover {
-	background: linear-gradient(
-		270deg,
-		#7a66d1 0%,
-		rgba(150, 135, 200, 0.75) 60%
-	);
-	color: rgb(4, 4, 38);
+
+/* ================================================================
+   6. BOUTON PRINCIPAL (Héro)
+   ──────────────────────────────────────────────────────────────
+   Bouton violet avec effet de flash lumineux au survol.
+   Le flash est créé avec ::before + @keyframes flash.
+================================================================ */
+
+/* Animation "flash" : une bande de lumière qui traverse le bouton */
+@keyframes flash {
+  from { opacity: 0; left: 0%; }
+  50%  { opacity: 1; }
+  to   { opacity: 0; left: 100%; }
 }
 
-/************** SECTION 2 PROFILE ******************/
-.profile {
-	width: 100%;
-	min-height: 100vh;
-	background-color: rgb(14, 14, 14);
+.bouton-principal {
+  position      : relative;
+  font-size     : 1.1rem;
+  padding       : 1rem 2.5rem;
+  border        : none;
+  border-radius : 6px;
+  cursor        : pointer;
+  text-transform: uppercase;
+  font-weight   : 700;
+  letter-spacing: 1px;
+  /* Dégradé violet de haut en bas */
+  background    : linear-gradient(180deg, var(--violet), #5f4ec7);
+  color         : #ffffff;
+  box-shadow    : 0 12px 35px rgba(122, 102, 209, 0.3);
+  transition    : box-shadow 0.3s ease, transform 0.1s ease;
+  overflow      : hidden; /* Cache le flash qui dépasse */
+  z-index       : 0;
 }
-.about-profile {
-	display: grid;
-	grid-template-columns: 500px 500px;
-	justify-content: center;
-	gap: 5%;
-	margin-bottom: 70px;
+/* Flash lumineux au survol */
+.bouton-principal::before {
+  content    : "";
+  display    : block;
+  width      : 0;
+  height     : 86%;
+  position   : absolute;
+  top        : 7%;
+  left       : 0;
+  opacity    : 0;
+  background : rgba(255, 255, 255, 0.2);
+  box-shadow : 0 0 50px 30px rgba(255, 255, 255, 0.23);
+  transform  : skewX(-20deg); /* Incline la bande pour un effet dynamique */
+  z-index    : 1;
 }
-.profile h2 {
-	text-align: center;
-	color: #fafafa;
-	margin-bottom: 35px;
-	letter-spacing: 4px;
-	text-shadow: 5px 5px 4px #000;
+.bouton-principal:hover::before {
+  animation : flash 0.5s linear; /* Lance le flash */
 }
-.fa-solid {
-	font-size: 1.5rem;
+.bouton-principal:hover {
+  box-shadow : 0 18px 45px rgba(122, 102, 209, 0.45);
 }
-.text-profile {
-	color: #fafafa;
-}
-#img img {
-	width: 200px;
-	border-radius: 20px;
-	box-shadow:
-		0 0 15px 1px #7a66d1,
-		0 12px 20px rgba(122, 102, 209, 0.6); /* bien plus visible */
-}
-
-.cv_button {
-	position: relative;
-	padding: 10px 20px;
-	border-radius: 7px;
-	border: 1px solid #7a66d1;
-	font-size: 14px;
-	text-transform: uppercase;
-	font-weight: 600;
-	letter-spacing: 2px;
-	background: transparent;
-	color: #fff;
-	overflow: hidden;
-	box-shadow: 0 0 0 0 transparent;
-	-webkit-transition: all 0.2s ease-in;
-	-moz-transition: all 0.2s ease-in;
-	transition: all 0.2s ease-in;
-	text-decoration: none;
+.bouton-principal:active {
+  transform : scale(0.94); /* Légère compression au clic */
 }
 
-.cv_button:hover {
-	background: #7a66d1;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	text-shadow: 4px 4px 8px rgb(0, 0, 0);
+
+/* ================================================================
+   7. SECTION PROFIL — À propos
+   ──────────────────────────────────────────────────────────────
+   Fond blanc avec un léger halo violet en haut à droite.
+   Grille 2 colonnes : texte | photo.
+================================================================ */
+.section-profil {
+  padding    : 100px 200px;
+  background :
+    radial-gradient(circle at top right, var(--violet-transparent), transparent 55%),
+    var(--fond-blanc);
+  border-top    : 1px solid var(--bordure);
+  border-bottom : 1px solid var(--bordure);
 }
 
-.cv_button:hover::before {
-	animation: sh02 0.5s 0s linear;
+/* Titre des sections (réutilisé partout) */
+.titre-section {
+  text-align    : center;
+  color         : var(--texte-sombre);
+  font-family   : var(--police-titres);
+  font-size     : 1.5em;
+  font-weight   : 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom : 40px;
 }
 
-.cv_button::before {
-	content: "";
-	display: block;
-	width: 0px;
-	height: 86%;
-	position: absolute;
-	top: 7%;
-	left: 0%;
-	opacity: 0;
-	background: #ffffff36;
-	box-shadow: 0 0 50px 30px #ffffff3a;
-	transform: skewX(-20deg);
+/* Grille texte + photo */
+.profil-grille {
+  display               : grid;
+  grid-template-columns : 500px 500px; /* 2 colonnes de largeur fixe */
+  justify-content       : center;
+  gap                   : 5%;
+  margin-bottom         : 70px;
 }
 
-@keyframes sh02 {
-	from {
-		opacity: 0;
-		left: 0%;
-	}
-
-	50% {
-		opacity: 1;
-	}
-
-	to {
-		opacity: 0;
-		left: 100%;
-	}
+/* Texte de présentation */
+.profil-texte {
+  color       : var(--texte-discret);
+  line-height : 1.8;
 }
 
-.cv_button:active {
-	box-shadow: 0 0 0 0 transparent;
-	transition: box-shadow 0.2s ease-in;
+/* Photo de profil */
+.profil-photo img {
+  width         : 200px;
+  border-radius : 20px;
+  /* Ombre violette autour de la photo */
+  box-shadow    :
+    0 0 22px 4px rgba(122, 102, 209, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/********************* SECTION 3 SKILLS ******************/
 
-/* Reset des sections imbriquées */
-.title-skills,
-.skills-child {
-	padding: 0 !important;
-	margin: 0 !important;
+/* ================================================================
+   8. BOUTON CV
+   ──────────────────────────────────────────────────────────────
+   Lien stylisé comme un bouton, même effet flash que le bouton principal.
+   Contour violet + fond qui apparaît au survol.
+================================================================ */
+.bouton-cv {
+  display       : inline-block;
+  position      : relative;
+  padding       : 12px 24px;
+  border-radius : 7px;
+  border        : 2px solid var(--violet);
+  font-size     : 14px;
+  text-transform: uppercase;
+  font-weight   : 600;
+  letter-spacing: 2px;
+  color         : var(--violet);
+  background    : transparent;
+  text-decoration: none;
+  overflow      : hidden;
+  transition    : color 0.3s ease;
+  z-index       : 0;
 }
-
-/* Box description */
-.title-skills {
-	background-color: #1a1a1a;
-	border-radius: 15px;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	margin-top: 20px !important;
-	margin-bottom: 50px !important;
+/* Fond violet qui remplit le bouton au survol */
+.bouton-cv::after {
+  content       : "";
+  position      : absolute;
+  inset         : 0; /* Couvre tout l'élément */
+  background    : var(--violet);
+  opacity       : 0;
+  transition    : opacity 0.3s ease;
+  z-index       : -1;
+  border-radius : 5px;
 }
-.title-skills h3 {
-	color: #fefefe;
-	text-align: center;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 1.7;
-	padding: 30px 40px;
+/* Flash lumineux */
+.bouton-cv::before {
+  content    : "";
+  display    : block;
+  width      : 0;
+  height     : 86%;
+  position   : absolute;
+  top        : 7%;
+  left       : 0;
+  opacity    : 0;
+  background : rgba(255, 255, 255, 0.2);
+  box-shadow : 0 0 50px 30px rgba(255, 255, 255, 0.23);
+  transform  : skewX(-20deg);
+  z-index    : 1;
 }
-
-/* Cards container */
-.skills-content {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	margin-top: 50px;
-	padding-bottom: 20px;
+.bouton-cv:hover {
+  color : #ffffff;
 }
-.skills-container {
-	background-color: rgb(14, 14, 14);
+.bouton-cv:hover::after {
+  opacity : 1; /* Le fond violet apparaît */
 }
-
-/* Card */
-.card {
-	text-align: center;
-	background-color: #1a1a1a;
-	border-radius: 15px;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	width: 300px;
-	padding: 30px 20px;
+.bouton-cv:hover::before {
+  animation : flash 0.5s linear;
 }
-.card h4 {
-	margin-top: 5px;
-	margin-bottom: 35px;
-	font-family: "Basic", sans-serif;
-	font-style: italic;
-	color: #fefefe;
-	font-weight: 700;
-	font-size: 1.2em;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-}
-.fa-code,
-.fa-gear,
-.fa-paintbrush {
-	background-color: #f5f2f2;
-	width: 70px;
-	height: 70px;
-	padding: 17px 3px;
-	border-radius: 50px;
-	margin-bottom: 20px;
-	color: #7a66d1;
-}
-.icon-skills p {
-	font-size: 1.15em;
-	text-align: center;
-	line-height: 2.2;
-	color: #fefefe;
-}
-.icon-skills p .fa-brands {
-	font-size: 1.45em;
-}
-.card img {
-	width: 28px;
-}
-.card .fa-code,
-.card .fa-gear,
-.card .fa-paintbrush {
-	font-size: 1.8em;
+.bouton-cv:active {
+  transform : scale(0.96);
 }
 
-/**************** SECTION 4 PROJECT ******************/
-.content {
-	display: grid;
-	grid-template-columns: 350px 350px 350px;
-	justify-content: center;
-}
-.project h2 {
-	text-align: center;
-	color: #fafafa;
-	margin-bottom: 35px;
-	letter-spacing: 4px;
-	text-transform: uppercase;
-	text-shadow: 5px 5px 4px #000;
-}
-.project {
-	background-color: rgb(14, 14, 14);
-}
-.project .content {
-	margin-top: 10px;
-}
-.project-card {
-	background-color: #1a1a1a;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	min-height: 14em;
-	width: 20em;
-	overflow: hidden;
-	border-radius: 10px;
-	margin: 45px 25px;
-	transform: 0.5s;
+
+/* ================================================================
+   9. SECTION COMPÉTENCES
+   ──────────────────────────────────────────────────────────────
+   3 cartes côte à côte : Langages | Outils | Design
+================================================================ */
+
+/* Texte introductif */
+.competences-intro {
+  text-align  : center;
+  color       : var(--texte-discret);
+  font-size   : 1em;
+  line-height : 1.8;
+  max-width   : 750px;
+  margin      : 0 auto 50px auto;
 }
 
-.project-card .project-info {
-	padding: 12px 16px 16px 16px;
-}
-.project-card:hover {
-	box-shadow: 0 0 18px 2px #7a66d1;
-	background-color: rgba(29, 29, 29, 0.212);
-}
-.project-img img {
-	width: 100%;
-}
-.project-text {
-	margin-bottom: 15px;
-	font-size: 0.9em;
-	color: #fafafa;
-	backface-visibility: hidden;
-}
-.project-title {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 10px;
-	color: #fafafa;
-}
-.icon-span .fa-brands,
-.fa-solid {
-	font-size: 1.5rem;
-	padding-left: 3px;
-}
-.link-project {
-	text-decoration: none;
-	color: #a99ff3;
-	margin: 0 -0.25rem;
-	padding: 0 0.25rem;
-	transition:
-		color 0.3s ease-in-out,
-		box-shadow 0.3s ease-in-out;
-	box-shadow: inset 0 0 0 0 #fafafa;
-	border-radius: 5px;
-}
-.link-project span {
-	font-family: "Montserrat", sans-serif;
-	font-weight: 600;
-	text-transform: uppercase;
-}
-.link-project:hover {
-	box-shadow: inset 100px 0 0 0 #fafafa;
-	color: rgb(14, 14, 14);
-	border-radius: 5px;
+/* Grille des cartes */
+.competences-grille {
+  display         : flex;
+  justify-content : center;
+  gap             : 30px;
+  flex-wrap       : wrap; /* Les cartes passent à la ligne sur petit écran */
 }
 
-/**************** SECTION 5 CONTACT ******************/
-body,
-button,
-input {
-	font-family: "Montserrat", sans-serif;
-	font-weight: 700;
-	letter-spacing: 1.4px;
+/* Carte individuelle */
+.carte-competence {
+  text-align    : center;
+  background    :
+    radial-gradient(circle at top center, rgba(122, 102, 209, 0.1), transparent 55%),
+    #ffffff;
+  border-radius : 16px;
+  border        : 1px solid var(--bordure);
+  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.08);
+  width         : 260px;
+  padding       : 30px 20px;
+  transition    : transform 0.2s ease, box-shadow 0.2s ease;
 }
-.contact {
-	background-color: rgb(14, 14, 14);
-}
-.background {
-	display: flex;
-	margin-top: 10px;
-}
-.container {
-	flex: 0 1 700px;
-	margin: auto;
-	padding: 10px;
-}
-.screen {
-	position: relative;
-	background: #1a1a1a;
-	border-radius: 15px;
-}
-.screen:after {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 20px;
-	right: 20px;
-	bottom: 0;
-	border-radius: 15px;
-	box-shadow: 0 0 15px 1px #7a66d1;
-	z-index: -1;
-}
-.screen-header {
-	display: flex;
-	align-items: center;
-	padding: 10px 20px;
-	background: #313132;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-}
-.screen-header-left {
-	margin-right: auto;
-}
-.screen-header-button {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	margin-right: 3px;
-	border-radius: 8px;
-	background: white;
-}
-.screen-header-button.close {
-	background: #ed1c6f;
-}
-.screen-header-button.maximize {
-	background: #e8e925;
-}
-.screen-header-button.minimize {
-	background: #74c54f;
-}
-.screen-header-right {
-	display: flex;
-}
-.screen-header-ellipsis {
-	width: 3px;
-	height: 3px;
-	margin-left: 2px;
-	border-radius: 8px;
-	background: #999;
-}
-.screen-body {
-	display: flex;
-}
-.screen-body-item {
-	flex: 1;
-	padding: 70px;
-}
-.screen-body-item.left {
-	display: flex;
-	flex-direction: column;
-}
-.app-title {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	color: #fafafa;
-	font-size: 26px;
-	text-shadow: 5px 5px 4px #000;
-}
-.app-title:after {
-	content: "";
-	display: block;
-	position: absolute;
-	left: 0;
-	bottom: -10px;
-	width: 25px;
-	height: 4px;
-	background: #7a66d1;
-}
-.app-contact {
-	margin-top: auto;
-	font-size: 12px;
-	color: #a6a6a6;
-}
-.app-form-group {
-	margin-bottom: 15px;
-}
-.app-form-group.message {
-	margin-top: 40px;
-}
-.app-form-group.buttons {
-	margin-bottom: 0;
-	text-align: right;
-}
-.app-form-control {
-	width: 100%;
-	padding: 10px 0;
-	background: none;
-	border: none;
-	border-bottom: 1px solid #666;
-	color: rgba(122, 102, 209, 0.75);
-	font-size: 14px;
-	outline: none;
-	transition: border-color 0.2s;
-}
-.app-form-control::placeholder {
-	color: #a6a6a6;
-}
-.app-form-control:focus {
-	border-bottom-color: #7a66d1;
-}
-.app-form-button {
-	background: none;
-	border: none;
-	color: #7a66d1;
-	font-size: 14px;
-	cursor: pointer;
-	outline: none;
-}
-.app-form-button:hover {
-	color: #fafafad2;
-}
-.contact h2 {
-	text-align: center;
-	color: #fafafa;
-	letter-spacing: 4px;
-	text-shadow: 5px 5px 4px #000;
-	font-weight: 900;
-}
-.contact .fa-phone,
-.fa-envelope {
-	font-size: 1.3em;
-}
-.separator {
-	font-size: 1.6em;
-	font-weight: 100;
-}
-@media screen and (max-width: 520px) {
-	.screen-body {
-		flex-direction: column;
-	}
-
-	.screen-body-item.left {
-		margin-bottom: 30px;
-	}
-
-	.app-title {
-		flex-direction: row;
-	}
-
-	.app-title span {
-		margin-right: 12px;
-	}
-
-	.app-title:after {
-		display: none;
-	}
+.carte-competence:hover {
+  transform  : translateY(-4px);
+  box-shadow : 0 20px 55px rgba(122, 102, 209, 0.15);
 }
 
+/* Titre de la carte */
+.carte-competence h4 {
+  font-family   : var(--police-titres);
+  font-weight   : 700;
+  font-size     : 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color         : var(--texte-sombre);
+  margin-bottom : 25px;
+}
+/* Icônes de catégorie (code, engrenage, pinceau) dans un cercle */
+.carte-competence .fa-code,
+.carte-competence .fa-gear,
+.carte-competence .fa-paintbrush {
+  display          : inline-block;
+  width            : 65px;
+  height           : 65px;
+  line-height      : 65px;
+  border-radius    : 50%;
+  background-color : #f4f4fb;
+  color            : var(--violet);
+  font-size        : 1.6em;
+  margin-bottom    : 15px;
+}
+
+/* Liste des technos dans la carte */
+.competence-liste p {
+  font-size   : 1.05em;
+  line-height : 2.2;
+  color       : var(--texte-discret);
+  display     : flex;
+  align-items : center;
+  justify-content: center;
+  gap         : 8px;
+}
+/* Icônes de marques (HTML, CSS, JS...) */
+.competence-liste .fa-brands {
+  font-size : 1.3em;
+}
+/* Petits logos Adobe (images PNG) */
+.competence-liste img {
+  width : 22px;
+}
+
+
+/* ================================================================
+   10. SECTION PROJETS — Galerie
+   ──────────────────────────────────────────────────────────────
+   Grille de 3 colonnes avec des cartes projet.
+================================================================ */
+.section-projets {
+  padding    : 100px 200px;
+  background :
+    radial-gradient(circle at top left, var(--violet-transparent), transparent 55%),
+    var(--fond-blanc);
+  border-top    : 1px solid var(--bordure);
+  border-bottom : 1px solid var(--bordure);
+}
+
+/* Grille 3 colonnes */
+.projets-grille {
+  display               : grid;
+  grid-template-columns : repeat(3, 320px); /* 3 colonnes de 320px */
+  justify-content       : center;
+  gap                   : 30px;
+  margin-top            : 10px;
+}
+
+/* Carte projet */
+.carte-projet {
+  background    : var(--fond-blanc);
+  border        : 1px solid var(--bordure);
+  border-radius : 12px;
+  overflow      : hidden; /* Cache ce qui dépasse (image) */
+  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.08);
+  transition    : transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.carte-projet:hover {
+  transform     : translateY(-4px);
+  box-shadow    : 0 22px 55px rgba(15, 23, 42, 0.13);
+  border-color  : rgba(122, 102, 209, 0.4);
+}
+
+/* Image du projet (prend toute la largeur de la carte) */
+.projet-image img {
+  width   : 100%;
+  display : block;
+}
+
+/* Zone texte sous l'image */
+.projet-infos {
+  padding : 14px 18px 18px;
+}
+
+/* Description du projet */
+.projet-description {
+  color       : var(--texte-discret);
+  font-size   : 0.9em;
+  margin-bottom : 12px;
+  line-height : 1.6;
+}
+
+/* Barre du bas : icônes techno + lien visiter */
+.projet-pied {
+  display         : flex;
+  justify-content : space-between;
+  align-items     : center;
+  margin-top      : 8px;
+}
+
+/* Icônes des langages du projet */
+.projet-technos .fa-brands,
+.projet-technos .fa-solid {
+  font-size    : 1.4em;
+  padding-left : 3px;
+}
+
+
+/* ================================================================
+   11. BOUTON "VISITER"
+   ──────────────────────────────────────────────────────────────
+   Même effet flash que les autres boutons.
+================================================================ */
+.lien-projet {
+  position        : relative;
+  text-decoration : none;
+  color           : var(--violet-clair);
+  padding         : 4px 10px;
+  border-radius   : 5px;
+  overflow        : hidden;
+  display         : inline-block;
+  transition      : color 0.3s ease;
+  font-family     : var(--police-titres);
+  font-weight     : 600;
+  font-size       : 0.85em;
+  text-transform  : uppercase;
+  z-index         : 0;
+}
+.lien-projet::after {
+  content       : "";
+  position      : absolute;
+  inset         : 0;
+  background    : var(--violet);
+  opacity       : 0;
+  transition    : opacity 0.3s ease;
+  z-index       : -1;
+  border-radius : 5px;
+}
+.lien-projet::before {
+  content    : "";
+  display    : block;
+  width      : 0;
+  height     : 86%;
+  position   : absolute;
+  top        : 7%;
+  left       : 0;
+  opacity    : 0;
+  background : rgba(255, 255, 255, 0.2);
+  box-shadow : 0 0 30px 15px rgba(255, 255, 255, 0.23);
+  transform  : skewX(-20deg);
+  z-index    : 1;
+}
+.lien-projet:hover {
+  color : #ffffff;
+}
+.lien-projet:hover::after {
+  opacity : 1;
+}
+.lien-projet:hover::before {
+  animation : flash 0.5s linear;
+}
+
+
+/* ================================================================
+   12. SECTION CONTACT — Formulaire + carte
+   ──────────────────────────────────────────────────────────────
+   Le formulaire est stylisé comme une fenêtre macOS (effet "app").
+   C'est 100% CSS, aucun JavaScript n'est nécessaire pour ça.
+================================================================ */
+.section-contact {
+  padding    : 100px 200px;
+  background :
+    radial-gradient(circle at bottom right, var(--violet-transparent), transparent 45%),
+    var(--fond-alt);
+  border-top    : 1px solid var(--bordure);
+  border-bottom : 1px solid var(--bordure);
+}
+
+/* Zone principale : fenêtre + carte côte à côte */
+.contact-zone {
+  display     : flex;
+  align-items : flex-start;
+  gap         : 30px;
+  justify-content: center;
+  margin-top  : 20px;
+  flex-wrap   : wrap;
+}
+
+/* ── Fausse fenêtre ── */
+.formulaire-fenetre {
+  flex          : 0 1 620px;
+  background    : var(--fond-blanc);
+  border        : 1px solid var(--bordure);
+  border-radius : 16px;
+  box-shadow    : 0 20px 55px rgba(15, 23, 42, 0.1);
+}
+
+/* Barre du haut de la fenêtre */
+.fenetre-barre {
+  display         : flex;
+  align-items     : center;
+  justify-content : space-between;
+  padding         : 12px 20px;
+  background      : rgba(241, 239, 255, 0.95);
+  border-bottom   : 1px solid var(--bordure);
+  border-radius   : 16px 16px 0 0; /* Arrondi seulement en haut */
+}
+
+/* Les 3 boutons ronds colorés (rouge/jaune/vert) */
+.fenetre-boutons { display: flex; gap: 6px; }
+.fenetre-btn {
+  width         : 10px;
+  height        : 10px;
+  border-radius : 50%; /* Rond */
+}
+.fenetre-btn.fermer  { background : #ed1c6f; } /* Rouge */
+.fenetre-btn.agrandir { background : #e8e925; } /* Jaune */
+.fenetre-btn.reduire  { background : #74c54f; } /* Vert */
+
+/* Les 3 petits points à droite */
+.fenetre-points { display: flex; gap: 4px; }
+.fenetre-point {
+  width         : 4px;
+  height        : 4px;
+  border-radius : 50%;
+  background    : rgba(15, 23, 42, 0.35);
+}
+
+/* Corps de la fenêtre : 2 colonnes */
+.fenetre-corps {
+  display : flex;
+}
+
+/* Colonne gauche : titre + coordonnées */
+.contact-infos {
+  flex            : 1;
+  padding         : 60px 50px;
+  display         : flex;
+  flex-direction  : column;
+}
+/* Titre "ME CONTACTER" avec barre violet en dessous */
+.contact-titre {
+  font-family   : var(--police-titres);
+  font-size     : 22px;
+  font-weight   : 700;
+  color         : var(--texte-sombre);
+  padding-bottom: 14px;
+  border-bottom : 4px solid var(--violet);
+  display       : inline-block;
+  margin-bottom : 30px;
+}
+/* Coordonnées (numéro, email) */
+.contact-coordonnees {
+  color     : var(--texte-discret);
+  font-size : 13px;
+  line-height : 1.8;
+}
+
+/* Colonne droite : champs du formulaire */
+.formulaire-champs {
+  flex    : 1;
+  padding : 60px 50px;
+}
+/* Groupe d'un champ */
+.champ-groupe {
+  margin-bottom : 16px;
+}
+/* Champ message plus haut */
+.champ-message {
+  margin-top : 30px;
+}
+/* Bouton d'envoi aligné à droite */
+.champ-boutons {
+  text-align : right;
+  margin-bottom : 0;
+}
+/* Style des inputs */
+.champ-saisie {
+  width       : 100%;
+  padding     : 10px 0;
+  background  : none;
+  border      : none;
+  border-bottom : 1px solid rgba(15, 23, 42, 0.25); /* Ligne sous le champ */
+  color       : var(--violet-clair);
+  font-size   : 14px;
+  outline     : none; /* Supprime le contour bleu par défaut */
+  transition  : border-color 0.2s ease;
+}
+/* Texte d'espace réservé (le texte gris avant la saisie) */
+.champ-saisie::placeholder {
+  color : var(--texte-discret);
+}
+/* Quand le champ est actif (focus) : la ligne passe en violet */
+.champ-saisie:focus {
+  border-bottom-color : var(--violet);
+}
+/* Bouton envoyer */
+.bouton-envoyer {
+  background : none;
+  border     : none;
+  color      : var(--violet-clair);
+  font-size  : 14px;
+  font-weight: 600;
+  cursor     : pointer;
+  transition : color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.bouton-envoyer:hover {
+  color : var(--texte-sombre);
+}
+
+/* Carte Google Maps */
+.contact-carte {
+  display         : flex;
+  align-items     : center;
+}
+.contact-carte iframe {
+  border        : none;
+  border-radius : 16px;
+  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.1);
+}
+
+/* ── Responsive du formulaire sur petit écran ── */
 @media screen and (max-width: 600px) {
-	.screen-body {
-		padding: 40px;
-	}
-
-	.screen-body-item {
-		padding: 0;
-	}
-}
-iframe {
-	border: none;
-	overflow: scroll;
-	display: flex;
-}
-.map {
+  .fenetre-corps {
+    flex-direction : column;
+    padding        : 30px;
+  }
+  .contact-infos,
+  .formulaire-champs {
+    padding : 20px 0;
+  }
 }
 
-.footer {
-	background-color: #1a1a1a;
-	color: #fafafa;
-	padding: 0.7em;
-	display: flex;
-	justify-content: space-evenly;
+
+/* ================================================================
+   13. FOOTER — Pied de page
+================================================================ */
+.pied-de-page {
+  background      : var(--fond-blanc);
+  border-top      : 1px solid var(--bordure);
+  color           : var(--texte-discret);
+  padding         : 14px 30px;
+  display         : flex;
+  justify-content : space-evenly;
+  align-items     : center;
 }
-.p-span {
-	color: #ffffff;
-	font-weight: 500;
-	font-size: 20px;
+/* Texte copyright */
+.pied-copyright {
+  font-size : 0.9em;
 }
-.footer .ss-icons a {
-	font-size: 22px;
-	padding: 0 12px 0 0;
-	overflow: hidden;
+/* Le nom dans le footer en violet */
+.pied-nom {
+  color : var(--violet-clair);
 }
-.nom {
-	color: #8279bc;
+/* Le "|" séparateur */
+.pied-separateur {
+  color       : var(--texte-sombre);
+  font-weight : 500;
+  font-size   : 1.2em;
+  margin      : 0 6px;
 }
-.footer .ss-icons a:hover {
-	color: #8279bc;
-	overflow: hidden;
+/* Icônes dans le footer */
+.pied-de-page .icones-reseaux a {
+  font-size    : 1.4em;
+  padding-left : 8px;
+  color        : var(--texte-discret);
+  text-decoration: none;
+  transition   : color 0.2s ease;
+}
+.pied-de-page .icones-reseaux a:hover {
+  color : var(--violet-clair);
 }
