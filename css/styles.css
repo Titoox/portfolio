@@ -651,10 +651,7 @@ body {
 
 
 /* ================================================================
-   12. SECTION CONTACT — Formulaire + carte
-   ──────────────────────────────────────────────────────────────
-   Le formulaire est stylisé comme une fenêtre macOS (effet "app").
-   C'est 100% CSS, aucun JavaScript n'est nécessaire pour ça.
+   12. SECTION CONTACT — Fausse fenêtre macOS
 ================================================================ */
 .section-contact {
   padding    : 100px 200px;
@@ -663,28 +660,27 @@ body {
     var(--fond-alt);
   border-top    : 1px solid var(--bordure);
   border-bottom : 1px solid var(--bordure);
+  text-align    : center;
 }
 
-/* Zone principale : fenêtre + carte côte à côte */
 .contact-zone {
-  display     : flex;
-  align-items : flex-start;
-  gap         : 30px;
-  justify-content: center;
-  margin-top  : 20px;
-  flex-wrap   : wrap;
+  display         : flex;
+  justify-content : center;
+  margin-top      : 20px;
 }
 
-/* ── Fausse fenêtre ── */
+/* La fenêtre */
 .formulaire-fenetre {
-  flex          : 0 1 620px;
+  width         : 650px;
   background    : var(--fond-blanc);
   border        : 1px solid var(--bordure);
   border-radius : 16px;
   box-shadow    : 0 20px 55px rgba(15, 23, 42, 0.1);
+  text-align    : left;
+  overflow      : hidden;
 }
 
-/* Barre du haut de la fenêtre */
+/* Barre du haut */
 .fenetre-barre {
   display         : flex;
   align-items     : center;
@@ -692,133 +688,107 @@ body {
   padding         : 12px 20px;
   background      : rgba(241, 239, 255, 0.95);
   border-bottom   : 1px solid var(--bordure);
-  border-radius   : 16px 16px 0 0; /* Arrondi seulement en haut */
 }
-
-/* Les 3 boutons ronds colorés (rouge/jaune/vert) */
 .fenetre-boutons { display: flex; gap: 6px; }
 .fenetre-btn {
   width         : 10px;
   height        : 10px;
-  border-radius : 50%; /* Rond */
+  border-radius : 50%;
 }
-.fenetre-btn.fermer  { background : #ed1c6f; } /* Rouge */
-.fenetre-btn.agrandir { background : #e8e925; } /* Jaune */
-.fenetre-btn.reduire  { background : #74c54f; } /* Vert */
-
-/* Les 3 petits points à droite */
+.fenetre-btn.fermer   { background: #ed1c6f; }
+.fenetre-btn.agrandir { background: #e8e925; }
+.fenetre-btn.reduire  { background: #74c54f; }
 .fenetre-points { display: flex; gap: 4px; }
 .fenetre-point {
-  width         : 4px;
-  height        : 4px;
-  border-radius : 50%;
-  background    : rgba(15, 23, 42, 0.35);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.35);
 }
 
-/* Corps de la fenêtre : 2 colonnes */
+/* Corps : 2 colonnes */
 .fenetre-corps {
   display : flex;
+  min-height : 280px;
 }
 
-/* Colonne gauche : titre + coordonnées */
+/* Colonne gauche */
 .contact-infos {
-  flex            : 1;
-  padding         : 60px 50px;
-  display         : flex;
-  flex-direction  : column;
+  flex           : 1;
+  padding        : 50px 40px;
+  display        : flex;
+  flex-direction : column;
+  border-right   : 1px solid var(--bordure);
 }
-/* Titre "ME CONTACTER" avec barre violet en dessous */
 .contact-titre {
-  font-family   : var(--police-titres);
-  font-size     : 22px;
-  font-weight   : 700;
-  color         : var(--texte-sombre);
-  padding-bottom: 14px;
-  border-bottom : 4px solid var(--violet);
-  display       : inline-block;
-  margin-bottom : 30px;
+  font-family    : var(--police-titres);
+  font-size      : 20px;
+  font-weight    : 700;
+  color          : var(--texte-sombre);
+  padding-bottom : 12px;
+  border-bottom  : 4px solid var(--violet);
+  display        : inline-block;
+  margin-bottom  : 28px;
 }
-/* Coordonnées (numéro, email) */
-.contact-coordonnees {
-  color     : var(--texte-discret);
-  font-size : 13px;
-  line-height : 1.8;
-}
-
-/* Colonne droite : champs du formulaire */
-.formulaire-champs {
-  flex    : 1;
-  padding : 60px 50px;
-}
-/* Groupe d'un champ */
-.champ-groupe {
-  margin-bottom : 16px;
-}
-/* Champ message plus haut */
-.champ-message {
-  margin-top : 30px;
-}
-/* Bouton d'envoi aligné à droite */
-.champ-boutons {
-  text-align : right;
-  margin-bottom : 0;
-}
-/* Style des inputs */
-.champ-saisie {
-  width       : 100%;
-  padding     : 10px 0;
-  background  : none;
-  border      : none;
-  border-bottom : 1px solid rgba(15, 23, 42, 0.25); /* Ligne sous le champ */
-  color       : var(--violet-clair);
-  font-size   : 14px;
-  outline     : none; /* Supprime le contour bleu par défaut */
-  transition  : border-color 0.2s ease;
-}
-/* Texte d'espace réservé (le texte gris avant la saisie) */
-.champ-saisie::placeholder {
-  color : var(--texte-discret);
-}
-/* Quand le champ est actif (focus) : la ligne passe en violet */
-.champ-saisie:focus {
-  border-bottom-color : var(--violet);
-}
-/* Bouton envoyer */
-.bouton-envoyer {
-  background : none;
-  border     : none;
-  color      : var(--violet-clair);
-  font-size  : 14px;
-  font-weight: 600;
-  cursor     : pointer;
-  transition : color 0.2s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.bouton-envoyer:hover {
-  color : var(--texte-sombre);
+.contact-accroche {
+  color       : var(--texte-discret);
+  font-size   : 0.9em;
+  line-height : 2;
+  text-align  : left;
+  margin      : 0;
 }
 
-/* Carte Google Maps */
-.contact-carte {
+/* Colonne droite : liste des infos */
+.contact-liste {
+  flex           : 1;
+  padding        : 40px 35px;
+  display        : flex;
+  flex-direction : column;
+  gap            : 4px;
+  justify-content: center;
+}
+
+/* Chaque ligne de contact */
+.contact-ligne {
   display         : flex;
   align-items     : center;
+  gap             : 14px;
+  padding         : 11px 14px;
+  border-radius   : 10px;
+  text-decoration : none;
+  color           : var(--texte-discret);
+  font-size       : 0.9em;
+  transition      : background-color 0.2s ease, color 0.2s ease;
 }
-.contact-carte iframe {
-  border        : none;
-  border-radius : 16px;
-  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.1);
+.contact-ligne:not(.contact-ligne--info):hover {
+  background-color : var(--violet-transparent);
+  color            : var(--violet);
+}
+.contact-ligne i {
+  color      : var(--violet);
+  font-size  : 1em;
+  width      : 16px;
+  text-align : center;
+  flex-shrink: 0;
 }
 
-/* ── Responsive du formulaire sur petit écran ── */
-@media screen and (max-width: 600px) {
+.separateur {
+  font-size   : 1.6em;
+  font-weight : 100;
+  margin      : 0 8px;
+}
+
+/* Responsive contact */
+@media screen and (max-width: 700px) {
   .fenetre-corps {
     flex-direction : column;
-    padding        : 30px;
   }
-  .contact-infos,
-  .formulaire-champs {
-    padding : 20px 0;
+  .contact-infos {
+    border-right  : none;
+    border-bottom : 1px solid var(--bordure);
+    padding       : 30px 25px;
+  }
+  .contact-liste {
+    padding : 25px;
   }
 }
 
