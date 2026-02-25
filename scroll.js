@@ -1,90 +1,105 @@
 /* ================================================================
-   scroll.css — Styles pour les animations d'apparition + bouton haut
+   scroll.js — Animations au défilement + bouton "retour en haut"
    ──────────────────────────────────────────────────────────────
-   Ce fichier travaille EN TANDEM avec scroll.js :
-   - scroll.js AJOUTE ou ENLÈVE la classe "show" sur les éléments
-   - scroll.css DÉFINIT à quoi ressemble un élément avec ou sans "show"
+   Ce fichier gère 2 fonctionnalités :
+   ① L'animation d'apparition des éléments quand on défile
+   ② Le bouton qui permet de remonter en haut de la page
 ================================================================ */
 
 
 /* ================================================================
-   ÉTAT INITIAL — Élément CACHÉ
+   ① ANIMATION D'APPARITION AU DÉFILEMENT
    ──────────────────────────────────────────────────────────────
-   Tout élément avec la classe "scroll" commence invisible
-   et décalé vers la gauche.
-   La "transition" détermine comment le changement vers "show" s'anime.
-================================================================ */
-.scroll {
-  opacity   : 0;                   /* Invisible (0 = transparent, 1 = opaque) */
-  filter    : blur(8px);           /* Flou visuel */
-  transform : translateX(-80px);   /* Décalé de 80px vers la gauche */
+   Objectif : les éléments avec la classe "scroll" sont invisibles
+   au départ (définis dans scroll.css), puis apparaissent avec une
+   animation quand ils entrent dans l'écran.
 
-  /* La transition s'applique quand on PASSE de .scroll à .show */
-  /* "opacity 0.8s ease-in-out" = l'opacité change en 0.8 seconde */
-  /* "filter 0.8s" et "transform 0.8s" = le flou et le décalage aussi */
-  transition :
-    opacity   0.8s ease-in-out,
-    filter    0.8s ease-in-out,
-    transform 0.8s ease-in-out;
-}
+   On utilise l'API IntersectionObserver : un "observateur" qui
+   surveille si un élément est visible dans la fenêtre du navigateur.
+================================================================ */
+
+// On crée un nouvel observateur.
+// La fonction entre parenthèses s'exécute à chaque changement de visibilité.
+// "entries" = tableau de tous les éléments observés.
+const observateur = new IntersectionObserver((entries) => {
+
+  // On parcourt chaque élément observé
+  entries.forEach((element) => {
+
+    // isIntersecting = true si l'élément est visible dans l'écran
+    if (element.isIntersecting) {
+
+      // L'élément entre dans l'écran → on ajoute la classe "show"
+      // La classe "show" (définie dans scroll.css) déclenche l'animation
+      element.target.classList.add('show');
+
+    } else {
+
+      // L'élément sort de l'écran → on enlève "show"
+      // L'animation se réinitialise pour la prochaine fois
+      element.target.classList.remove('show');
+
+    }
+  });
+
+});
+
+
+// On sélectionne TOUS les éléments HTML qui ont la classe "scroll"
+// querySelectorAll retourne une liste (NodeList) de tous ces éléments
+const elementsAnimes = document.querySelectorAll('.scroll');
+
+// Pour chaque élément trouvé, on le "confie" à l'observateur
+// Il va surveiller quand cet élément entre/sort de l'écran
+elementsAnimes.forEach((el) => observateur.observe(el));
 
 
 /* ================================================================
-   ÉTAT FINAL — Élément VISIBLE
+   ② BOUTON "RETOUR EN HAUT DE PAGE"
    ──────────────────────────────────────────────────────────────
-   Quand scroll.js ajoute la classe "show", l'élément revient
-   à son état normal : visible, net, et à sa position d'origine.
-   La transition CSS crée l'animation entre les deux états.
+   Objectif : un bouton flèche apparaît quand on a défilé vers le bas.
+   En cliquant dessus, on remonte tout en haut de la page.
 ================================================================ */
-.show {
-  opacity   : 1;             /* Complètement visible */
-  filter    : blur(0);       /* Plus de flou */
-  transform : translateX(0); /* Revient à sa position normale */
-}
+
+// On récupère le bouton HTML par son id "bouton-haut"
+// getElementById cherche un élément par son attribut id=""
+let boutonHaut = document.getElementById("bouton-haut");
 
 
-/* ================================================================
-   ACCESSIBILITÉ — Préférence "mouvement réduit"
-   ──────────────────────────────────────────────────────────────
-   Certains utilisateurs activent "Réduire les animations" dans leurs
-   paramètres système (car les animations peuvent causer des malaises).
-   Cette media query désactive les transitions pour eux.
-================================================================ */
-@media (prefers-reduced-motion) {
-  .scroll {
-    transition : none; /* Aucune animation = apparition immédiate */
+// window.onscroll = une fonction qui s'exécute à CHAQUE mouvement de défilement
+// "window" = la fenêtre du navigateur (l'objet global)
+window.onscroll = function () {
+  afficherBouton(); // On appelle notre fonction à chaque scroll
+};
+
+
+// Cette fonction vérifie si on a défilé de plus de 20px
+// Si oui : on montre le bouton / Si non : on le cache
+function afficherBouton() {
+
+  // document.body.scrollTop = défilement sur anciens navigateurs
+  // document.documentElement.scrollTop = défilement sur les navigateurs modernes
+  // On vérifie les deux pour être compatible partout
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+
+    // On a défilé → le bouton devient visible (block = affiché comme un bloc)
+    boutonHaut.style.display = "block";
+
+  } else {
+
+    // On est en haut → le bouton disparaît
+    boutonHaut.style.display = "none";
+
   }
 }
 
 
-/* ================================================================
-   BOUTON "RETOUR EN HAUT"
-   ──────────────────────────────────────────────────────────────
-   Bouton fixe en bas à droite de l'écran.
-   Il est caché par défaut (display:none dans le HTML ou via JS).
-   scroll.js le rend visible quand on défile vers le bas.
-================================================================ */
-#bouton-haut {
-  display       : none;    /* Caché par défaut (JS le montre quand nécessaire) */
-  position      : fixed;   /* Reste à la même position même en défilant */
-  bottom        : 60px;    /* 60px depuis le bas de l'écran */
-  right         : 30px;    /* 30px depuis la droite */
-  z-index       : 99;      /* Par-dessus le contenu, mais sous le header (999) */
-  background    : transparent;
-  border        : none;
-  cursor        : pointer;
-  padding       : 12px;
-  border-radius : 8px;
-  transition    : background-color 0.2s ease;
-}
+// Cette fonction est appelée dans le HTML : onclick="topFunction()"
+// Elle remet le défilement à 0 (= remonte tout en haut)
+function topFunction() {
 
-/* La flèche SVG à l'intérieur du bouton est blanche */
-#bouton-haut svg {
-  fill : var(--violet); /* La flèche est violette */
-}
+  // On remet le défilement de la page à 0
+  document.body.scrollTop = 0;             // Pour Safari
+  document.documentElement.scrollTop = 0; // Pour Chrome, Firefox, IE, Opera
 
-/* Fond violet semi-transparent au survol */
-#bouton-haut:hover {
-  background-color : rgba(122, 102, 209, 0.15);
-  border-radius    : 50%; /* Devient rond au survol */
 }
