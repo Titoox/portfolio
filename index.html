@@ -423,97 +423,92 @@
 
 
   <!-- ============================================================
-    SECTION CONTACT — Formulaire + carte Google Maps
+    SECTION CONTACT — Carte de contact informative
+    ──────────────────────────────────────────────────────────────
+    Pourquoi pas un formulaire ?
+    GitHub Pages héberge uniquement des fichiers statiques (HTML/CSS/JS).
+    Il n'y a aucun serveur pour recevoir et envoyer des emails.
+    Un formulaire classique ne fonctionnerait donc pas ici.
+    À la place : une belle carte avec tous tes moyens de contact directs.
   ============================================================ -->
   <section id="contact" class="section-contact">
 
-    <!-- Titre avec icônes téléphone + enveloppe -->
+    <!-- Titre de section -->
     <h2 class="titre-section scroll">
-      <i class="fa-solid fa-phone"></i>
-      <span class="separateur">|</span>
-      <i class="fa-solid fa-envelope"></i>
+      <i class="fa-solid fa-envelope"></i> CONTACT
     </h2>
 
-    <!-- Zone principale : fenêtre de formulaire + carte -->
-    <div class="contact-zone">
+    <!-- Sous-titre d'accroche -->
+    <p class="contact-accroche scroll">
+      Un projet ? Une question ? N'hésite pas à me contacter directement.
+    </p>
 
-      <!-- ── Fausse fenêtre macOS (style éditeur de code) ── -->
-      <!-- C'est juste du CSS pur ! Pas de vrai système d'exploitation. -->
-      <div class="formulaire-fenetre">
+    <!-- ── Encart de contact ───────────────────────────────────
+      Une seule carte centrée avec toutes les infos de contact.
+      Chaque ligne = un moyen de te joindre avec son icône.
+    ─────────────────────────────────────────────────────────── -->
+    <div class="contact-encart scroll">
 
-        <!-- Barre supérieure avec les 3 boutons ronds -->
-        <div class="fenetre-barre">
-          <div class="fenetre-boutons">
-            <div class="fenetre-btn fermer"></div>   <!-- Rouge -->
-            <div class="fenetre-btn agrandir"></div> <!-- Jaune -->
-            <div class="fenetre-btn reduire"></div>  <!-- Vert -->
-          </div>
-          <div class="fenetre-points">
-            <div class="fenetre-point"></div>
-            <div class="fenetre-point"></div>
-            <div class="fenetre-point"></div>
-          </div>
-        </div>
+      <!-- Ligne décorative violet en haut de l'encart -->
+      <div class="encart-barre-haut"></div>
 
-        <!-- Corps de la fenêtre : infos à gauche + formulaire à droite -->
-        <div class="fenetre-corps">
+      <!-- Titre de l'encart -->
+      <h3 class="encart-titre">Titouan Gaucher</h3>
+      <p class="encart-sous-titre">Étudiant BUT MMI · Troyes</p>
 
-          <!-- Colonne gauche : coordonnées -->
-          <div class="contact-infos">
-            <div class="contact-titre">
-              <span>ME CONTACTER</span>
-            </div>
-            <div class="contact-coordonnees">
-              +33 X XX XX XX XX<br /><br />
-              <!-- Remplace par ton email -->
-              ton.email@exemple.fr
-            </div>
-          </div>
+      <!-- Séparateur visuel -->
+      <hr class="encart-separateur" />
 
-          <!-- Colonne droite : formulaire -->
-          <div class="formulaire-champs">
-            <!-- Chaque group = un champ de saisie -->
-            <div class="champ-groupe">
-              <input class="champ-saisie" placeholder="NOM*" required />
-            </div>
-            <div class="champ-groupe">
-              <input class="champ-saisie" placeholder="EMAIL*" type="email" required />
-            </div>
-            <div class="champ-groupe">
-              <input class="champ-saisie" placeholder="SUJET*" required />
-            </div>
-            <!-- Champ message plus haut que les autres grâce à la classe "message" -->
-            <div class="champ-groupe champ-message">
-              <input class="champ-saisie" placeholder="MESSAGE*" required />
-            </div>
-            <!-- Bouton d'envoi aligné à droite -->
-            <div class="champ-groupe champ-boutons">
-              <button class="bouton-envoyer">ENVOYER</button>
-            </div>
-          </div>
+      <!-- ── Lignes de contact ── -->
+      <!-- Chaque ligne = icône + label + lien cliquable -->
 
-        </div>
-        <!-- FIN fenetre-corps -->
+      <!-- Email : href="mailto:..." ouvre le client mail de l'utilisateur -->
+      <a class="contact-ligne" href="mailto:ton.email@exemple.fr">
+        <span class="contact-ligne__icone">
+          <i class="fa-solid fa-envelope"></i>
+        </span>
+        <span class="contact-ligne__label">Email</span>
+        <span class="contact-ligne__valeur">ton.email@exemple.fr</span>
+      </a>
 
-      </div>
-      <!-- FIN formulaire-fenetre -->
+      <!-- Téléphone : href="tel:..." lance l'appel sur mobile -->
+      <a class="contact-ligne" href="tel:+33600000000">
+        <span class="contact-ligne__icone">
+          <i class="fa-solid fa-phone"></i>
+        </span>
+        <span class="contact-ligne__label">Téléphone</span>
+        <span class="contact-ligne__valeur">+33 6 XX XX XX XX</span>
+      </a>
 
-      <!-- ── Carte Google Maps intégrée ── -->
-      <!-- L'iframe embarque une page extérieure (ici Google Maps) -->
-      <div class="contact-carte">
-        <iframe
-          title="Carte Google Maps - Troyes"
-          width="300"
-          height="430"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26794.28593749092!2d4.055534977380537!3d48.292421463726306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ee9857e787b7b1%3A0x57dd125566e84f75!2s10000%20Troyes!5e1!3m2!1sfr!2sfr!4v1771401657102!5m2!1sfr!2sfr"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <!-- LinkedIn -->
+      <a class="contact-ligne" href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank">
+        <span class="contact-ligne__icone">
+          <i class="fa-brands fa-linkedin"></i>
+        </span>
+        <span class="contact-ligne__label">LinkedIn</span>
+        <span class="contact-ligne__valeur">titouan-gaucher</span>
+      </a>
+
+      <!-- GitHub -->
+      <a class="contact-ligne" href="https://github.com/Titoox" target="_blank">
+        <span class="contact-ligne__icone">
+          <i class="fa-brands fa-github"></i>
+        </span>
+        <span class="contact-ligne__label">GitHub</span>
+        <span class="contact-ligne__valeur">Titoox</span>
+      </a>
+
+      <!-- Localisation (pas cliquable, juste informatif) -->
+      <div class="contact-ligne contact-ligne--info">
+        <span class="contact-ligne__icone">
+          <i class="fa-solid fa-location-dot"></i>
+        </span>
+        <span class="contact-ligne__label">Localisation</span>
+        <span class="contact-ligne__valeur">Troyes, France</span>
       </div>
 
     </div>
-    <!-- FIN contact-zone -->
+    <!-- FIN contact-encart -->
 
   </section>
   <!-- FIN SECTION CONTACT -->
@@ -553,9 +548,4 @@
     JAVASCRIPT — Doit être chargé EN BAS du body
     Pourquoi ? Pour que tout le HTML soit déjà chargé quand le JS s'exécute.
     Si on le mettait dans le <head>, le JS chercherait des éléments HTML
-    qui n'existent pas encore → erreur !
-  ============================================================ -->
-  <script src="scroll.js"></script>
-
-</body>
-</html>
+    qui n'existent pas encore → erreur
