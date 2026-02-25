@@ -423,92 +423,101 @@
 
 
   <!-- ============================================================
-    SECTION CONTACT — Carte de contact informative
+    SECTION CONTACT — Fausse fenêtre macOS avec infos de contact
     ──────────────────────────────────────────────────────────────
-    Pourquoi pas un formulaire ?
-    GitHub Pages héberge uniquement des fichiers statiques (HTML/CSS/JS).
-    Il n'y a aucun serveur pour recevoir et envoyer des emails.
-    Un formulaire classique ne fonctionnerait donc pas ici.
-    À la place : une belle carte avec tous tes moyens de contact directs.
+    On garde le style "fenêtre d'application" d'avant.
+    Mais au lieu d'un formulaire (impossible sur GitHub Pages),
+    on affiche directement les infos pour me contacter.
+    href="mailto:..." → ouvre le client mail de l'utilisateur
+    href="tel:..."    → lance l'appel sur mobile
   ============================================================ -->
   <section id="contact" class="section-contact">
 
-    <!-- Titre de section -->
     <h2 class="titre-section scroll">
-      <i class="fa-solid fa-envelope"></i> CONTACT
+      <i class="fa-solid fa-phone"></i>
+      <span class="separateur">|</span>
+      <i class="fa-solid fa-envelope"></i>
     </h2>
 
-    <!-- Sous-titre d'accroche -->
-    <p class="contact-accroche scroll">
-      Un projet ? Une question ? N'hésite pas à me contacter directement.
-    </p>
+    <div class="contact-zone">
 
-    <!-- ── Encart de contact ───────────────────────────────────
-      Une seule carte centrée avec toutes les infos de contact.
-      Chaque ligne = un moyen de te joindre avec son icône.
-    ─────────────────────────────────────────────────────────── -->
-    <div class="contact-encart scroll">
+      <!-- ── Fausse fenêtre macOS ── -->
+      <div class="formulaire-fenetre">
 
-      <!-- Ligne décorative violet en haut de l'encart -->
-      <div class="encart-barre-haut"></div>
+        <!-- Barre du haut avec les 3 boutons ronds (rouge/jaune/vert) -->
+        <!-- C'est 100% décoratif, fait en CSS pur -->
+        <div class="fenetre-barre">
+          <div class="fenetre-boutons">
+            <div class="fenetre-btn fermer"></div>    <!-- Rouge -->
+            <div class="fenetre-btn agrandir"></div>  <!-- Jaune -->
+            <div class="fenetre-btn reduire"></div>   <!-- Vert -->
+          </div>
+          <div class="fenetre-points">
+            <div class="fenetre-point"></div>
+            <div class="fenetre-point"></div>
+            <div class="fenetre-point"></div>
+          </div>
+        </div>
 
-      <!-- Titre de l'encart -->
-      <h3 class="encart-titre">Titouan Gaucher</h3>
-      <p class="encart-sous-titre">Étudiant BUT MMI · Troyes</p>
+        <!-- Corps de la fenêtre : titre à gauche, infos à droite -->
+        <div class="fenetre-corps">
 
-      <!-- Séparateur visuel -->
-      <hr class="encart-separateur" />
+          <!-- Colonne gauche : titre "ME CONTACTER" -->
+          <div class="contact-infos">
+            <div class="contact-titre">
+              <span>ME CONTACTER</span>
+            </div>
+            <!-- Petit texte d'accroche -->
+            <p class="contact-accroche">
+              Un projet ?<br />Une question ?<br />N'hésite pas !
+            </p>
+          </div>
 
-      <!-- ── Lignes de contact ── -->
-      <!-- Chaque ligne = icône + label + lien cliquable -->
+          <!-- Colonne droite : les infos de contact -->
+          <!-- Chaque ligne = une façon de me joindre -->
+          <div class="contact-liste">
 
-      <!-- Email : href="mailto:..." ouvre le client mail de l'utilisateur -->
-      <a class="contact-ligne" href="mailto:ton.email@exemple.fr">
-        <span class="contact-ligne__icone">
-          <i class="fa-solid fa-envelope"></i>
-        </span>
-        <span class="contact-ligne__label">Email</span>
-        <span class="contact-ligne__valeur">ton.email@exemple.fr</span>
-      </a>
+            <!-- Email — href="mailto:..." ouvre le client mail -->
+            <a class="contact-ligne" href="mailto:ton.email@exemple.fr">
+              <i class="fa-solid fa-envelope"></i>
+              ton.email@exemple.fr
+            </a>
 
-      <!-- Téléphone : href="tel:..." lance l'appel sur mobile -->
-      <a class="contact-ligne" href="tel:+33600000000">
-        <span class="contact-ligne__icone">
-          <i class="fa-solid fa-phone"></i>
-        </span>
-        <span class="contact-ligne__label">Téléphone</span>
-        <span class="contact-ligne__valeur">+33 6 XX XX XX XX</span>
-      </a>
+            <!-- Téléphone — href="tel:..." lance l'appel sur mobile -->
+            <a class="contact-ligne" href="tel:+33600000000">
+              <i class="fa-solid fa-phone"></i>
+              +33 6 XX XX XX XX
+            </a>
 
-      <!-- LinkedIn -->
-      <a class="contact-ligne" href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank">
-        <span class="contact-ligne__icone">
-          <i class="fa-brands fa-linkedin"></i>
-        </span>
-        <span class="contact-ligne__label">LinkedIn</span>
-        <span class="contact-ligne__valeur">titouan-gaucher</span>
-      </a>
+            <!-- LinkedIn — target="_blank" = ouvre dans un nouvel onglet -->
+            <a class="contact-ligne" href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank">
+              <i class="fa-brands fa-linkedin"></i>
+              titouan-gaucher
+            </a>
 
-      <!-- GitHub -->
-      <a class="contact-ligne" href="https://github.com/Titoox" target="_blank">
-        <span class="contact-ligne__icone">
-          <i class="fa-brands fa-github"></i>
-        </span>
-        <span class="contact-ligne__label">GitHub</span>
-        <span class="contact-ligne__valeur">Titoox</span>
-      </a>
+            <!-- GitHub -->
+            <a class="contact-ligne" href="https://github.com/Titoox" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              Titoox
+            </a>
 
-      <!-- Localisation (pas cliquable, juste informatif) -->
-      <div class="contact-ligne contact-ligne--info">
-        <span class="contact-ligne__icone">
-          <i class="fa-solid fa-location-dot"></i>
-        </span>
-        <span class="contact-ligne__label">Localisation</span>
-        <span class="contact-ligne__valeur">Troyes, France</span>
+            <!-- Localisation (pas cliquable) -->
+            <span class="contact-ligne contact-ligne--info">
+              <i class="fa-solid fa-location-dot"></i>
+              Troyes, France
+            </span>
+
+          </div>
+          <!-- FIN contact-liste -->
+
+        </div>
+        <!-- FIN fenetre-corps -->
+
       </div>
+      <!-- FIN formulaire-fenetre -->
 
     </div>
-    <!-- FIN contact-encart -->
+    <!-- FIN contact-zone -->
 
   </section>
   <!-- FIN SECTION CONTACT -->
@@ -546,6 +555,11 @@
 
   <!-- ============================================================
     JAVASCRIPT — Doit être chargé EN BAS du body
-    Pourquoi ? Pour que tout le HTML soit déjà chargé quand le JS s'exécute.
+    Pourquoi ? Pour que tout le HTML soit déjà chargé quand quand le JS s'exécute.
     Si on le mettait dans le <head>, le JS chercherait des éléments HTML
-    qui n'existent pas encore → erreur
+    qui n'existent pas encore → erreur !
+  ============================================================ -->
+  <script src="scroll.js"></script>
+
+</body>
+</html>
