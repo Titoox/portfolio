@@ -1,833 +1,867 @@
 /* ================================================================
-   styles.css — Feuille de style principale du portfolio
-   ──────────────────────────────────────────────────────────────
-   Structure du fichier :
-   1.  Imports de polices Google Fonts
-   2.  Variables CSS (la "palette" du projet)
-   3.  Reset universel
-   4.  Header / Navigation
-   5.  Section Héro (accueil)
-   6.  Bouton principal
-   7.  Section Profil
-   8.  Bouton CV
-   9.  Section Compétences
-   10. Section Projets
-   11. Bouton Visiter
-   12. Section Contact
-   13. Footer
+   Portfolio Titouan Gaucher — v4 — Perf-optimized
+   Suppression: cursor ring, filter blur, grayscale, floatOrb,
+   meshShift, backdrop-filter heavy, fixed grain
+   Ajouts: will-change ciblé, contain, GPU hints propres
 ================================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
-/* ================================================================
-   1. POLICES GOOGLE FONTS
-   On importe 2 polices depuis Google :
-   - Poppins   : police principale, lisible et moderne
-   - Space Grotesk : pour les titres, plus géométrique et impactante
-   - Sedan     : pour la lettre "P" du logo (italique élégant)
-================================================================ */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sedan:ital@1&display=swap");
-
-
-/* ================================================================
-   2. VARIABLES CSS — La palette du projet
-   ──────────────────────────────────────────────────────────────
-   Les variables CSS commencent par "--".
-   On les déclare dans :root (= le niveau le plus haut de la page).
-   Ensuite on les utilise partout avec var(--nom-de-la-variable).
-   Avantage : changer une seule ligne change toute la couleur du site !
-================================================================ */
 :root {
-  /* ── Couleurs principales ── */
-  --violet         : #7a66d1;       /* Violet principal */
-  --violet-clair   : #9b87ff;       /* Violet plus lumineux (hover, liens) */
-  --violet-transparent : rgba(122, 102, 209, 0.14); /* Violet très transparent (fonds) */
+  --v1: #6c5ce7;
+  --v2: #8b7cf8;
+  --v3: #b8affe;
+  --v4: rgba(108,92,231,0.08);
+  --v5: rgba(108,92,231,0.18);
+  --v-glow: rgba(108,92,231,0.30);
 
-  /* ── Couleurs de fond ── */
-  --fond-page      : #f7f7ff;       /* Fond général légèrement violet */
-  --fond-blanc     : #ffffff;       /* Blanc pur */
-  --fond-alt       : #f1efff;       /* Blanc légèrement teinté (sections alternées) */
+  --blanc: #ffffff;
+  --off-white: #faf9ff;
+  --gris-clair: #f4f2ff;
+  --gris-mid: #e8e4ff;
+  --texte: #0a0818;
+  --texte2: #4a4565;
+  --texte3: #8a86a8;
+  --bordure: rgba(108,92,231,0.14);
+  --bordure2: rgba(108,92,231,0.28);
 
-  /* ── Couleurs du texte ── */
-  --texte-sombre   : #0f172a;       /* Quasi-noir (titres, corps) */
-  --texte-discret  : #475569;       /* Gris bleuté (paragraphes secondaires) */
-  --bordure        : rgba(15, 23, 42, 0.12); /* Ligne très discrète */
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Outfit", system-ui, sans-serif;
 
-  /* ── Polices ── */
-  --police-corps   : "Poppins", system-ui, sans-serif;
-  --police-titres  : "Space Grotesk", system-ui, sans-serif;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-/* ================================================================
-   3. RESET UNIVERSEL
-   ──────────────────────────────────────────────────────────────
-   Par défaut, chaque navigateur (Chrome, Firefox, Safari…) applique
-   ses propres marges et styles. Le reset supprime tout ça pour partir
-   d'une base identique partout.
-   * = sélectionne TOUS les éléments HTML
-================================================================ */
-* {
-  font-family  : var(--police-corps);
-  font-weight  : 400;
-  margin       : 0;          /* Supprime les marges par défaut */
-  padding      : 0;          /* Supprime les espaces internes par défaut */
-  box-sizing   : border-box; /* Le padding ne déborde plus de la largeur définie */
-  scroll-behavior: smooth;   /* Défilement fluide lors des clics sur ancres (#profil etc.) */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
 }
-
-/* Corps de la page */
+html { scroll-behavior: smooth; }
 body {
-  background-color : var(--fond-page);
-  color            : var(--texte-sombre);
-  /* Meilleur rendu du texte sur écran */
-  -webkit-font-smoothing : antialiased;
+  font-family: var(--sans);
+  background: var(--off-white);
+  color: var(--texte);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
+/* Curseur simple — juste un point, pas de ring */
+body { cursor: none; }
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--v1);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  top: 0; left: 0;
+  /* translate via JS transform direct, pas de transition pour 0 lag */
+  will-change: transform;
+}
+/* Grossit légèrement sur les éléments interactifs */
+.cursor.hover {
+  width: 14px; height: 14px;
+  background: var(--v2);
+  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+}
+/* Curseur normal pour les champs de texte */
+input, textarea, select { cursor: text; }
+
+/* Grain — position: absolute sur wrapper, pas fixed */
+.grain-overlay {
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.35;
+  /* Pas de repaint — layer compositing only */
+  will-change: auto;
+  contain: strict;
+}
 
 /* ================================================================
-   4. HEADER / NAVIGATION
-   ──────────────────────────────────────────────────────────────
-   L'en-tête est fixe : elle reste collée en haut quand on défile.
-   position: fixed + z-index: 999 la place par-dessus tout le reste.
+   HEADER
 ================================================================ */
 .en-tete {
-  width      : 100%;
-  position   : fixed;       /* Reste en haut même en défilant */
-  z-index    : 999;         /* Au-dessus de tout le contenu */
-  display    : flex;
-  justify-content : space-between;  /* Logo à gauche, nav à droite */
-  align-items     : center;
-  padding    : 7px 200px;
-  background : rgba(255, 255, 255, 0.88); /* Blanc semi-transparent */
-  backdrop-filter: blur(12px);            /* Effet "verre dépoli" moderne */
-  border-bottom   : 1px solid var(--bordure);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 997;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 60px;
+  height: 70px;
+  background: rgba(250,249,255,0.88);
+  /* Réduit vs v3: était blur(24px) saturate(200%) — coûteux */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bordure);
+  contain: layout style;
+}
+.en-tete::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 15%; height: 70%;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--v1), transparent);
 }
 
-/* ── Logo ── */
 .logo {
-  text-decoration : none;
-  color           : var(--texte-sombre);
-  font-weight     : 700;
-  font-size       : 1.8em;
-  font-family     : var(--police-titres);
+  text-decoration: none;
+  display: flex; align-items: baseline; gap: 2px;
+  color: var(--texte);
+  letter-spacing: -1px;
 }
-/* La première lettre du logo en violet et en italic */
-.logo span {
-  font-family  : "Sedan", serif;
-  font-style   : italic;
-  color        : var(--violet);
-  font-size    : 1.2em;
+.logo-p {
+  font-family: var(--serif);
+  font-style: italic; font-weight: 300; font-size: 2.2em;
+  color: var(--v1); line-height: 1;
 }
-
-/* ── Liste de navigation ── */
-.navigation__liste {
-  list-style : none; /* Supprime les puces */
-  display    : flex; /* Les éléments s'alignent horizontalement */
+.logo-rest {
+  font-family: var(--sans);
+  font-weight: 600; font-size: 1em;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--texte);
 }
 
-/* ── Liens de navigation ── */
+.navigation__liste { list-style: none; display: flex; align-items: center; }
 .navigation__liste a {
-  position        : relative;
-  padding         : 0.5rem 0 0.1rem;
-  margin          : 0 1.5rem;
-  color           : var(--texte-discret);
-  text-decoration : none;
-  text-transform  : uppercase;
-  font-size       : 0.85em;
-  font-weight     : 500;
-  letter-spacing  : 1px;
-  transition      : color 0.3s ease;
+  position: relative;
+  display: block; padding: 8px 20px;
+  color: var(--texte2); text-decoration: none;
+  font-size: 0.78em; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: color 0.25s ease;
 }
-/* Ligne animée qui apparaît sous le lien au survol */
 .navigation__liste a::after {
-  content    : "";
-  position   : absolute;
-  left       : 50%;
-  bottom     : 0;
-  transform  : translateX(-50%) scaleX(0); /* Réduit à 0 par défaut */
-  width      : 100%;
-  height     : 1px;
-  background : var(--violet);
-  transition : transform 0.25s ease;
+  content: "";
+  position: absolute; bottom: 4px; left: 20px; right: 20px;
+  height: 1px; background: var(--v1);
+  transform: scaleX(0);
+  transition: transform 0.25s var(--ease-smooth);
+  transform-origin: left;
+  will-change: transform;
 }
-.navigation__liste a:hover {
-  color : var(--violet);
-}
-/* La ligne s'étend à la largeur complète au survol */
-.navigation__liste a:hover::after {
-  transform : translateX(-50%) scaleX(1);
-}
-
+.navigation__liste a:hover { color: var(--v1); }
+.navigation__liste a:hover::after { transform: scaleX(1); }
 
 /* ================================================================
-   5. SECTION HÉRO — Page d'accueil
-   ──────────────────────────────────────────────────────────────
-   Grande section avec dégradé violet doux en fond.
-   Les vagues SVG sont animées grâce à @keyframes move-forever.
+   HERO — asymétrique, sans animations continues
 ================================================================ */
-
-/* Fond de la section héro */
 .hero {
-  position   : relative;
-  text-align : center;
-  /* Dégradé : violet discret en haut à gauche + blanc vers le bas */
-  background :
-    radial-gradient(circle at top left, rgba(122, 102, 209, 0.18), transparent 55%),
-    linear-gradient(180deg, var(--fond-blanc) 0%, var(--fond-alt) 100%);
-  color : var(--texte-sombre);
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  background: var(--off-white);
+  /* Découpe géométrique statique — pas d'animation */
+}
+.hero::before {
+  content: "";
+  position: absolute; top: -20%; left: -10%;
+  width: 70%; height: 140%;
+  background: linear-gradient(135deg, rgba(108,92,231,0.05) 0%, rgba(184,175,254,0.03) 50%, transparent 100%);
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+/* Orbe statique (pas d'animation continue) */
+.hero::after {
+  content: "";
+  position: absolute; top: 10%; right: 5%;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,92,231,0.09) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-/* Zone de contenu centré (nom, bouton, icônes) */
-.hero__contenu {
-  height          : 80vh;  /* Occupe 80% de la hauteur de l'écran */
-  display         : flex;
-  flex-direction  : column;
-  justify-content : center;
-  align-items     : center;
-  padding-top     : 75px;  /* Décale vers le bas pour passer sous le header fixe */
+.hero__left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 60px 80px 80px;
+}
+.hero__number {
+  position: absolute; top: 50%; left: 60px;
+  transform: translateY(-50%);
+  font-family: var(--serif); font-size: 18em; font-weight: 300;
+  color: rgba(108,92,231,0.04);
+  line-height: 1; pointer-events: none; user-select: none;
+  letter-spacing: -10px;
+  /* Contenu décoratif — isolé du layout */
+  contain: layout style paint;
 }
 
-/* "Bienvenue sur mon portfolio" */
-.hero__bienvenue {
-  color       : var(--texte-discret);
-  font-size   : 1.4em;
-  font-weight : 500;
-  font-family : var(--police-titres);
-  line-height : 1.4;
+.hero__eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 24px;
+}
+.hero__eyebrow-line { width: 40px; height: 1px; background: var(--v1); }
+.hero__eyebrow-text {
+  font-size: 0.72em; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--v1);
 }
 
-/* GAUCHER Titouan — grand nom */
-.hero__nom {
-  display     : block;
-  margin-top  : 10px;
-  color       : var(--texte-sombre);
-  font-size   : 2.7em;
-  font-weight : 700;
+/* Dot pulsant — animation simple opacity only, pas de box-shadow animé */
+.hero__eyebrow-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%; background: #22c55e;
+  animation: dotPulse 2.5s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
 }
 
-/* Titre de spécialité (Développeur Web Junior) */
-.hero__specialite {
-  color         : var(--violet);
-  font-size     : 1.7em;
-  font-weight   : 700;
-  letter-spacing: 1px;
-  margin-top    : 10px;
-  margin-bottom : 30px;
-  font-family   : var(--police-titres);
+.hero__titre {
+  font-family: var(--serif);
+  font-size: clamp(3.5em, 6vw, 5.5em);
+  font-weight: 300; line-height: 1.0;
+  color: var(--texte); letter-spacing: -2px;
+  margin-bottom: 8px;
+}
+.hero__titre em { font-style: italic; color: var(--v1); }
+.hero__titre .hero__nom-block {
+  display: block; font-weight: 600; letter-spacing: -3px;
 }
 
-/* Icônes LinkedIn, GitHub etc. */
+.hero__tagline {
+  font-size: 1em; color: var(--texte2); line-height: 1.7;
+  max-width: 380px; margin: 24px 0 44px;
+  font-weight: 300;
+  border-left: 2px solid var(--v2); padding-left: 18px;
+}
+
+.hero__actions { display: flex; align-items: center; gap: 24px; }
+
+/* Hint scroll — opacity seulement, pas de box-shadow ou blur */
+.hero__scroll-hint {
+  position: absolute; bottom: 40px; left: 80px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.7em; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--texte3);
+}
+.hero__scroll-hint::before {
+  content: "";
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--v1));
+  animation: scrollLine 2.5s ease-in-out infinite;
+  will-change: opacity;
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.9; }
+}
+
+/* Colonne droite */
+.hero__right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 100px 60px 80px 0;
+}
+
+.hero__photo-frame {
+  position: relative;
+  will-change: transform; /* Pour le scroll reveal */
+}
+.hero__photo-frame::before {
+  content: "";
+  position: absolute; top: -20px; right: -20px;
+  width: 100%; height: 100%;
+  border: 1.5px solid var(--bordure2); border-radius: 4px; z-index: 0;
+}
+.hero__photo-frame::after {
+  content: "";
+  position: absolute; bottom: -30px; left: -30px;
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--v1), var(--v2));
+  border-radius: 50%; opacity: 0.12; z-index: 0;
+}
+.hero__photo-frame img {
+  position: relative; z-index: 1;
+  width: 320px; border-radius: 4px; display: block;
+  /* Supprimé: filter grayscale (paint layer inutile) */
+  box-shadow: 30px 40px 80px rgba(108,92,231,0.15), -10px -10px 40px rgba(0,0,0,0.04);
+  /* Pas de transition sur filter */
+}
+
+/* Badge "Open to work" */
+.hero__photo-tag {
+  position: absolute; bottom: -16px; left: -30px;
+  background: var(--blanc); border: 1px solid var(--bordure2);
+  border-radius: 8px; padding: 12px 18px; z-index: 2;
+  box-shadow: 0 8px 24px rgba(108,92,231,0.10);
+  display: flex; align-items: center; gap: 10px;
+}
+.hero__photo-tag-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+  /* Réduit: était box-shadow animé — remplacé par opacity seul */
+  animation: dotPulse 2.5s ease-in-out infinite;
+  will-change: opacity;
+}
+.hero__photo-tag span { font-size: 0.8em; color: var(--texte2); font-weight: 500; }
+
+/* Réseaux — colonne verticale */
 .icones-reseaux {
-  padding-top : 60px;
+  position: absolute; right: -16px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 3;
 }
 .icones-reseaux a {
-  color       : var(--texte-sombre);
-  font-size   : 1.7em;
-  padding-right : 13px;
-  display     : inline-block;
-  transition  : color 0.2s ease;
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  background: var(--blanc); border: 1px solid var(--bordure);
+  border-radius: 10px; color: var(--texte2); font-size: 1em;
   text-decoration: none;
+  /* will-change uniquement sur les éléments qui vont bouger */
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 .icones-reseaux a:hover {
-  color : var(--violet);
+  background: var(--v1); color: #fff;
+  border-color: var(--v1);
+  transform: scale(1.1) translateX(-2px);
+  box-shadow: 0 8px 20px var(--v-glow);
 }
 
-/* ── Vagues SVG ── */
+/* Vagues */
 .vagues-conteneur {
-  line-height : 0; /* Supprime l'espace blanc sous le SVG */
+  position: absolute; bottom: 0; left: 0; right: 0;
+  line-height: 0; z-index: 3;
 }
-.vagues {
-  position   : relative;
-  width      : 100%;
-  height     : 20vh;
-  min-height : 100px;
-  max-height : 150px;
-}
-
-/* Animation des vagues : chaque couche se déplace à vitesse différente */
+.vagues { width: 100%; height: 14vh; min-height: 80px; max-height: 120px; }
 .parallaxe > use {
-  animation : mouvement-infini 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  animation: mouvement-infini 25s cubic-bezier(0.55,0.5,0.45,0.5) infinite;
+  will-change: transform;
 }
 .parallaxe > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
 .parallaxe > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
 .parallaxe > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
-
-/* Définition de l'animation : translation horizontale en boucle */
 @keyframes mouvement-infini {
-  0%   { transform: translate3d(-90px, 0, 0); }
-  100% { transform: translate3d(85px, 0, 0); }
+  0%   { transform: translate3d(-90px,0,0); }
+  100% { transform: translate3d(85px,0,0); }
 }
 
-
 /* ================================================================
-   6. BOUTON PRINCIPAL (Héro)
-   ──────────────────────────────────────────────────────────────
-   Bouton violet avec effet de flash lumineux au survol.
-   Le flash est créé avec ::before + @keyframes flash.
+   BOUTONS
 ================================================================ */
-
-/* Animation "flash" : une bande de lumière qui traverse le bouton */
 @keyframes flash {
-  from { opacity: 0; left: 0%; }
-  50%  { opacity: 1; }
-  to   { opacity: 0; left: 100%; }
+  from { opacity:0; left:0%; }
+  50%  { opacity:1; }
+  to   { opacity:0; left:100%; }
 }
 
 .bouton-principal {
-  position      : relative;
-  font-size     : 1.1rem;
-  padding       : 1rem 2.5rem;
-  border        : none;
-  border-radius : 6px;
-  cursor        : pointer;
-  text-transform: uppercase;
-  font-weight   : 700;
-  letter-spacing: 1px;
-  /* Dégradé violet de haut en bas */
-  background    : linear-gradient(180deg, var(--violet), #5f4ec7);
-  color         : #ffffff;
-  box-shadow    : 0 12px 35px rgba(122, 102, 209, 0.3);
-  transition    : box-shadow 0.3s ease, transform 0.1s ease;
-  overflow      : hidden; /* Cache le flash qui dépasse */
-  z-index       : 0;
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans);
+  font-size: 0.82em; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--v1) 0%, #4834d4 100%);
+  color: #fff; border: none; border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px var(--v-glow), inset 0 1px 0 rgba(255,255,255,0.12);
+  /* Seulement transform + box-shadow — pas filter */
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.25s ease;
+  will-change: transform;
 }
-/* Flash lumineux au survol */
 .bouton-principal::before {
-  content    : "";
-  display    : block;
-  width      : 0;
-  height     : 86%;
-  position   : absolute;
-  top        : 7%;
-  left       : 0;
-  opacity    : 0;
-  background : rgba(255, 255, 255, 0.2);
-  box-shadow : 0 0 50px 30px rgba(255, 255, 255, 0.23);
-  transform  : skewX(-20deg); /* Incline la bande pour un effet dynamique */
-  z-index    : 1;
+  content: ""; display: block; width: 0; height: 100%;
+  position: absolute; top: 0; left: 0; opacity: 0;
+  background: rgba(255,255,255,0.22);
+  box-shadow: 0 0 40px 25px rgba(255,255,255,0.18);
+  transform: skewX(-20deg); z-index: 1;
 }
-.bouton-principal:hover::before {
-  animation : flash 0.5s linear; /* Lance le flash */
-}
+.bouton-principal:hover::before { animation: flash 0.45s linear; }
 .bouton-principal:hover {
-  box-shadow : 0 18px 45px rgba(122, 102, 209, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 44px var(--v-glow);
 }
-.bouton-principal:active {
-  transform : scale(0.94); /* Légère compression au clic */
-}
+.bouton-principal:active { transform: scale(0.97); }
 
+.hero__link-cv {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82em; font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--texte2);
+  transition: color 0.2s ease;
+}
+.hero__link-cv i { transition: transform 0.2s ease; will-change: transform; }
+.hero__link-cv:hover { color: var(--v1); }
+.hero__link-cv:hover i { transform: translateX(4px); }
+
+/* ── Bouton retour en haut ── */
+#bouton-haut {
+  display: none; position: fixed;
+  bottom: 36px; right: 36px; z-index: 99;
+  width: 46px; height: 46px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure2); border-radius: 50%;
+  box-shadow: 0 6px 24px rgba(108,92,231,0.12);
+  transition: background 0.2s ease, transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+  will-change: transform;
+  align-items: center; justify-content: center;
+}
+#bouton-haut:hover {
+  background: var(--v1);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 10px 30px var(--v-glow);
+}
+#bouton-haut:hover svg { fill: #fff; }
+#bouton-haut svg { fill: var(--v1); transition: fill 0.2s ease; }
 
 /* ================================================================
-   7. SECTION PROFIL — À propos
-   ──────────────────────────────────────────────────────────────
-   Fond blanc avec un léger halo violet en haut à droite.
-   Grille 2 colonnes : texte | photo.
+   TITRES DE SECTION
+================================================================ */
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.7em; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--v1);
+  margin-bottom: 14px;
+}
+.section-label::before, .section-label::after {
+  content: ""; width: 24px; height: 1px; background: var(--v2);
+}
+.titre-section {
+  font-family: var(--serif);
+  font-size: 3.2em; font-weight: 300;
+  letter-spacing: -1.5px; line-height: 1.05; color: var(--texte);
+}
+.titre-section em { font-style: italic; color: var(--v1); }
+
+/* ================================================================
+   SECTION PROFIL
 ================================================================ */
 .section-profil {
-  padding    : 100px 200px;
-  background :
-    radial-gradient(circle at top right, var(--violet-transparent), transparent 55%),
-    var(--fond-blanc);
-  border-top    : 1px solid var(--bordure);
-  border-bottom : 1px solid var(--bordure);
+  padding: 130px 0;
+  background: var(--off-white);
+  position: relative; overflow: hidden;
+  /* contain évite les repaints sur les éléments décoratifs */
+  contain: content;
+}
+.section-profil::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v1), transparent);
+}
+.section-profil::after {
+  content: "About";
+  position: absolute; right: -2%; top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: var(--serif); font-size: 12em; font-weight: 300;
+  color: rgba(108,92,231,0.04);
+  pointer-events: none; user-select: none;
+  letter-spacing: -5px; white-space: nowrap;
+  contain: layout style paint;
 }
 
-/* Titre des sections (réutilisé partout) */
-.titre-section {
-  text-align    : center;
-  color         : var(--texte-sombre);
-  font-family   : var(--police-titres);
-  font-size     : 1.5em;
-  font-weight   : 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom : 40px;
+.profil-container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+
+.profil-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: start; margin-bottom: 100px;
+}
+.profil-divider {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 8px;
+}
+.profil-divider-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: var(--v1); flex-shrink: 0;
+}
+.profil-divider-line {
+  width: 1px; flex: 1; min-height: 200px;
+  background: linear-gradient(to bottom, var(--v2), transparent);
 }
 
-/* Grille texte + photo */
-.profil-grille {
-  display               : grid;
-  grid-template-columns : 500px 500px; /* 2 colonnes de largeur fixe */
-  justify-content       : center;
-  gap                   : 5%;
-  margin-bottom         : 70px;
+.profil-texte h3 {
+  font-family: var(--serif);
+  font-size: 1.8em; font-weight: 300; font-style: italic;
+  color: var(--texte); margin-bottom: 20px; letter-spacing: -0.5px;
+}
+.profil-texte p {
+  color: var(--texte2); line-height: 1.9; font-size: 0.97em; font-weight: 300;
+}
+.profil-texte p + p { margin-top: 16px; }
+
+.profil-photo-col {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+}
+.profil-photo-col img {
+  width: 100%; max-width: 300px; border-radius: 3px; display: block;
+  /* Supprimé: filter grayscale + transition filter */
+  box-shadow: 20px 30px 60px rgba(108,92,231,0.13);
+  transition: transform 0.35s var(--ease-smooth);
+  will-change: transform;
+}
+.profil-photo-col img:hover { transform: scale(1.01); }
+
+.profil-stats { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+.profil-stat {
+  padding: 16px 20px;
+  background: var(--blanc); border: 1px solid var(--bordure);
+  border-radius: 3px; border-left: 3px solid var(--v1);
+}
+.profil-stat-num {
+  font-family: var(--serif); font-size: 2em; font-weight: 600;
+  color: var(--v1); line-height: 1; letter-spacing: -1px;
+}
+.profil-stat-label {
+  font-size: 0.75em; color: var(--texte3);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-top: 3px;
 }
 
-/* Texte de présentation */
-.profil-texte {
-  color       : var(--texte-discret);
-  line-height : 1.8;
-}
-
-/* Photo de profil */
-.profil-photo img {
-  width         : 200px;
-  border-radius : 20px;
-  /* Ombre violette autour de la photo */
-  box-shadow    :
-    0 0 22px 4px rgba(122, 102, 209, 0.5),
-    0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-
-/* ================================================================
-   8. BOUTON CV
-   ──────────────────────────────────────────────────────────────
-   Lien stylisé comme un bouton, même effet flash que le bouton principal.
-   Contour violet + fond qui apparaît au survol.
-================================================================ */
 .bouton-cv {
-  display       : inline-block;
-  position      : relative;
-  padding       : 12px 24px;
-  border-radius : 7px;
-  border        : 2px solid var(--violet);
-  font-size     : 14px;
-  text-transform: uppercase;
-  font-weight   : 600;
-  letter-spacing: 2px;
-  color         : var(--violet);
-  background    : transparent;
-  text-decoration: none;
-  overflow      : hidden;
-  transition    : color 0.3s ease;
-  z-index       : 0;
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 28px; position: relative;
+  padding: 12px 28px; border: 1px solid var(--v1); border-radius: 3px;
+  font-size: 0.78em; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--v1); background: transparent; text-decoration: none;
+  overflow: hidden;
+  transition: color 0.3s ease, transform 0.2s var(--ease-smooth);
+  will-change: transform;
+  z-index: 0;
 }
-/* Fond violet qui remplit le bouton au survol */
-.bouton-cv::after {
-  content       : "";
-  position      : absolute;
-  inset         : 0; /* Couvre tout l'élément */
-  background    : var(--violet);
-  opacity       : 0;
-  transition    : opacity 0.3s ease;
-  z-index       : -1;
-  border-radius : 5px;
-}
-/* Flash lumineux */
 .bouton-cv::before {
-  content    : "";
-  display    : block;
-  width      : 0;
-  height     : 86%;
-  position   : absolute;
-  top        : 7%;
-  left       : 0;
-  opacity    : 0;
-  background : rgba(255, 255, 255, 0.2);
-  box-shadow : 0 0 50px 30px rgba(255, 255, 255, 0.23);
-  transform  : skewX(-20deg);
-  z-index    : 1;
+  content: ""; display: block; width: 0; height: 100%;
+  position: absolute; top: 0; left: 0; opacity: 0;
+  background: rgba(255,255,255,0.28);
+  box-shadow: 0 0 40px 25px rgba(255,255,255,0.2);
+  transform: skewX(-20deg); z-index: 1;
 }
-.bouton-cv:hover {
-  color : #ffffff;
+.bouton-cv::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--v1), #4834d4);
+  opacity: 0; transition: opacity 0.3s ease; z-index: -1;
 }
-.bouton-cv:hover::after {
-  opacity : 1; /* Le fond violet apparaît */
-}
-.bouton-cv:hover::before {
-  animation : flash 0.5s linear;
-}
-.bouton-cv:active {
-  transform : scale(0.96);
-}
-
+.bouton-cv:hover { color: #fff; transform: translateY(-1px); }
+.bouton-cv:hover::after { opacity: 1; }
+.bouton-cv:hover::before { animation: flash 0.45s linear; }
 
 /* ================================================================
-   9. SECTION COMPÉTENCES
-   ──────────────────────────────────────────────────────────────
-   3 cartes côte à côte : Langages | Outils | Design
+   COMPÉTENCES
 ================================================================ */
-
-/* Texte introductif */
+.competences-section { padding-top: 60px; border-top: 1px solid var(--bordure); }
 .competences-intro {
-  text-align  : center;
-  color       : var(--texte-discret);
-  font-size   : 1em;
-  line-height : 1.8;
-  max-width   : 750px;
-  margin      : 0 auto 50px auto;
+  text-align: center; font-size: 0.97em; color: var(--texte2);
+  line-height: 1.9; max-width: 600px; margin: 0 auto 60px; font-weight: 300;
 }
-
-/* Grille des cartes */
 .competences-grille {
-  display         : flex;
-  justify-content : center;
-  gap             : 30px;
-  flex-wrap       : wrap; /* Les cartes passent à la ligne sur petit écran */
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--bordure);
+  border: 1px solid var(--bordure); border-radius: 4px; overflow: hidden;
 }
 
-/* Carte individuelle */
 .carte-competence {
-  text-align    : center;
-  background    :
-    radial-gradient(circle at top center, rgba(122, 102, 209, 0.1), transparent 55%),
-    #ffffff;
-  border-radius : 16px;
-  border        : 1px solid var(--bordure);
-  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.08);
-  width         : 260px;
-  padding       : 30px 20px;
-  transition    : transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--blanc); padding: 44px 32px; text-align: center;
+  position: relative; overflow: hidden;
+  /* Transition sur background + transform uniquement */
+  transition: background 0.25s ease, transform 0.25s var(--ease-spring);
+  will-change: transform;
+  contain: content;
 }
-.carte-competence:hover {
-  transform  : translateY(-4px);
-  box-shadow : 0 20px 55px rgba(122, 102, 209, 0.15);
+.carte-competence::before {
+  content: "";
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--v1), var(--v2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-smooth);
+  will-change: transform;
 }
+.carte-competence:hover { background: var(--gris-clair); }
+.carte-competence:hover::before { transform: scaleX(1); }
 
-/* Titre de la carte */
 .carte-competence h4 {
-  font-family   : var(--police-titres);
-  font-weight   : 700;
-  font-size     : 1.1em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color         : var(--texte-sombre);
-  margin-bottom : 25px;
+  font-family: var(--serif); font-size: 1.3em; font-weight: 400; font-style: italic;
+  color: var(--texte); margin-bottom: 24px;
 }
-/* Icônes de catégorie (code, engrenage, pinceau) dans un cercle */
 .carte-competence .fa-code,
 .carte-competence .fa-gear,
 .carte-competence .fa-paintbrush {
-  display          : inline-block;
-  width            : 65px;
-  height           : 65px;
-  line-height      : 65px;
-  border-radius    : 50%;
-  background-color : #f4f4fb;
-  color            : var(--violet);
-  font-size        : 1.6em;
-  margin-bottom    : 15px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--gris-clair); color: var(--v1); font-size: 1.3em;
+  margin-bottom: 16px; border: 1px solid var(--bordure);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s var(--ease-spring);
+  will-change: transform;
+}
+.carte-competence:hover .fa-code,
+.carte-competence:hover .fa-gear,
+.carte-competence:hover .fa-paintbrush {
+  background: var(--v1); color: #fff;
+  transform: scale(1.08) rotate(-3deg);
 }
 
-/* Liste des technos dans la carte */
 .competence-liste p {
-  font-size   : 1.05em;
-  line-height : 2.2;
-  color       : var(--texte-discret);
-  display     : flex;
-  align-items : center;
-  justify-content: center;
-  gap         : 8px;
+  font-size: 0.92em; line-height: 2.4; color: var(--texte2);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
 }
-/* Icônes de marques (HTML, CSS, JS...) */
-.competence-liste .fa-brands {
-  font-size : 1.3em;
-}
-/* Petits logos Adobe (images PNG) */
-.competence-liste img {
-  width : 22px;
-}
-
+.competence-liste .fa-brands { font-size: 1.2em; }
+.competence-liste img { width: 18px; }
 
 /* ================================================================
-   10. SECTION PROJETS — Galerie
-   ──────────────────────────────────────────────────────────────
-   Grille de 3 colonnes avec des cartes projet.
+   SECTION PROJETS
 ================================================================ */
 .section-projets {
-  padding    : 100px 200px;
-  background :
-    radial-gradient(circle at top left, var(--violet-transparent), transparent 55%),
-    var(--fond-blanc);
-  border-top    : 1px solid var(--bordure);
-  border-bottom : 1px solid var(--bordure);
+  padding: 130px 0;
+  background: var(--blanc);
+  position: relative;
+  border-top: 1px solid var(--bordure);
+  contain: content;
+}
+.section-projets::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v1), transparent);
+}
+.section-projets::after {
+  content: "Work";
+  position: absolute; left: -1%; top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-family: var(--serif); font-size: 12em; font-weight: 300;
+  color: rgba(108,92,231,0.04);
+  pointer-events: none; user-select: none;
+  letter-spacing: -5px; white-space: nowrap;
+  contain: layout style paint;
 }
 
-/* Grille 3 colonnes */
+.projets-container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+
 .projets-grille {
-  display               : grid;
-  grid-template-columns : repeat(3, 320px); /* 3 colonnes de 320px */
-  justify-content       : center;
-  gap                   : 30px;
-  margin-top            : 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
 }
+.carte-projet:nth-child(1) { grid-column: span 4; }
+.carte-projet:nth-child(2) { grid-column: span 2; }
+.carte-projet:nth-child(3) { grid-column: span 2; }
+.carte-projet:nth-child(4) { grid-column: span 2; }
+.carte-projet:nth-child(5) { grid-column: span 3; }
+.carte-projet:nth-child(6) { grid-column: span 3; }
 
-/* Carte projet */
 .carte-projet {
-  background    : var(--fond-blanc);
-  border        : 1px solid var(--bordure);
-  border-radius : 12px;
-  overflow      : hidden; /* Cache ce qui dépasse (image) */
-  box-shadow    : 0 12px 40px rgba(15, 23, 42, 0.08);
-  transition    : transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative; border-radius: 4px; overflow: hidden;
+  background: var(--gris-clair); border: 1px solid var(--bordure);
+  aspect-ratio: 16/10;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
+  will-change: transform;
+  contain: content;
 }
 .carte-projet:hover {
-  transform     : translateY(-4px);
-  box-shadow    : 0 22px 55px rgba(15, 23, 42, 0.13);
-  border-color  : rgba(122, 102, 209, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 55px rgba(108,92,231,0.14);
 }
 
-/* Image du projet (prend toute la largeur de la carte) */
+.projet-image { width: 100%; height: 100%; position: absolute; inset: 0; }
 .projet-image img {
-  width   : 100%;
-  display : block;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.45s ease;
+  will-change: transform;
+  /* Supprimé: filter saturate (paint layer) */
 }
+.carte-projet:hover .projet-image img { transform: scale(1.05); }
 
-/* Zone texte sous l'image */
+/* Overlay — opacity-only transition, pas de filter */
 .projet-infos {
-  padding : 14px 18px 18px;
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(108,92,231,0.88) 0%, rgba(72,52,212,0.25) 55%, transparent 100%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: opacity;
 }
+.carte-projet:hover .projet-infos { opacity: 1; }
 
-/* Description du projet */
 .projet-description {
-  color       : var(--texte-discret);
-  font-size   : 0.9em;
-  margin-bottom : 12px;
-  line-height : 1.6;
+  font-size: 1em; font-weight: 600; color: #fff;
+  transform: translateY(8px);
+  transition: transform 0.3s var(--ease-smooth);
+  will-change: transform;
+  margin-bottom: 0;
 }
+.carte-projet:hover .projet-description { transform: translateY(0); }
 
-/* Barre du bas : icônes techno + lien visiter */
 .projet-pied {
-  display         : flex;
-  justify-content : space-between;
-  align-items     : center;
-  margin-top      : 8px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 10px;
+  transform: translateY(8px);
+  transition: transform 0.3s 0.04s var(--ease-smooth);
+  will-change: transform;
 }
+.carte-projet:hover .projet-pied { transform: translateY(0); }
 
-/* Icônes des langages du projet */
 .projet-technos .fa-brands,
 .projet-technos .fa-solid {
-  font-size    : 1.4em;
-  padding-left : 3px;
+  font-size: 1.2em; padding-left: 3px; color: rgba(255,255,255,0.85);
 }
 
-
-/* ================================================================
-   11. BOUTON "VISITER"
-   ──────────────────────────────────────────────────────────────
-   Même effet flash que les autres boutons.
-================================================================ */
 .lien-projet {
-  position        : relative;
-  text-decoration : none;
-  color           : var(--violet-clair);
-  padding         : 4px 10px;
-  border-radius   : 5px;
-  overflow        : hidden;
-  display         : inline-block;
-  transition      : color 0.3s ease;
-  font-family     : var(--police-titres);
-  font-weight     : 600;
-  font-size       : 0.85em;
-  text-transform  : uppercase;
-  z-index         : 0;
+  position: relative;
+  display: inline-flex; align-items: center; gap: 5px;
+  text-decoration: none; color: #fff;
+  font-size: 0.75em; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid rgba(255,255,255,0.4); border-radius: 2px;
+  overflow: hidden;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
-.lien-projet::after {
-  content       : "";
-  position      : absolute;
-  inset         : 0;
-  background    : var(--violet);
-  opacity       : 0;
-  transition    : opacity 0.3s ease;
-  z-index       : -1;
-  border-radius : 5px;
-}
-.lien-projet::before {
-  content    : "";
-  display    : block;
-  width      : 0;
-  height     : 86%;
-  position   : absolute;
-  top        : 7%;
-  left       : 0;
-  opacity    : 0;
-  background : rgba(255, 255, 255, 0.2);
-  box-shadow : 0 0 30px 15px rgba(255, 255, 255, 0.23);
-  transform  : skewX(-20deg);
-  z-index    : 1;
-}
+.lien-projet::after { content: "↗"; font-size: 1.1em; line-height: 1; }
 .lien-projet:hover {
-  color : #ffffff;
+  background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.7);
 }
-.lien-projet:hover::after {
-  opacity : 1;
-}
-.lien-projet:hover::before {
-  animation : flash 0.5s linear;
-}
-
 
 /* ================================================================
-   12. SECTION CONTACT — Fausse fenêtre macOS
+   SECTION CONTACT
 ================================================================ */
 .section-contact {
-  padding    : 100px 200px;
-  background :
-    radial-gradient(circle at bottom right, var(--violet-transparent), transparent 45%),
-    var(--fond-alt);
-  border-top    : 1px solid var(--bordure);
-  border-bottom : 1px solid var(--bordure);
-  text-align    : center;
+  padding: 130px 0;
+  background: var(--off-white);
+  border-top: 1px solid var(--bordure);
+  position: relative; overflow: hidden; text-align: center;
+  contain: content;
+}
+.section-contact::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--v1), transparent);
+}
+.section-contact::after {
+  content: "";
+  position: absolute; bottom: -20%; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 350px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(108,92,231,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  contain: layout style paint;
 }
 
-.contact-zone {
-  display         : flex;
-  justify-content : center;
-  margin-top      : 20px;
-}
+.contact-container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+.contact-zone { display: flex; justify-content: center; margin-top: 24px; }
 
-/* La fenêtre */
 .formulaire-fenetre {
-  width         : 650px;
-  background    : var(--fond-blanc);
-  border        : 1px solid var(--bordure);
-  border-radius : 16px;
-  box-shadow    : 0 20px 55px rgba(15, 23, 42, 0.1);
-  text-align    : left;
-  overflow      : hidden;
+  width: 720px; background: var(--blanc);
+  border: 1px solid var(--bordure2); border-radius: 12px;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.8) inset, 0 36px 90px rgba(108,92,231,0.11), 0 2px 4px rgba(108,92,231,0.06);
+  overflow: hidden; text-align: left;
 }
-
-/* Barre du haut */
 .fenetre-barre {
-  display         : flex;
-  align-items     : center;
-  justify-content : space-between;
-  padding         : 12px 20px;
-  background      : rgba(241, 239, 255, 0.95);
-  border-bottom   : 1px solid var(--bordure);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, rgba(242,240,255,0.98) 0%, rgba(232,228,255,0.95) 100%);
+  border-bottom: 1px solid var(--bordure); position: relative;
 }
-.fenetre-boutons { display: flex; gap: 6px; }
+.fenetre-barre-title {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  font-size: 0.72em; color: var(--texte3); letter-spacing: 0.5px; font-weight: 500;
+}
+.fenetre-boutons { display: flex; gap: 7px; }
 .fenetre-btn {
-  width         : 10px;
-  height        : 10px;
-  border-radius : 50%;
+  width: 12px; height: 12px; border-radius: 50%;
+  cursor: default; transition: filter 0.15s ease;
 }
-.fenetre-btn.fermer   { background: #ed1c6f; }
-.fenetre-btn.agrandir { background: #e8e925; }
-.fenetre-btn.reduire  { background: #74c54f; }
-.fenetre-points { display: flex; gap: 4px; }
-.fenetre-point {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: rgba(15, 23, 42, 0.35);
-}
+.fenetre-btn:hover { filter: brightness(0.85); }
+.fenetre-btn.fermer   { background: #ff5f57; }
+.fenetre-btn.agrandir { background: #febc2e; }
+.fenetre-btn.reduire  { background: #28c840; }
+.fenetre-points { display: flex; gap: 4px; align-items: center; }
+.fenetre-point { width: 4px; height: 4px; border-radius: 50%; background: var(--texte3); opacity: 0.4; }
 
-/* Corps : 2 colonnes */
-.fenetre-corps {
-  display : flex;
-  min-height : 280px;
-}
+.fenetre-corps { display: flex; min-height: 300px; }
 
-/* Colonne gauche */
 .contact-infos {
-  flex           : 1;
-  padding        : 50px 40px;
-  display        : flex;
-  flex-direction : column;
-  border-right   : 1px solid var(--bordure);
+  flex: 0 0 240px; padding: 50px 38px;
+  display: flex; flex-direction: column;
+  border-right: 1px solid var(--bordure);
+  background: linear-gradient(160deg, rgba(108,92,231,0.04) 0%, transparent 60%);
 }
 .contact-titre {
-  font-family    : var(--police-titres);
-  font-size      : 20px;
-  font-weight    : 700;
-  color          : var(--texte-sombre);
-  padding-bottom : 12px;
-  border-bottom  : 4px solid var(--violet);
-  display        : inline-block;
-  margin-bottom  : 28px;
+  font-family: var(--serif); font-size: 1.6em; font-weight: 300; font-style: italic;
+  color: var(--texte); line-height: 1.2; margin-bottom: 6px;
+}
+.contact-titre strong {
+  display: block; font-style: normal; font-weight: 600;
+  font-size: 0.85em; letter-spacing: -0.5px;
+}
+.contact-titre::after {
+  content: ""; display: block; width: 32px; height: 2px;
+  background: var(--v1); margin-top: 14px; border-radius: 1px;
 }
 .contact-accroche {
-  color       : var(--texte-discret);
-  font-size   : 0.9em;
-  line-height : 2;
-  text-align  : left;
-  margin      : 0;
+  margin-top: 20px; color: var(--texte2); font-size: 0.88em;
+  line-height: 2; font-weight: 300;
 }
 
-/* Colonne droite : liste des infos */
 .contact-liste {
-  flex           : 1;
-  padding        : 40px 35px;
-  display        : flex;
-  flex-direction : column;
-  gap            : 4px;
-  justify-content: center;
+  flex: 1; padding: 40px 34px;
+  display: flex; flex-direction: column; gap: 4px; justify-content: center;
 }
-
-/* Chaque ligne de contact */
 .contact-ligne {
-  display         : flex;
-  align-items     : center;
-  gap             : 14px;
-  padding         : 11px 14px;
-  border-radius   : 10px;
-  text-decoration : none;
-  color           : var(--texte-discret);
-  font-size       : 0.9em;
-  transition      : background-color 0.2s ease, color 0.2s ease;
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px; border-radius: 6px;
+  text-decoration: none; color: var(--texte2); font-size: 0.88em;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s var(--ease-smooth);
+  border: 1px solid transparent; font-weight: 300;
+  will-change: transform;
 }
 .contact-ligne:not(.contact-ligne--info):hover {
-  background-color : var(--violet-transparent);
-  color            : var(--violet);
+  background: var(--gris-clair); color: var(--v1);
+  border-color: var(--bordure);
+  transform: translateX(5px);
 }
-.contact-ligne i {
-  color      : var(--violet);
-  font-size  : 1em;
-  width      : 16px;
-  text-align : center;
-  flex-shrink: 0;
-}
+.contact-ligne i { color: var(--v1); font-size: 1em; width: 18px; text-align: center; flex-shrink: 0; }
+.separateur { font-size: 1.6em; font-weight: 100; margin: 0 8px; }
 
-.separateur {
-  font-size   : 1.6em;
-  font-weight : 100;
-  margin      : 0 8px;
-}
-
-/* Responsive contact */
+/* Responsive fenêtre contact */
 @media screen and (max-width: 700px) {
-  .fenetre-corps {
-    flex-direction : column;
-  }
-  .contact-infos {
-    border-right  : none;
-    border-bottom : 1px solid var(--bordure);
-    padding       : 30px 25px;
-  }
-  .contact-liste {
-    padding : 25px;
-  }
+  .fenetre-corps { flex-direction: column; }
+  .contact-infos { flex: none; border-right: none; border-bottom: 1px solid var(--bordure); padding: 28px 24px; }
+  .contact-liste { padding: 24px; }
 }
-
 
 /* ================================================================
-   13. FOOTER — Pied de page
+   FOOTER
 ================================================================ */
 .pied-de-page {
-  background      : var(--fond-blanc);
-  border-top      : 1px solid var(--bordure);
-  color           : var(--texte-discret);
-  padding         : 14px 30px;
-  display         : flex;
-  justify-content : space-evenly;
-  align-items     : center;
+  background: var(--blanc); border-top: 1px solid var(--bordure);
+  padding: 28px 80px; display: flex; justify-content: space-between; align-items: center;
 }
-/* Texte copyright */
-.pied-copyright {
-  font-size : 0.9em;
+.footer-left { display: flex; align-items: center; gap: 16px; }
+.footer-logo {
+  font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.4em;
+  color: var(--v1); text-decoration: none;
 }
-/* Le nom dans le footer en violet */
-.pied-nom {
-  color : var(--violet-clair);
+.footer-sep { width: 1px; height: 20px; background: var(--bordure2); }
+.pied-copyright { font-size: 0.78em; color: var(--texte3); font-weight: 300; letter-spacing: 0.3px; }
+.pied-nom { color: var(--v1); font-weight: 500; }
+.pied-separateur { color: var(--texte3); margin: 0 6px; }
+
+.pied-de-page .icones-reseaux {
+  padding-top: 0; display: flex; gap: 8px;
 }
-/* Le "|" séparateur */
-.pied-separateur {
-  color       : var(--texte-sombre);
-  font-weight : 500;
-  font-size   : 1.2em;
-  margin      : 0 6px;
-}
-/* Icônes dans le footer */
 .pied-de-page .icones-reseaux a {
-  font-size    : 1.4em;
-  padding-left : 8px;
-  color        : var(--texte-discret);
-  text-decoration: none;
-  transition   : color 0.2s ease;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--bordure);
+  color: var(--texte3); font-size: 1em; text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-spring);
+  will-change: transform;
 }
 .pied-de-page .icones-reseaux a:hover {
-  color : var(--violet-clair);
+  color: var(--v1); background: var(--gris-clair);
+  border-color: var(--v2); transform: translateY(-2px);
+}
+
+/* ================================================================
+   prefers-reduced-motion — override global
+================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
