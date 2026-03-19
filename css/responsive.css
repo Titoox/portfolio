@@ -1,269 +1,673 @@
 /* ================================================================
-   responsive.css — Adaptations pour les petits écrans
-   ──────────────────────────────────────────────────────────────
-   Les @media queries = des "conditions" CSS.
-   "Si l'écran est plus petit que X, alors applique ces styles."
-
-   On a 2 breakpoints (points de rupture) :
-   ① max-width: 1023px → Mobile (moins de 1024px de large)
-   ② min-width: 480px and max-width: 900px → Tablette
+   responsive.css — Portfolio Titouan Gaucher — v4 Responsive
+   Mobile-first · Breakpoints: 320 / 480 / 768 / 1024 / 1440px
+   
+   Stratégie :
+   - Base = mobile (< 480px)
+   - Chaque @media monte progressivement
+   - Hamburger menu sur < 768px
+   - Curseur personnalisé désactivé sur touch
+   - Hover réduit sur touch devices
 ================================================================ */
 
 
 /* ================================================================
-   ① MOBILE — Écrans inférieurs à 1024px
-   (smartphones, petits tablettes en portrait)
+   TOUCH / CURSEUR — Désactiver le curseur custom sur mobile
 ================================================================ */
-@media screen and (max-width: 1023px) {
-
-  /* ── Header ─────────────────────────────────────────── */
-  .en-tete {
-    padding         : 12px 20px;   /* Moins de padding sur les côtés */
-    flex-direction  : column;      /* Logo AU-DESSUS de la nav */
-    position        : relative;    /* Plus fixe sur mobile (évite les problèmes) */
-    background-color: #ffffff;
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto; }
+  .cursor { display: none; }
+  
+  /* Supprimer les effets hover coûteux sur touch */
+  .carte-projet:hover {
+    transform: none;
+    box-shadow: var(--ombre);
   }
-  .logo {
-    font-size : 1.4em;
-  }
-  /* Les liens de navigation se répartissent horizontalement */
-  .navigation__liste {
-    display         : flex;
-    justify-content : space-between;
-    margin          : 8px 0;
-    padding         : 0;
-  }
-  .navigation__liste a {
-    font-size : 0.9em;
-    margin    : 0 0.8rem;
-  }
-
-
-  /* ── Section Héro ─────────────────────────────────── */
-  section {
-    padding : 60px 20px; /* Beaucoup moins de marges */
-  }
-  .section-profil,
-  .section-projets,
-  .section-contact {
-    padding : 60px 20px;
-  }
-  .hero__bienvenue {
-    font-size : 1em;
-  }
-  .hero__nom {
-    font-size : 1.6em;
-  }
-  .hero__specialite {
-    font-size : 1em;
-    font-weight: 500;
-  }
-  .bouton-principal {
-    font-size : 0.95em;
-  }
-
-
-  /* ── Section Profil ──────────────────────────────── */
-  .titre-section {
-    font-size : 1.2em;
-  }
-  /* En mobile : photo EN DESSUS du texte (on inverse l'ordre) */
-  .profil-grille {
-    display         : flex;
-    flex-direction  : column-reverse; /* Photo en premier, texte ensuite */
-    align-items     : center;
-    gap             : 25px;
-  }
-  .profil-texte {
-    font-size   : 0.95em;
-    text-align  : left;
-    line-height : 1.7;
-  }
-  .profil-photo img {
-    width : 180px; /* Photo plus petite */
-  }
-
-
-  /* ── Section Compétences ─────────────────────────── */
-  .carte-competence {
-    width : 230px; /* Cartes plus étroites */
-  }
-  .competence-liste p {
-    font-size : 1em;
-    line-height : 2;
-  }
-  /* Les cartes passent en colonne sur très petit écran */
-  .competences-grille {
-    flex-direction : column;
-    align-items    : center;
-  }
-
-
-  /* ── Section Projets ─────────────────────────────── */
-  /* 1 seule colonne de projets */
-  .projets-grille {
-    grid-template-columns : 320px;
-  }
-  .titre-section {
-    margin-top : 8px;
-  }
-
-
-  /* ── Section Contact ─────────────────────────────── */
-  .contact-zone {
-    flex-direction  : column;
-    align-items     : center;
-  }
-  .contact-carte iframe {
-    width  : 280px;
-    height : 300px;
-  }
-
-
-  /* ── Footer ──────────────────────────────────────── */
-  .pied-de-page {
-    flex-direction : column;
-    gap            : 10px;
-    padding        : 14px;
-    text-align     : center;
-  }
-  .pied-copyright {
-    font-size : 0.8em;
-  }
-  /* Cache les icônes du footer sur très petit écran */
-  .pied-de-page .icones-reseaux a {
-    font-size : 0; /* Largeur 0 = invisible */
-  }
-
-  /* ── Bouton retour en haut ───────────────────────── */
-  #bouton-haut {
-    margin-bottom : 10px;
-  }
-
+  .carte-projet:hover .projet-image img { transform: none; }
+  .carte-competence:hover { transform: none; }
+  .icones-reseaux a:hover { transform: none; }
+  .bouton-principal:hover { transform: none; }
 }
-/* FIN @media mobile */
 
 
 /* ================================================================
-   ② TABLETTE — Écrans entre 480px et 900px
-   (tablettes en portrait/paysage, grands smartphones en paysage)
-   Ces règles s'ajoutent aux règles mobile et les surchargent.
+   BASE MOBILE — < 480px  (iPhone SE, petits Android)
 ================================================================ */
-@media only screen and (min-width: 480px) and (max-width: 900px) {
+@media screen and (max-width: 479px) {
 
-  /* ── Header ─────────────────────────────────────── */
-  /* Sur tablette, logo et nav sont à nouveau côte à côte */
+  /* ── Globals ── */
+  html { font-size: 15px; }
+
+  /* ── HEADER / NAV HAMBURGER ── */
   .en-tete {
-    flex-direction : row;
+    padding: 0 20px;
+    height: 60px;
+    position: fixed;
+    justify-content: space-between;
   }
+  .en-tete::before { display: none; }
+
+  .logo-p { font-size: 1.8em; }
+  .logo-rest { font-size: 0.85em; letter-spacing: 2px; }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    z-index: 1001;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--texte);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-smooth);
+    transform-origin: center;
+  }
+  /* Croix quand ouvert */
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Menu mobile overlay */
+  .navigation {
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(250,249,255,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--bordure);
+    transform: translateY(-110%);
+    transition: transform 0.35s var(--ease-smooth);
+    z-index: 996;
+    padding: 0;
+  }
+  .navigation.open {
+    transform: translateY(0);
+  }
+  .navigation__liste {
+    flex-direction: column;
+    padding: 12px 0 16px;
+  }
+  .navigation__liste li { border-bottom: 1px solid var(--bordure); }
+  .navigation__liste li:last-child { border-bottom: none; }
   .navigation__liste a {
-    font-size : 1.1em;
+    display: block;
+    padding: 14px 24px;
+    font-size: 0.82em;
+    margin: 0;
+    letter-spacing: 2px;
   }
-  .logo {
-    font-size : 1.6em;
+  .navigation__liste a::after { display: none; }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding-top: 60px;
+  }
+  .hero::after { display: none; } /* Orbe trop grand sur mobile */
+
+  .hero__left {
+    padding: 40px 24px 24px;
+    order: 1;
+  }
+  .hero__number { display: none; }
+  .hero__scroll-hint { display: none; }
+
+  .hero__eyebrow { margin-bottom: 16px; }
+  .hero__eyebrow-text { font-size: 0.68em; letter-spacing: 2px; }
+
+  .hero__titre {
+    font-size: clamp(2.4em, 10vw, 3.2em);
+    letter-spacing: -1.5px;
+  }
+  .hero__nom-block { letter-spacing: -2px; }
+
+  .hero__tagline {
+    font-size: 0.9em;
+    margin: 16px 0 28px;
+    max-width: 100%;
   }
 
-
-  /* ── Héro ────────────────────────────────────────── */
-  .hero__bienvenue {
-    font-size : 1.5em;
-  }
-  .hero__nom {
-    font-size : 1.9em;
-  }
-  .hero__specialite {
-    font-size : 1.4em;
-    font-weight: 500;
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
   }
   .bouton-principal {
-    font-size : 1.2em;
+    font-size: 0.75em;
+    padding: 12px 24px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Photo hero : petite vignette sous le texte */
+  .hero__right {
+    order: 2;
+    padding: 0 24px 40px;
+    justify-content: flex-start;
+  }
+  .hero__photo-frame {
+    width: 100%;
+    max-width: 280px;
+  }
+  .hero__photo-frame::before { display: none; }
+  .hero__photo-frame img {
+    width: 100%;
+    max-width: 220px;
+    box-shadow: 16px 20px 50px rgba(108,92,231,0.18);
+  }
+  .hero__photo-tag {
+    bottom: -12px; left: -10px;
+    padding: 8px 14px;
+  }
+  .hero__photo-tag span { font-size: 0.72em; }
+
+  /* Icônes réseaux : horizontaux sous la photo */
+  .icones-reseaux {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 10px;
   }
   .icones-reseaux a {
-    font-size : 1.8em;
+    width: 38px; height: 38px;
+    border-radius: 8px;
   }
 
+  /* Vagues masquées sur très petit écran */
+  .vagues-conteneur { display: none; }
 
-  /* ── Profil ──────────────────────────────────────── */
-  .titre-section {
-    font-size : 1.6em;
-    margin-top : 8px;
+  /* ── SECTION PROFIL ── */
+  .section-profil { padding: 60px 0; }
+  .section-profil::after { display: none; }
+
+  .profil-container { padding: 0 24px; }
+
+  .section-header { margin-bottom: 40px; }
+  .titre-section { font-size: clamp(2em, 8vw, 2.6em); }
+  .section-label { font-size: 0.65em; }
+
+  /* Grid → colonne unique */
+  .profil-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 60px;
   }
-  .profil-texte {
-    font-size   : 1.1em;
-    line-height : 1.9;
+  .profil-divider { display: none; }
+
+  .profil-texte h3 { font-size: 1.4em; }
+  .profil-texte p { font-size: 0.92em; }
+
+  .profil-photo-col {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-  .profil-photo img {
-    width : 220px;
+  .profil-photo-col img {
+    width: 140px;
+    max-width: 140px;
+    flex-shrink: 0;
   }
+  .profil-stats { flex: 1; min-width: 140px; }
+  .profil-stat { padding: 12px 14px; }
+  .profil-stat-num { font-size: 1.6em; }
+
   .bouton-cv {
-    padding   : 14px 30px;
-    font-size : 16px;
+    font-size: 0.72em;
+    padding: 10px 20px;
   }
 
-
-  /* ── Compétences ─────────────────────────────────── */
-  .carte-competence {
-    width : 220px;
-  }
-  .carte-competence h4 {
-    font-size : 1.2em;
-  }
-  .competence-liste p {
-    font-size : 1.2em;
-  }
-  /* Sur tablette : les cartes s'affichent à nouveau en ligne */
+  /* Compétences : colonne */
+  .competences-section { padding-top: 40px; }
+  .competences-intro { font-size: 0.9em; margin-bottom: 32px; }
   .competences-grille {
-    flex-direction  : row;
-    justify-content : space-evenly;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    border-radius: 8px;
   }
+  .carte-competence { padding: 28px 20px; }
+  .carte-competence h4 { font-size: 1.1em; margin-bottom: 16px; }
+  .carte-competence .fa-code,
+  .carte-competence .fa-gear,
+  .carte-competence .fa-paintbrush {
+    width: 44px; height: 44px; line-height: 44px;
+    font-size: 1.1em; border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .competence-liste p { font-size: 0.88em; line-height: 2.0; }
 
+  /* ── SECTION PROJETS ── */
+  .section-projets { padding: 60px 0; }
+  .section-projets::after { display: none; }
+  .projets-container { padding: 0 24px; }
 
-  /* ── Projets ─────────────────────────────────────── */
-  /* 2 colonnes sur tablette */
+  /* 1 colonne, pas de grid complexe */
   .projets-grille {
-    grid-template-columns : 340px 340px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .projet-description {
-    font-size : 1.1em;
-  }
-  .projet-technos .fa-brands,
-  .projet-technos .fa-solid {
-    font-size : 1.5em;
-  }
-  .lien-projet {
-    font-size : 1em;
-  }
+  .carte-projet:nth-child(n) { grid-column: span 1; }
+  .carte-projet { aspect-ratio: 16/9; }
 
+  /* Overlay toujours visible sur touch */
+  .projet-infos {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(108,92,231,0.85) 0%, transparent 60%);
+  }
+  .projet-description { transform: translateY(0); font-size: 0.88em; }
+  .projet-pied { transform: translateY(0); }
 
-  /* ── Contact ─────────────────────────────────────── */
-  .contact-coordonnees,
-  .contact-infos span {
-    font-size : 1em;
-  }
-  .champ-saisie {
-    font-size : 1.1em;
-  }
-  .bouton-envoyer {
-    font-size : 1.1em;
-  }
-  .contact-carte iframe {
-    width  : 380px;
-    height : 320px;
-  }
+  /* ── SECTION CONTACT ── */
+  .section-contact { padding: 60px 0; }
+  .contact-container { padding: 0 24px; }
 
+  .formulaire-fenetre { width: 100%; border-radius: 10px; }
+  .fenetre-barre-title { display: none; }
+  .fenetre-corps { flex-direction: column; }
+  .contact-infos {
+    flex: none;
+    padding: 28px 24px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--bordure);
+  }
+  .contact-titre { font-size: 1.3em; }
+  .contact-accroche { font-size: 0.82em; }
+  .contact-liste { padding: 20px 20px 24px; gap: 2px; }
+  .contact-ligne {
+    font-size: 0.82em;
+    padding: 10px 12px;
+  }
+  .contact-ligne:not(.contact-ligne--info):hover { transform: none; }
 
-  /* ── Footer ──────────────────────────────────────── */
+  /* ── FOOTER ── */
   .pied-de-page {
-    flex-direction : row; /* Logo et icônes côte à côte */
-    padding        : 14px 30px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 24px;
+    text-align: center;
   }
-  .pied-copyright {
-    font-size : 1em;
-    text-align : center;
+  .footer-left { flex-direction: column; gap: 8px; }
+  .footer-sep { display: none; }
+  .pied-copyright { font-size: 0.72em; }
+  .pied-de-page .icones-reseaux { justify-content: center; }
+}
+
+
+/* ================================================================
+   MOBILE LARGE — 480px → 767px  (grands smartphones, iPhone Pro Max)
+================================================================ */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+
+  html { font-size: 15.5px; }
+
+  .en-tete { padding: 0 28px; height: 64px; }
+
+  /* Hamburger toujours actif */
+  .nav-toggle { display: flex; }
+  .navigation {
+    top: 64px;
+    transform: translateY(-110%);
   }
-  .pied-de-page .icones-reseaux a {
-    font-size : 0; /* Toujours caché sur petits formats */
+  .navigation.open { transform: translateY(0); }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding-top: 64px;
+    min-height: 100svh;
+  }
+  .hero__left { padding: 48px 32px 28px; }
+  .hero__number { display: none; }
+  .hero__scroll-hint { display: none; }
+
+  .hero__titre { font-size: clamp(2.8em, 9vw, 3.8em); }
+  .hero__tagline { font-size: 0.95em; max-width: 420px; }
+  .hero__actions { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+  .bouton-principal { width: auto; }
+
+  .hero__right { padding: 0 32px 48px; }
+  .hero__photo-frame img { max-width: 260px; }
+  .icones-reseaux {
+    position: static; transform: none;
+    flex-direction: row; margin-top: 48px; gap: 10px;
+  }
+  .vagues-conteneur { display: none; }
+
+  .section-profil { padding: 72px 0; }
+  .profil-container { padding: 0 32px; }
+  .profil-grid { grid-template-columns: 1fr; margin-bottom: 64px; }
+  .profil-divider { display: none; }
+  .profil-photo-col { flex-direction: row; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .profil-photo-col img { width: 160px; max-width: 160px; }
+  .profil-stats { flex: 1; }
+
+  .competences-grille { grid-template-columns: 1fr 1fr; }
+  .carte-competence:last-child { grid-column: span 2; }
+
+  .section-projets { padding: 72px 0; }
+  .projets-container { padding: 0 32px; }
+  .projets-grille { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .carte-projet:nth-child(n) { grid-column: span 1; }
+  .carte-projet:nth-child(1) { grid-column: span 2; }
+  .projet-infos { opacity: 1; }
+  .projet-description { transform: translateY(0); }
+  .projet-pied { transform: translateY(0); }
+
+  .section-contact { padding: 72px 0; }
+  .contact-container { padding: 0 32px; }
+  .formulaire-fenetre { width: 100%; }
+  .fenetre-corps { flex-direction: column; }
+  .contact-infos { flex: none; border-right: none; border-bottom: 1px solid var(--bordure); padding: 28px 28px 20px; }
+  .contact-liste { padding: 20px 24px 28px; }
+
+  .pied-de-page { padding: 20px 32px; gap: 10px; }
+  .footer-left { gap: 12px; }
+  .footer-sep { display: block; }
+}
+
+
+/* ================================================================
+   TABLETTE — 768px → 1023px
+================================================================ */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+  html { font-size: 16px; }
+
+  .en-tete { padding: 0 40px; height: 66px; }
+  
+  /* Hamburger sur tablette aussi */
+  .nav-toggle { display: flex; }
+  .navigation {
+    top: 66px;
+    transform: translateY(-110%);
+  }
+  .navigation.open { transform: translateY(0); }
+  .navigation__liste { flex-direction: row; padding: 0; }
+  .navigation__liste li { border-bottom: none; }
+  .navigation__liste a {
+    padding: 20px 16px;
+    font-size: 0.72em;
+  }
+  .navigation__liste a::after { display: block; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding-top: 66px;
+    min-height: 100svh;
+  }
+  .hero__left {
+    padding: 60px 48px 32px;
+    order: 1;
+  }
+  .hero__number { font-size: 12em; left: 40px; }
+  .hero__scroll-hint { display: none; }
+
+  .hero__titre { font-size: clamp(3.2em, 7vw, 4.5em); }
+  .hero__tagline { max-width: 520px; }
+  .hero__actions { gap: 20px; }
+
+  .hero__right {
+    order: 2;
+    padding: 0 48px 60px;
+    justify-content: flex-start;
+  }
+  .hero__photo-frame img { width: 280px; }
+  .icones-reseaux {
+    position: static; transform: none;
+    flex-direction: row; margin-top: 60px; gap: 10px;
   }
 
+  .vagues-conteneur { display: block; }
+  .vagues { height: 10vh; }
+
+  /* Profil */
+  .section-profil { padding: 90px 0; }
+  .profil-container { padding: 0 48px; }
+
+  .profil-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 72px;
+  }
+  /* Masquer le divider vertical, garder la grille 2 col */
+  .profil-divider { display: none; }
+  .profil-grid > .profil-texte { grid-column: 1; }
+  .profil-grid > .profil-photo-col { grid-column: 2; }
+
+  .profil-photo-col img { width: 100%; max-width: 260px; }
+  .profil-stats { flex-direction: row; gap: 12px; }
+  .profil-stat { flex: 1; }
+
+  /* Compétences : 3 colonnes préservées */
+  .competences-grille { grid-template-columns: repeat(3, 1fr); }
+  .carte-competence { padding: 32px 18px; }
+
+  /* Projets : 2 colonnes */
+  .section-projets { padding: 90px 0; }
+  .projets-container { padding: 0 48px; }
+  .projets-grille {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .carte-projet:nth-child(n) { grid-column: span 1; }
+  .carte-projet:nth-child(1) { grid-column: span 2; }
+
+  /* Overlay visible sur touch */
+  .projet-infos { opacity: 1; }
+  .projet-description { transform: translateY(0); }
+  .projet-pied { transform: translateY(0); }
+
+  /* Contact */
+  .section-contact { padding: 90px 0; }
+  .contact-container { padding: 0 48px; }
+  .formulaire-fenetre { width: 100%; max-width: 640px; }
+  .contact-infos { flex: 0 0 200px; padding: 36px 24px; }
+  .contact-liste { padding: 28px 24px; }
+
+  .pied-de-page { padding: 20px 48px; }
+  .titre-section { font-size: clamp(2.2em, 5vw, 3em); }
 }
-/* FIN @media tablette */
+
+
+/* ================================================================
+   DESKTOP — 1024px → 1439px  (laptops standard)
+================================================================ */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+
+  /* Nav hamburger désactivé */
+  .nav-toggle { display: none; }
+  .navigation {
+    position: static;
+    transform: none !important;
+    background: none;
+    border: none;
+    backdrop-filter: none;
+    padding: 0;
+  }
+  .navigation__liste {
+    flex-direction: row;
+    padding: 0;
+  }
+  .navigation__liste li { border-bottom: none; }
+  .navigation__liste a { padding: 8px 16px; font-size: 0.75em; margin: 0; }
+  .navigation__liste a::after { display: block; }
+
+  .en-tete { padding: 0 48px; height: 68px; }
+
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    display: grid;
+    padding-top: 0;
+  }
+  .hero__left { padding: 100px 48px 70px 60px; }
+  .hero__right { padding: 80px 48px 70px 0; }
+  .hero__number { font-size: 15em; left: 48px; }
+  .hero__scroll-hint { display: flex; bottom: 36px; left: 60px; }
+
+  .hero__titre { font-size: clamp(3.2em, 5vw, 4.8em); }
+
+  .icones-reseaux {
+    position: absolute;
+    right: -16px; top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    margin-top: 0; gap: 8px;
+  }
+
+  .vagues-conteneur { display: block; }
+
+  .section-profil { padding: 110px 0; }
+  .profil-container { padding: 0 60px; }
+  .profil-grid {
+    grid-template-columns: 1fr 60px 1fr;
+    margin-bottom: 90px;
+  }
+  .profil-divider { display: flex; }
+
+  .section-projets { padding: 110px 0; }
+  .projets-container { padding: 0 60px; }
+  .projets-grille {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+  }
+  .carte-projet:nth-child(1) { grid-column: span 4; }
+  .carte-projet:nth-child(2) { grid-column: span 2; }
+  .carte-projet:nth-child(3) { grid-column: span 2; }
+  .carte-projet:nth-child(4) { grid-column: span 2; }
+  .carte-projet:nth-child(5) { grid-column: span 3; }
+  .carte-projet:nth-child(6) { grid-column: span 3; }
+  /* Overlay au hover rétabli */
+  .projet-infos { opacity: 0; }
+  .projet-description { transform: translateY(8px); }
+  .projet-pied { transform: translateY(8px); }
+
+  .section-contact { padding: 110px 0; }
+  .contact-container { padding: 0 60px; }
+  .formulaire-fenetre { width: 680px; }
+  .fenetre-barre-title { display: block; }
+  .fenetre-corps { flex-direction: row; }
+  .contact-infos { flex: 0 0 220px; border-right: 1px solid var(--bordure); border-bottom: none; padding: 44px 32px; }
+  .contact-liste { padding: 36px 28px; }
+
+  .pied-de-page { padding: 24px 60px; }
+}
+
+
+/* ================================================================
+   GRAND ÉCRAN — ≥ 1440px  (desktop large, 4K)
+================================================================ */
+@media screen and (min-width: 1440px) {
+
+  html { font-size: 17px; }
+
+  .nav-toggle { display: none; }
+  .navigation {
+    position: static;
+    transform: none !important;
+    background: none; border: none;
+    backdrop-filter: none; padding: 0;
+  }
+  .navigation__liste { flex-direction: row; padding: 0; }
+  .navigation__liste li { border-bottom: none; }
+  .navigation__liste a::after { display: block; }
+
+  .en-tete { padding: 0 80px; }
+
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    padding-top: 0;
+  }
+  .hero__left { padding: 130px 60px 90px 100px; }
+  .hero__right { padding: 110px 80px 90px 0; }
+  .hero__photo-frame img { width: 360px; }
+  .hero__number { font-size: 18em; left: 80px; }
+  .hero__scroll-hint { left: 100px; }
+
+  .hero__titre { font-size: clamp(4.5em, 5.5vw, 6em); }
+
+  .icones-reseaux {
+    position: absolute;
+    right: -16px; top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .section-profil,
+  .section-projets,
+  .section-contact { padding: 140px 0; }
+
+  .profil-container,
+  .projets-container,
+  .contact-container { max-width: 1400px; padding: 0 100px; }
+
+  .profil-grid {
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    margin-bottom: 110px;
+  }
+  .profil-divider { display: flex; }
+  .profil-photo-col img { max-width: 340px; }
+
+  .titre-section { font-size: 3.6em; }
+
+  .projets-grille { gap: 24px; }
+
+  .formulaire-fenetre { width: 780px; }
+  .contact-infos { flex: 0 0 260px; padding: 56px 44px; }
+  .contact-liste { padding: 44px 38px; }
+
+  .pied-de-page { padding: 28px 100px; }
+
+  /* Section labels décoratifs plus visibles */
+  .section-profil::after { font-size: 14em; }
+  .section-projets::after { font-size: 14em; }
+}
+
+
+/* ================================================================
+   UTILITAIRES — Accessibilité & print
+================================================================ */
+
+/* Focus visible pour navigation clavier */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--v1);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Réduire animations si préférence système */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll, .scroll-left, .scroll-right {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Images fluides globales */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

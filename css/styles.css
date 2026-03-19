@@ -79,6 +79,11 @@ input, textarea, select { cursor: text; }
   contain: strict;
 }
 
+
+/* ── NAV TOGGLE (hamburger) — Caché par défaut sur desktop ── */
+.nav-toggle {
+  display: none;
+}
 /* ================================================================
    HEADER
 ================================================================ */
