@@ -741,3 +741,41 @@ img {
     gap: 0;
   }
 }
+
+
+/* ================================================================
+   FIXES CIBLÉS — Safe areas iOS + menu + double photo
+================================================================ */
+
+/* ── Fix 1 : Hero collé en haut sur iPhone (Dynamic Island) ── */
+@media screen and (max-width: 479px) {
+  .hero {
+    padding-top: calc(60px + env(safe-area-inset-top) + 12px);
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .hero {
+    padding-top: calc(64px + env(safe-area-inset-top) + 12px);
+  }
+}
+
+/* ── Fix 2 : Menu hamburger — marge bas insuffisante ── */
+@media screen and (max-width: 479px) {
+  .navigation__liste {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .navigation__liste {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Fix 3 : Double photo — masquer celle du profil sur mobile ── */
+@media screen and (max-width: 767px) {
+  .profil-photo-col img {
+    display: none;
+  }
+}
