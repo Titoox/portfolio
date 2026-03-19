@@ -671,3 +671,73 @@ img {
   height: auto;
   display: block;
 }
+
+
+/* ================================================================
+   FIXES MOBILE — Corrections visuelles (captures IMG_6473/74)
+================================================================ */
+@media screen and (max-width: 767px) {
+
+  /* ── Photo hero : taille réduite et mieux cadrée ── */
+  .hero__right {
+    padding: 0 24px 32px;
+  }
+  .hero__photo-frame {
+    max-width: 200px;
+  }
+  .hero__photo-frame img {
+    max-width: 200px;
+    width: 200px;
+  }
+
+  /* ── Icônes réseaux : sous le badge, pas superposées ── */
+  .icones-reseaux {
+    position: static !important;
+    transform: none !important;
+    flex-direction: row !important;
+    margin-top: 16px !important;
+    gap: 10px;
+    /* Passer devant le badge "Open to work" */
+    z-index: 3;
+    position: relative !important;
+  }
+
+  /* Badge "Open to work" repositionné */
+  .hero__photo-tag {
+    bottom: auto;
+    top: auto;
+    left: auto;
+    position: relative;
+    margin-top: 12px;
+    display: inline-flex;
+  }
+
+  /* Réorganiser le photo-frame en colonne */
+  .hero__photo-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero__photo-frame img {
+    border-radius: 4px;
+  }
+
+  /* ── Header : supprimer la double ligne ── */
+  /* Le menu ouvert ne doit pas afficher "CONTACT" en dehors */
+  .navigation {
+    /* S'assurer que le menu part bien du bas du header sans doublon */
+    box-shadow: 0 4px 20px rgba(108,92,231,0.08);
+  }
+  /* Cacher le ::before décoratif qui crée la ligne */
+  .en-tete::before {
+    display: none;
+  }
+
+  /* ── Hero : réduire l'espace global ── */
+  .hero__left {
+    padding-bottom: 16px;
+  }
+  .hero {
+    gap: 0;
+  }
+}
