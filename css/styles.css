@@ -256,9 +256,39 @@ input, textarea, select { cursor: text; }
 
 /* Colonne droite */
 .hero__right {
-  position: relative; z-index: 1; /* position:relative pour ancrer .icones-reseaux en absolu */
+  position: relative; z-index: 1;
   display: flex; align-items: center; justify-content: center;
   padding: 100px 60px 80px 0;
+}
+
+/* Wrapper interne : photo + icônes côte à côte en flexbox — plus de position:absolute */
+.hero__right-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Icônes hero — colonne verticale en flexbox statique */
+.icones-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.icones-hero a {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  background: var(--blanc); border: 1px solid var(--bordure);
+  border-radius: 10px; color: var(--texte2); font-size: 1em;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.icones-hero a:hover {
+  background: var(--v1); color: #fff;
+  border-color: var(--v1);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px var(--v-glow);
 }
 
 .hero__photo-frame {
@@ -302,34 +332,21 @@ input, textarea, select { cursor: text; }
 }
 .hero__photo-tag span { font-size: 0.8em; color: var(--texte2); font-weight: 500; }
 
-/* Réseaux — ancrées sur .hero__right (position:relative), à droite de la photo */
-/* Icônes hero — positionnées en absolu sur .hero__right */
-.icones-reseaux {
-  position: absolute; right: 8px; top: 50%;
-  transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 8px; z-index: 3;
+/* ── Icônes footer ── */
+.icones-footer {
+  display: flex; flex-direction: row; gap: 8px;
 }
-/* Icônes footer — reset du positionnement absolu hérité */
-.icones-reseaux--footer {
-  position: static;
-  transform: none;
-  flex-direction: row;
+.icones-footer a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--bordure);
+  color: var(--texte3); font-size: 1em; text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease,
+              transform 0.2s var(--ease-spring);
+  will-change: transform;
 }
-.icones-reseaux a {
-  display: flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px;
-  background: var(--blanc); border: 1px solid var(--bordure);
-  border-radius: 10px; color: var(--texte2); font-size: 1em;
-  text-decoration: none;
-  /* will-change uniquement sur les éléments qui vont bouger */
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-.icones-reseaux a:hover {
-  background: var(--v1); color: #fff;
-  border-color: var(--v1);
-  transform: scale(1.1) translateX(-2px);
-  box-shadow: 0 8px 20px var(--v-glow);
+.icones-footer a:hover {
+  color: var(--v1); background: var(--gris-clair);
+  border-color: var(--v2); transform: translateY(-2px);
 }
 
 /* Vagues */
@@ -449,20 +466,20 @@ input, textarea, select { cursor: text; }
   padding: 130px 0;
   background: var(--off-white);
   position: relative; overflow: hidden;
-  /* contain:content remplacé par layout — évite l'isolation du stacking context qui empêchait z-index sur ::after */
-  contain: layout;
+  /* contain retiré — il créait un stacking context isolé cassant le z-index */
 }
 .section-profil::before {
   content: "";
   position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--v1), transparent);
 }
-.section-profil::after {
-  content: "About";
-  position: absolute; right: -2%; top: 5%;
-  transform: rotate(90deg);
+/* Texte décoratif "About" — vrai élément HTML pour un z-index fiable */
+.section-deco-text {
+  position: absolute;
+  right: -60px; top: 50%;
+  transform: translateY(-70%) rotate(90deg);
   font-family: var(--serif); font-size: 12em; font-weight: 300;
-  color: rgba(108,92,231,0.03);
+  color: rgba(108,92,231,0.04);
   pointer-events: none; user-select: none;
   letter-spacing: -5px; white-space: nowrap;
   z-index: 0;
@@ -474,7 +491,7 @@ input, textarea, select { cursor: text; }
   display: grid;
   grid-template-columns: 1fr 80px 1fr;
   align-items: start; margin-bottom: 100px;
-  position: relative; z-index: 1; /* Passe devant .section-profil::after */
+  position: relative; z-index: 1;
 }
 .profil-divider {
   display: flex; flex-direction: column; align-items: center;
@@ -852,20 +869,7 @@ input, textarea, select { cursor: text; }
 .pied-nom { color: var(--v1); font-weight: 500; }
 .pied-separateur { color: var(--texte3); margin: 0 6px; }
 
-.pied-de-page .icones-reseaux {
-  padding-top: 0; display: flex; gap: 8px;
-}
-.pied-de-page .icones-reseaux a {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--bordure);
-  color: var(--texte3); font-size: 1em; text-decoration: none;
-  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-spring);
-  will-change: transform;
-}
-.pied-de-page .icones-reseaux a:hover {
-  color: var(--v1); background: var(--gris-clair);
-  border-color: var(--v2); transform: translateY(-2px);
-}
+/* .pied-de-page .icones-reseaux remplacé par .icones-footer (voir plus haut) */
 
 /* ================================================================
    prefers-reduced-motion — override global

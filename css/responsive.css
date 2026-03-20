@@ -25,7 +25,7 @@
   }
   .carte-projet:hover .projet-image img { transform: none; }
   .carte-competence:hover { transform: none; }
-  .icones-reseaux a:hover { transform: none; }
+  .icones-hero a:hover { transform: none; }
   .bouton-principal:hover { transform: none; }
 }
 
@@ -171,14 +171,14 @@
   .hero__photo-tag span { font-size: 0.72em; }
 
   /* Icônes réseaux : horizontaux sous la photo */
-  .icones-reseaux {
+  .icones-hero {
     position: static;
     transform: none;
     flex-direction: row;
     margin-top: 40px;
     gap: 10px;
   }
-  .icones-reseaux a {
+  .icones-hero a {
     width: 38px; height: 38px;
     border-radius: 8px;
   }
@@ -299,7 +299,7 @@
   .footer-left { flex-direction: column; gap: 8px; }
   .footer-sep { display: none; }
   .pied-copyright { font-size: 0.72em; }
-  .pied-de-page .icones-reseaux { justify-content: center; }
+  .icones-footer { justify-content: center; }
 }
 
 
@@ -337,7 +337,7 @@
 
   .hero__right { padding: 0 32px 48px; }
   .hero__photo-frame img { max-width: 260px; }
-  .icones-reseaux {
+  .icones-hero {
     position: static; transform: none;
     flex-direction: row; margin-top: 48px; gap: 10px;
   }
@@ -424,7 +424,7 @@
     justify-content: flex-start;
   }
   .hero__photo-frame img { width: 280px; }
-  .icones-reseaux {
+  .icones-hero {
     position: static; transform: none;
     flex-direction: row; margin-top: 60px; gap: 10px;
   }
@@ -519,7 +519,7 @@
 
   .hero__titre { font-size: clamp(3.2em, 5vw, 4.8em); }
 
-  .icones-reseaux {
+  .icones-hero {
     position: absolute;
     right: -16px; top: 50%;
     transform: translateY(-50%);
@@ -599,7 +599,7 @@
 
   .hero__titre { font-size: clamp(4.5em, 5.5vw, 6em); }
 
-  .icones-reseaux {
+  .icones-hero {
     position: absolute;
     right: -16px; top: 50%;
     transform: translateY(-50%);
@@ -691,7 +691,7 @@ img {
   }
 
   /* ── Icônes réseaux : sous le badge, pas superposées ── */
-  .icones-reseaux {
+  .icones-hero {
     position: static !important;
     transform: none !important;
     flex-direction: row !important;
