@@ -266,6 +266,7 @@ input, textarea, select { cursor: text; }
   display: flex;
   align-items: center;
   gap: 16px;
+  align-self: center;
 }
 
 /* Icônes hero — colonne verticale en flexbox statique */
@@ -468,7 +469,6 @@ input, textarea, select { cursor: text; }
   padding: 130px 0;
   background: var(--off-white);
   position: relative; overflow: hidden;
-  /* contain retiré — il créait un stacking context isolé cassant le z-index */
 }
 .section-profil::before {
   content: "";
@@ -478,10 +478,10 @@ input, textarea, select { cursor: text; }
 /* Texte décoratif "About" — vrai élément HTML pour un z-index fiable */
 .section-deco-text {
   position: absolute;
-  right: -40px; top: 42%;
+  right: -80px; top: 42%;
   transform: translateY(-50%) rotate(90deg);
   font-family: var(--serif); font-size: 12em; font-weight: 300;
-  color: rgba(108,92,231,0.07);
+  color: rgba(108,92,231,0.05);
   pointer-events: none; user-select: none;
   letter-spacing: -5px; white-space: nowrap;
   z-index: 0;
@@ -641,6 +641,7 @@ input, textarea, select { cursor: text; }
   background: var(--blanc);
   position: relative;
   border-top: 1px solid var(--bordure);
+  overflow: hidden;
   contain: content;
 }
 .section-projets::before {
@@ -650,7 +651,7 @@ input, textarea, select { cursor: text; }
 }
 .section-projets::after {
   content: "Work";
-  position: absolute; left: -1%; top: 50%;
+  position: absolute; left: -3%; top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   font-family: var(--serif); font-size: 12em; font-weight: 300;
   color: rgba(108,92,231,0.04);
