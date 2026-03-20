@@ -39,6 +39,9 @@ const cursor = document.getElementById('cursor');
 const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
 if (cursor && !isTouch) {
+  /* Appliquer cursor:none uniquement quand le curseur custom est actif */
+  document.body.style.cursor = 'none';
+
   document.addEventListener('mousemove', (e) => {
     cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
   }, { passive: true });
@@ -83,6 +86,7 @@ if (navToggle && navigation) {
     if (window.innerWidth >= 1024) {
       navToggle.classList.remove('open');
       navigation.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false'); /* Sync accessibilité au resize */
       document.body.style.overflow = '';
     }
   }, { passive: true });
