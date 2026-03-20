@@ -316,11 +316,11 @@ input, textarea, select { cursor: text; }
   /* Pas de transition sur filter */
 }
 
-/* Badge "Open to work" */
+/* Badge "Open to work" — positionné sous la photo, aligné à gauche */
 .hero__photo-tag {
-  position: absolute; bottom: -16px; left: -30px;
+  position: absolute; bottom: -20px; left: 0;
   background: var(--blanc); border: 1px solid var(--bordure2);
-  border-radius: 8px; padding: 12px 18px; z-index: 2;
+  border-radius: 8px; padding: 10px 16px; z-index: 2;
   box-shadow: 0 8px 24px rgba(108,92,231,0.10);
   display: flex; align-items: center; gap: 10px;
 }
@@ -338,8 +338,10 @@ input, textarea, select { cursor: text; }
 }
 .icones-footer a {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--bordure);
-  color: var(--texte3); font-size: 1em; text-decoration: none;
+  width: 36px; height: 36px; border-radius: 8px;
+  border: 1px solid var(--bordure);
+  background: var(--blanc);
+  color: var(--texte2); font-size: 1.1em; text-decoration: none;
   transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease,
               transform 0.2s var(--ease-spring);
   will-change: transform;
@@ -476,10 +478,10 @@ input, textarea, select { cursor: text; }
 /* Texte décoratif "About" — vrai élément HTML pour un z-index fiable */
 .section-deco-text {
   position: absolute;
-  right: -60px; top: 50%;
-  transform: translateY(-70%) rotate(90deg);
+  right: -40px; top: 42%;
+  transform: translateY(-50%) rotate(90deg);
   font-family: var(--serif); font-size: 12em; font-weight: 300;
-  color: rgba(108,92,231,0.04);
+  color: rgba(108,92,231,0.07);
   pointer-events: none; user-select: none;
   letter-spacing: -5px; white-space: nowrap;
   z-index: 0;
