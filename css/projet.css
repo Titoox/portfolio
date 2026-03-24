@@ -151,11 +151,12 @@
 }
 
 .preview-badge {
-  position: absolute; top: -12px; right: 20px;
+  position: absolute; top: 14px; right: 14px;
   background: var(--v1); color: #fff;
   font-size: 0.65em; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
   box-shadow: 0 4px 16px rgba(108,92,231,0.5);
+  z-index: 2;
 }
 
 /* floating tags */
@@ -414,3 +415,10 @@
   .cta-section { grid-template-columns: 1fr; padding: 70px 30px; }
 }
   
+
+
+/* Fix: masquer pseudo-éléments du hero__photo-frame sur page projet */
+.preview-wrapper .hero__photo-frame::before,
+.preview-wrapper .hero__photo-frame::after {
+  display: none;
+}
