@@ -389,6 +389,11 @@
 }
 .cta-card__num { font-family: var(--serif); font-size: 5em; font-weight: 300; color: #fff; line-height: 1; }
 .cta-card__text { font-size: 0.78em; color: rgba(255,255,255,0.55); letter-spacing: 1px; margin-top: 8px; }
+.cta-card__icons {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin-bottom: 8px;
+}
+.cta-card__icons img { width: 56px; height: 56px; }
 
 /* ── FOOTER ── */
 
