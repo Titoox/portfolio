@@ -1,0 +1,47 @@
+/* scroll.css v4 — fix: filter:blur supprimé (perf), #bouton-haut dédupliqué */
+.scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.scroll-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition:
+    opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.scroll-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition:
+    opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.show {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Stagger pour les enfants d'une grille */
+.competences-grille .carte-competence:nth-child(1) { transition-delay: 0s; }
+.competences-grille .carte-competence:nth-child(2) { transition-delay: 0.12s; }
+.competences-grille .carte-competence:nth-child(3) { transition-delay: 0.24s; }
+
+.projets-grille .carte-projet:nth-child(1) { transition-delay: 0s; }
+.projets-grille .carte-projet:nth-child(2) { transition-delay: 0.08s; }
+.projets-grille .carte-projet:nth-child(3) { transition-delay: 0.16s; }
+.projets-grille .carte-projet:nth-child(4) { transition-delay: 0.24s; }
+.projets-grille .carte-projet:nth-child(5) { transition-delay: 0.32s; }
+.projets-grille .carte-projet:nth-child(6) { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll, .scroll-left, .scroll-right {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

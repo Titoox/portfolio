@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Portfolio de GAUCHER Titouan, développeur web junior & étudiant en BUT MMI." />
+  <meta name="theme-color" content="#6c5ce7">
+  <title>Portfolio · Titouan Gaucher</title>
+
+  <!-- Preconnect + preload fonts (évite le double round-trip du @import) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/scroll.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+</head>
+<body>
+
+  <!-- Curseur personnalisé -->
+  <div class="cursor" id="cursor"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+
+  <!-- ── HEADER ── -->
+  <header class="en-tete">
+    <a class="logo" href="#hero">
+      <span class="logo-p">P</span>
+      <span class="logo-rest">ortfolio</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="navigation" id="main-nav">
+      <ul class="navigation__liste">
+        <li><a href="#profil">À propos</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <div class="hero" id="hero">
+
+    <div class="hero__left scroll">
+      <span class="hero__number">01</span>
+
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-line"></span>
+        <span class="hero__eyebrow-text">Disponible · Troyes, France</span>
+      </div>
+
+      <h1 class="hero__titre">
+        <em>Bonjour,</em><br>
+        je suis<br>
+        <span class="hero__nom-block">Titouan<br>Gaucher</span>
+      </h1>
+
+      <p class="hero__tagline">
+        Développeur Web Junior & étudiant en BUT MMI —
+        j'allie rigueur technique et sensibilité artistique
+        pour créer des expériences web mémorables.
+      </p>
+
+      <div class="hero__actions">
+        <!-- Fix #4 : bouton → lien (navigation sémantique) -->
+        <a href="#profil" class="bouton-principal">
+          <i class="fa-solid fa-user"></i> Qui suis-je ?
+        </a>
+        <a class="hero__link-cv" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
+          Mon CV
+        </a>
+      </div>
+
+      <div class="hero__scroll-hint">Défiler</div>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__right-inner">
+        <div class="hero__photo-frame scroll-right">
+          <!-- Pas de loading="lazy" sur hero — above the fold -->
+          <img src="images/photo_profil.png" alt="Titouan Gaucher" />
+          <div class="hero__photo-tag">
+            <div class="hero__photo-tag-dot"></div>
+            <span>Open to work</span>
+          </div>
+        </div>
+        <nav class="icones-hero" aria-label="Réseaux sociaux">
+          <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="vagues-conteneur">
+      <svg class="vagues" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="vague-douce" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+        </defs>
+        <g class="parallaxe">
+          <use href="#vague-douce" x="48" y="0" fill="#faf9ff"/>
+          <use href="#vague-douce" x="48" y="3" fill="rgba(108,92,231,0.15)"/>
+          <use href="#vague-douce" x="48" y="5" fill="rgba(108,92,231,0.07)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── BOUTON HAUT ── -->
+  <button onclick="topFunction()" id="bouton-haut" title="Retour en haut" aria-label="Retour en haut de page">
+    <svg height="1.1em" viewBox="0 0 512 512">
+      <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/>
+    </svg>
+  </button>
+
+  <!-- ── SECTION PROFIL ── -->
+  <!-- Fix #3 : id ajouté sur h2 pour correspondre à aria-labelledby -->
+  <section id="profil" class="section-profil" aria-labelledby="titre-profil">
+    <span class="section-deco-text" aria-hidden="true">About</span>
+    <div class="profil-container">
+
+      <div class="section-header scroll">
+        <div class="section-label">02 — À propos</div>
+        <h2 class="titre-section" id="titre-profil">Qui je <em>suis</em></h2>
+      </div>
+
+      <div class="profil-grid">
+        <!-- Texte gauche -->
+        <div class="profil-texte scroll-left">
+          <h3>Créer, structurer,<br>rendre vivant.</h3>
+          <p>
+            Étudiant en BUT MMI, je conçois des interfaces web avec HTML5, CSS3
+            et PHP. Je m'attache à produire un code propre et structuré, en
+            transformant chaque maquette en une expérience fonctionnelle.
+          </p>
+          <p>
+            Passionné de photographie, j'apporte un soin particulier à la
+            composition et à l'esthétique visuelle. Cette double approche me
+            permet d'allier rigueur technique et sensibilité artistique dans
+            tous mes projets numériques.
+          </p>
+          <a class="bouton-cv" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
+            <i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV
+          </a>
+        </div>
+
+        <!-- Divider central -->
+        <div class="profil-divider scroll">
+          <div class="profil-divider-dot"></div>
+          <div class="profil-divider-line"></div>
+        </div>
+
+        <!-- Photo + stats droite -->
+        <div class="profil-photo-col scroll-right">
+          <!-- Fix #9 : lazy sur photo profil (below the fold) -->
+          <img loading="lazy" src="images/photo_profil.png" alt="Photo de profil de Titouan Gaucher" />
+          <div class="profil-stats">
+            <div class="profil-stat">
+              <div class="profil-stat-num">3+</div>
+              <div class="profil-stat-label">Années de formation</div>
+            </div>
+            <div class="profil-stat">
+              <div class="profil-stat-num">6+</div>
+              <div class="profil-stat-label">Projets réalisés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compétences -->
+      <div class="competences-section">
+        <div class="section-header scroll">
+          <div class="section-label">Savoir-faire</div>
+          <h2 class="titre-section">Mes <em>compétences</em></h2>
+        </div>
+
+        <p class="competences-intro scroll">
+          Côté code, je maîtrise les bases du web (HTML5/CSS3) et je dynamise
+          mes pages en PHP et JavaScript. Côté image, ma pratique de la
+          photographie m'apporte un œil affûté pour la composition et la colorimétrie.
+        </p>
+
+        <div class="competences-grille">
+          <div class="carte-competence scroll">
+            <h4><i class="fa-solid fa-code"></i><br/>Langages</h4>
+            <div class="competence-liste">
+              <p><i class="fa-brands fa-html5" style="color:#e96227"></i> HTML5</p>
+              <p><i class="fa-brands fa-css3" style="color:#254bde"></i> CSS3</p>
+              <p><i class="fa-brands fa-php" style="color:#7277ad"></i> PHP</p>
+              <p><i class="fa-brands fa-js" style="color:#efd81d"></i> JavaScript</p>
+              <p><i class="fa-brands fa-wordpress" style="color:#1e7095"></i> WordPress</p>
+            </div>
+          </div>
+          <div class="carte-competence scroll">
+            <h4><i class="fa-solid fa-gear"></i><br/>Outils</h4>
+            <div class="competence-liste">
+              <p><i class="fa-brands fa-docker" style="color:#3d78ee"></i> Docker</p>
+              <p><i class="fa-brands fa-ubuntu" style="color:#df5222"></i> Ubuntu</p>
+              <p><i class="fa-solid fa-database" style="color:#0f2f70"></i> SQL</p>
+              <p><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i> Bootstrap</p>
+              <p><i class="fa-solid fa-server" style="color:#16a34a"></i> Serveur</p>
+            </div>
+          </div>
+          <div class="carte-competence scroll">
+            <h4><i class="fa-solid fa-paintbrush"></i><br/>Design</h4>
+            <div class="competence-liste">
+              <p><img src="./images/adobe-photoshop.256x256.png" alt="Photoshop"/> Photoshop</p>
+              <p><img src="./images/adobe-illustrator.256x256.png" alt="Illustrator"/> Illustrator</p>
+              <p><i class="fa-brands fa-figma"></i> Figma</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION PROJETS ── -->
+  <!-- Fix #3 : id ajouté sur h2 -->
+  <section id="projets" class="section-projets" aria-labelledby="titre-projets">
+    <div class="projets-container">
+
+      <div class="section-header scroll">
+        <div class="section-label">03 — Réalisations</div>
+        <h2 class="titre-section" id="titre-projets">Mes <em>projets</em></h2>
+      </div>
+
+      <div class="projets-grille">
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/pfc/desktop-step-1.jpg" alt="Jeu Pierre-Feuille-Ciseaux en JavaScript"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Jeu Pierre-Feuille-Ciseaux</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-html5" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-css3" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-js" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="projet-pfc.html">Voir le projet</a>
+            </div>
+          </div>
+        </div>
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Application web PHP avec base de données"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Lorem ipsum dolor sit amet</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-html5" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="#" target="_blank">Visiter</a>
+            </div>
+          </div>
+        </div>
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Site WordPress avec thème personnalisé"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Lorem ipsum dolor sit amet</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-css3" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-wordpress" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="#" target="_blank">Visiter</a>
+            </div>
+          </div>
+        </div>
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Interface web HTML CSS JavaScript"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Lorem ipsum dolor sit amet</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-js" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="#" target="_blank">Visiter</a>
+            </div>
+          </div>
+        </div>
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Projet web HTML CSS PHP"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Lorem ipsum dolor sit amet</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-html5" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-css3" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="#" target="_blank">Visiter</a>
+            </div>
+          </div>
+        </div>
+        <div class="carte-projet scroll">
+          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Projet web Bootstrap PHP"/></div>
+          <div class="projet-infos">
+            <p class="projet-description">Lorem ipsum dolor sit amet</p>
+            <div class="projet-pied">
+              <span class="projet-technos">
+                <i class="fa-brands fa-bootstrap" style="color:rgba(255,255,255,0.9)"></i>
+                <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
+              </span>
+              <a class="lien-projet" href="#" target="_blank">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION CONTACT ── -->
+  <section id="contact" class="section-contact" aria-labelledby="titre-contact">
+    <div class="contact-container">
+
+      <div class="section-header scroll">
+        <div class="section-label">04 — Contact</div>
+        <h2 class="titre-section" id="titre-contact">Travaillons <em>ensemble</em></h2>
+      </div>
+
+      <div class="contact-zone scroll">
+        <div class="formulaire-fenetre">
+          <div class="fenetre-barre">
+            <div class="fenetre-boutons">
+              <div class="fenetre-btn fermer"></div>
+              <div class="fenetre-btn agrandir"></div>
+              <div class="fenetre-btn reduire"></div>
+            </div>
+            <span class="fenetre-barre-title">contact.gaucher — titouan@portfolio</span>
+            <div class="fenetre-points">
+              <div class="fenetre-point"></div>
+              <div class="fenetre-point"></div>
+              <div class="fenetre-point"></div>
+            </div>
+          </div>
+          <div class="fenetre-corps">
+            <div class="contact-infos">
+              <div class="contact-titre">
+                Me<br><strong>contacter</strong>
+              </div>
+              <p class="contact-accroche">Un projet ?<br/>Une question ?<br/>N'hésite pas !</p>
+            </div>
+            <div class="contact-liste">
+              <a class="contact-ligne" href="mailto:titouan.gaucher22@gmail.com">
+                <i class="fa-solid fa-envelope"></i> titouan.gaucher22@gmail.com
+              </a>
+              <a class="contact-ligne" href="tel:+33658459426">
+                <i class="fa-solid fa-phone"></i> +33 6 58 45 94 26
+              </a>
+              <a class="contact-ligne" href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i> titouan-gaucher
+              </a>
+              <a class="contact-ligne" href="https://github.com/Titoox" target="_blank">
+                <i class="fa-brands fa-github"></i> Titoox
+              </a>
+              <span class="contact-ligne contact-ligne--info">
+                <i class="fa-solid fa-location-dot"></i> Troyes, France
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="pied-de-page">
+    <div class="footer-left">
+      <a class="footer-logo" href="#hero">Portfolio</a>
+      <div class="footer-sep"></div>
+      <p class="pied-copyright">
+        © 2026 <span class="pied-nom">GAUCHER Titouan</span>
+        <span class="pied-separateur">·</span> Tous droits réservés
+      </p>
+    </div>
+    <nav class="icones-footer" aria-label="Réseaux sociaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <script src="scroll.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Fix #8 : viewport-fit=cover ajouté (Dynamic Island iOS) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Pierre Feuille Ciseaux — Projet personnel JS de Titouan Gaucher" />
+  <title>Pierre·Feuille·Ciseaux · Titouan Gaucher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/scroll.css" />
+  <link rel="stylesheet" href="css/projet.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ── HEADER ── -->
+  <header class="en-tete">
+    <a class="logo" href="index.html">
+      <span class="logo-p">P</span>
+      <span class="logo-rest">ortfolio</span>
+    </a>
+    <a class="nav-back" href="index.html#projets">
+      <i class="fa-solid fa-arrow-left"></i> Retour aux projets
+    </a>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="projet-hero">
+    <span class="projet-hero__bg-num" aria-hidden="true">01</span>
+
+    <div class="projet-hero__left">
+      <div class="projet-meta reveal">
+        <span class="projet-meta__label">Projet personnel</span>
+        <span class="projet-meta__annee">2025</span>
+      </div>
+
+      <h1 class="projet-hero__titre reveal">
+        Pierre·<em>Feuille</em><br>·Ciseaux
+      </h1>
+
+      <p class="projet-hero__desc reveal">
+        Un jeu classique réinterprété en JavaScript vanilla — conçu de A à Z
+        pour maîtriser la logique de jeu, la manipulation du DOM et la persistance
+        des données côté client.
+      </p>
+
+      <div class="projet-hero__actions reveal">
+        <a class="btn-demo" href="https://titoox.github.io/pierre-feuille-ciseau-perso/" target="_blank" rel="noopener">
+          <i class="fa-solid fa-play"></i> Jouer en ligne
+        </a>
+        <a class="btn-code" href="https://github.com/Titoox/pierre-feuille-ciseau-perso" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> Voir le code
+        </a>
+      </div>
+    </div>
+
+    <div class="projet-hero__right">
+      <div class="preview-wrapper">
+        <span class="preview-badge">Live</span>
+        <div class="preview-frame reveal-right">
+          <img src="images/pfc/desktop-step-1.jpg" alt="Aperçu du jeu Pierre Feuille Ciseaux" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="preview-tag preview-tag--js">
+          <i class="fa-brands fa-js" style="color:#f1c40f"></i> JavaScript
+        </div>
+        <div class="preview-tag preview-tag--html">
+          <i class="fa-brands fa-html5" style="color:#e96227"></i> HTML5
+        </div>
+        <div class="preview-tag preview-tag--css">
+          <i class="fa-brands fa-css3" style="color:#254bde"></i> CSS3
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">3</span>
+      <div class="stat-item__num">3</div>
+      <div class="stat-item__label">Langages</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">0</span>
+      <div class="stat-item__num">0</div>
+      <div class="stat-item__label">Dépendance</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">3</span>
+      <div class="stat-item__num">3</div>
+      <div class="stat-item__label">Manches / partie</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">∞</span>
+      <div class="stat-item__num">∞</div>
+      <div class="stat-item__label">Score persistant</div>
+    </div>
+  </div>
+
+  <!-- ── CONTEXTE ── -->
+  <section class="section reveal">
+    <div class="section-header">
+      <div class="section-label">01 — Contexte</div>
+      <h2 class="titre-section">Le <em>projet</em></h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="contexte-text reveal-left">
+        <p>
+          Développé en dehors des cours, ce projet est né d'une envie simple :
+          aller au-delà des exercices académiques et construire quelque chose de
+          bout en bout, seul. Le défi ? Recréer Pierre-Feuille-Ciseaux en JavaScript
+          pur, sans framework ni librairie externe.
+        </p>
+        <p>
+          L'idée est de démontrer une maîtrise réelle du DOM, de la logique
+          conditionnelle et de la gestion d'état — des fondamentaux que j'ai mis en
+          pratique de façon concrète plutôt que théorique.
+        </p>
+        <p>
+          Le jeu se joue en <strong>3 manches</strong> avec victoire anticipée
+          possible, et conserve un <strong>score global persistant</strong> entre
+          les sessions via localStorage.
+        </p>
+      </div>
+      <ul class="objectifs-list reveal-right">
+        <li>
+          <span class="obj-num">01</span>
+          <div class="obj-text">
+            <strong>Maîtriser la manipulation du DOM</strong>
+            <span>Afficher et cacher des éléments dynamiquement sans rechargement de page.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">02</span>
+          <div class="obj-text">
+            <strong>Implémenter une logique de jeu complète</strong>
+            <span>Conditions de victoire, égalité, défaite — et gestion des manches.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">03</span>
+          <div class="obj-text">
+            <strong>Persister les données côté client</strong>
+            <span>Score global sauvegardé via localStorage entre les sessions.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">04</span>
+          <div class="obj-text">
+            <strong>Produire un rendu soigné</strong>
+            <span>Design fidèle à un challenge Frontend Mentor, responsive et accessible.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── STACK ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">02 — Stack technique</div>
+      <h2 class="titre-section">Les <em>langages</em></h2>
+    </div>
+    <div class="stack-grid">
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-html5" style="color:#e96227"></i></div>
+        <div class="tech-card__name">HTML5</div>
+        <div class="tech-card__desc">Structure sémantique de l'interface — modale de règles, zones de jeu, compteur de manches.</div>
+        <div class="tech-card__usage">Structure · Accessibilité · Sémantique</div>
+        <span class="tech-card__bg"><i class="fa-brands fa-html5"></i></span>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-css3" style="color:#254bde"></i></div>
+        <div class="tech-card__name">CSS3</div>
+        <div class="tech-card__desc">Design inspiré du challenge Frontend Mentor — dégradés, responsive, layout flexbox et positionnement des icônes.</div>
+        <div class="tech-card__usage">Mise en page · Animations · Responsive</div>
+        <span class="tech-card__bg"><i class="fa-brands fa-css3"></i></span>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-js" style="color:#f1c40f"></i></div>
+        <div class="tech-card__name">JavaScript</div>
+        <div class="tech-card__desc">Cœur du projet : logique de jeu, manipulation du DOM, gestion des événements, persistance via localStorage.</div>
+        <div class="tech-card__usage">Logique · DOM · localStorage · Events</div>
+        <span class="tech-card__bg"><i class="fa-brands fa-js"></i></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MÉTHODE ── -->
+  <section class="section reveal">
+    <div class="section-header">
+      <div class="section-label">03 — Méthode</div>
+      <h2 class="titre-section">Comment j'ai <em>construit</em> ça</h2>
+    </div>
+    <div class="methode-steps">
+      <div class="step reveal">
+        <div class="step__dot">1</div>
+        <div class="step__title">Maquette & structure HTML</div>
+        <div class="step__desc">Partir du design Frontend Mentor pour définir les zones : sélection, affichage du résultat, score, modale.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">2</div>
+        <div class="step__title">Logique de base JS</div>
+        <div class="step__desc">Capturer le choix joueur via les événements click, générer un choix aléatoire pour l'ordinateur.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">3</div>
+        <div class="step__title">Système de manches</div>
+        <div class="step__desc">Implémenter 3 manches avec victoire anticipée à 2 gains, puis afficher le résultat final.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">4</div>
+        <div class="step__title">Score & persistance</div>
+        <div class="step__desc">Sauvegarder le score global dans localStorage pour le retrouver à chaque nouvelle session.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIFFICULTÉS ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">04 — Difficultés</div>
+      <h2 class="titre-section">Les <em>obstacles</em> rencontrés</h2>
+    </div>
+    <div class="difficultes-grid">
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Événements</span>
+        <div class="diff-card__title">Accumulation des event listeners</div>
+        <div class="diff-card__text">
+          Placer les <code>addEventListener</code> à l'intérieur d'une fonction
+          causait leur multiplication à chaque appel, créant des comportements inattendus.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Déclarer les écouteurs une seule fois, hors de toute fonction.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">DOM</span>
+        <div class="diff-card__title">Récupérer l'ID du bouton cliqué</div>
+        <div class="diff-card__text">
+          Comprendre la différence entre <code>event.target</code> et
+          <code>event.currentTarget</code> — notamment quand l'image enfant
+          intercepte le clic à la place du div parent.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Utiliser <code>event.currentTarget.id</code> pour cibler l'élément écouté.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Logique</span>
+        <div class="diff-card__title">Conditions de victoire imbriquées</div>
+        <div class="diff-card__text">
+          Écrire les 9 combinaisons possibles (3×3) de façon lisible tout en
+          gérant correctement l'égalité, les 3 victoires et les 3 défaites.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Regrouper par cas : égalité d'abord, puis conditions de victoire, le reste = défaite.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">État</span>
+        <div class="diff-card__title">Réinitialisation propre entre parties</div>
+        <div class="diff-card__text">
+          S'assurer que la remise à zéro (variables + affichage DOM) était
+          complète et ne laissait aucun état résiduel de la partie précédente.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Fonction <code>rejouer()</code> dédiée qui remet tout à l'état initial.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APERÇU VISUEL ── -->
+  <section class="section reveal">
+    <div class="section-header">
+      <div class="section-label">05 — Aperçu</div>
+      <h2 class="titre-section">L'interface <em>en image</em></h2>
+    </div>
+    <div class="screens-row">
+      <div class="screen-item reveal-left">
+        <div class="screen-frame">
+          <img src="images/pfc/desktop-step-1.jpg" alt="Écran de sélection desktop" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Sélection — Desktop</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame">
+          <img src="images/pfc/desktop-step-4-win.jpg" alt="Écran de victoire desktop" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Résultat victoire — Desktop</div>
+      </div>
+      <div class="screen-item reveal-left">
+        <div class="screen-frame screen-frame--mobile">
+          <img src="images/pfc/mobile-step-1.jpg" alt="Écran de sélection mobile" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Sélection — Mobile</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame">
+          <img src="images/pfc/desktop-rules-modal.jpg" alt="Modale des règles" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Modale des règles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" data-text="Play">
+    <div class="cta-left">
+      <div class="cta-label">Prêt à jouer ?</div>
+      <h2 class="cta-title">Testez le <em>jeu</em><br>en ligne</h2>
+      <div class="cta-actions">
+        <a class="btn-cta-primary" href="https://titoox.github.io/pierre-feuille-ciseau-perso/" target="_blank" rel="noopener">
+          <i class="fa-solid fa-play"></i> Jouer maintenant
+        </a>
+        <a class="btn-cta-ghost" href="https://github.com/Titoox/pierre-feuille-ciseau-perso" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> Code source
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card">
+        <div class="cta-card__num" style="font-family:var(--serif);font-size:4em;color:#fff;line-height:1">✊✋✌️</div>
+        <div class="cta-card__text">3 armes · 3 manches · 1 vainqueur</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="pied-de-page">
+    <div class="footer-left">
+      <a class="footer-logo" href="index.html">Portfolio</a>
+      <div class="footer-sep"></div>
+      <p class="pied-copyright">
+        © 2026 <span class="pied-nom">GAUCHER Titouan</span>
+        <span> · </span> Tous droits réservés
+      </p>
+    </div>
+    <nav class="icones-footer" aria-label="Réseaux sociaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="bouton-haut" title="Retour en haut" aria-label="Retour en haut de page">
+    <svg height="1.1em" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+  </button>
+
+  <script>
+    // Fix : curseur custom désactivé sur touch (cohérent avec index.html)
+    const cursor = document.getElementById('cursor');
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    if (cursor && !isTouch) {
+      document.body.style.cursor = 'none';
+      document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      }, { passive: true });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    } else if (cursor) {
+      cursor.style.display = 'none';
+    }
+
+    // Back to top
+    const btn = document.getElementById('bouton-haut');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
