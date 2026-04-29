@@ -24,8 +24,8 @@
   --bordure: rgba(108,92,231,0.14);
   --bordure2: rgba(108,92,231,0.28);
 
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Outfit", system-ui, sans-serif;
+  --serif: "Clash Display", sans-serif;
+  --sans: "Satoshi", system-ui, sans-serif;
 
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
