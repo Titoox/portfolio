@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="TismailB2B — Portail B2B revendeurs pour La Chaussette de France · Projet de Titouan Gaucher" />
+  <title>TismailB2B · Titouan Gaucher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/scroll.css" />
+  <link rel="stylesheet" href="css/projet.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ── HEADER ── -->
+  <header class="en-tete">
+    <a class="logo" href="index.html">
+      <span class="logo-p">P</span>
+      <span class="logo-rest">ortfolio</span>
+    </a>
+    <a class="nav-back" href="index.html#projets">
+      <i class="fa-solid fa-arrow-left"></i> Retour aux projets
+    </a>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="projet-hero">
+    <span class="projet-hero__bg-num" aria-hidden="true">02</span>
+
+    <div class="projet-hero__left">
+      <div class="projet-meta reveal">
+        <span class="projet-meta__label">Projet candidature alternance</span>
+        <span class="projet-meta__annee">2026</span>
+      </div>
+
+      <h1 class="projet-hero__titre reveal">
+        Tismail<em>B2B</em>
+      </h1>
+
+      <p class="projet-hero__desc reveal">
+        Portail web B2B développé pour La Chaussette de France — 
+        permet aux revendeurs de consulter le catalogue professionnel, 
+        passer des commandes en ligne et suivre leur historique, 
+        sans passer par téléphone ou email.
+      </p>
+
+      <div class="projet-hero__actions reveal">
+        <a class="btn-demo" href="http://tismailb2b.mmi25d04.mmi-troyes.fr" target="_blank" rel="noopener">
+          <i class="fa-solid fa-globe"></i> Voir la démo
+        </a>
+        <a class="btn-code" href="https://github.com/Titoox" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> Code source
+        </a>
+      </div>
+    </div>
+
+    <div class="projet-hero__right">
+      <div class="preview-wrapper">
+        <span class="preview-badge">Live</span>
+        <div class="preview-frame reveal-right" style="background:#003087; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:20px; padding:40px;">
+          <div style="font-family:'Outfit',sans-serif; font-size:2.2em; font-weight:700; color:white; letter-spacing:0.08em; text-transform:uppercase; border-bottom:3px solid #e30613; padding-bottom:10px;">🧦 TismailB2B</div>
+          <div style="display:flex; gap:12px; margin-top:8px;">
+            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:12px 18px; text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:2.4em; color:white; font-weight:300; line-height:1;">3</div>
+              <div style="font-size:0.55em; color:rgba(255,255,255,0.5); letter-spacing:2px; text-transform:uppercase; font-weight:600;">Commandes</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:12px 18px; text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:2.4em; color:white; font-weight:300; line-height:1;">18</div>
+              <div style="font-size:0.55em; color:rgba(255,255,255,0.5); letter-spacing:2px; text-transform:uppercase; font-weight:600;">Produits</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; padding:12px 18px; text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:2.4em; color:white; font-weight:300; line-height:1;">2</div>
+              <div style="font-size:0.55em; color:rgba(255,255,255,0.5); letter-spacing:2px; text-transform:uppercase; font-weight:600;">Rôles</div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-tag preview-tag--js">
+          <i class="fa-brands fa-php" style="color:#7277ad"></i> PHP
+        </div>
+        <div class="preview-tag preview-tag--html">
+          <i class="fa-solid fa-database" style="color:#0f2f70"></i> MySQL
+        </div>
+        <div class="preview-tag preview-tag--css">
+          <i class="fa-brands fa-css3" style="color:#254bde"></i> CSS3
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">4</span>
+      <div class="stat-item__num">4</div>
+      <div class="stat-item__label">Tables BDD</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">2</span>
+      <div class="stat-item__num">2</div>
+      <div class="stat-item__label">Rôles utilisateur</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">18</span>
+      <div class="stat-item__num">18</div>
+      <div class="stat-item__label">Produits catalogue</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">0</span>
+      <div class="stat-item__num">0</div>
+      <div class="stat-item__label">Framework utilisé</div>
+    </div>
+  </div>
+
+  <!-- ── CONTEXTE ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">01 — Contexte</div>
+      <h2 class="titre-section">Le <em>problème</em> identifié</h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="contexte-text reveal-left">
+        <p>
+          La Chaussette de France (Tismail) fabrique des chaussettes haut de gamme à Troyes depuis 1995. 
+          Leurs revendeurs — boutiques, grossistes — commandent encore par téléphone ou email, 
+          un process manuel qui génère des erreurs, des délais et une charge de travail inutile.
+        </p>
+        <p>
+          J'ai développé ce portail B2B pour digitaliser ce process : 
+          chaque revendeur dispose d'un espace personnel pour consulter 
+          le catalogue professionnel, passer ses commandes en ligne et suivre leur statut en temps réel.
+        </p>
+      </div>
+      <ul class="objectifs-list reveal-right">
+        <li>
+          <span class="obj-num">1</span>
+          <div class="obj-text">
+            <strong>Digitaliser les commandes</strong>
+            <span>Remplacer le téléphone/email par un portail en ligne disponible 24h/24.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">2</span>
+          <div class="obj-text">
+            <strong>Catalogue B2B dédié</strong>
+            <span>Afficher les prix professionnels et les conditionnements spécifiques aux revendeurs.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">3</span>
+          <div class="obj-text">
+            <strong>Interface admin complète</strong>
+            <span>Permettre à l'équipe Tismail de gérer commandes, produits et revendeurs.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">4</span>
+          <div class="obj-text">
+            <strong>Sécurité by design</strong>
+            <span>Séparation stricte des rôles, requêtes préparées, mots de passe hashés.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── STACK TECH ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">02 — Stack technique</div>
+      <h2 class="titre-section">Les <em>technologies</em> utilisées</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-php" style="color:#7277ad"></i></div>
+        <div class="tech-card__name">PHP</div>
+        <div class="tech-card__desc">Backend procédural pur — aucun framework. Logique métier, sessions, authentification et traitement des formulaires.</div>
+        <div class="tech-card__usage">Sessions · PDO · password_hash · require_once</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-php"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-solid fa-database" style="color:#0f2f70"></i></div>
+        <div class="tech-card__name">MySQL</div>
+        <div class="tech-card__desc">4 tables liées par clés étrangères — users, produits, commandes, lignes_commande. Requêtes préparées PDO.</div>
+        <div class="tech-card__usage">JOIN · GROUP BY · Foreign Keys · PDO</div>
+        <div class="tech-card__bg"><i class="fa-solid fa-database"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-css3" style="color:#254bde"></i></div>
+        <div class="tech-card__name">HTML / CSS</div>
+        <div class="tech-card__desc">Interfaces responsive sans framework CSS. Design inspiré de la charte LCF — bleu marine, blanc, rouge Made in France.</div>
+        <div class="tech-card__usage">CSS Variables · Flexbox · Grid · Responsive</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-css3"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FONCTIONNALITÉS ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">03 — Fonctionnalités</div>
+      <h2 class="titre-section">Ce que le <em>portail</em> permet</h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="reveal-left">
+        <h3 style="font-family:var(--serif); font-size:1.6em; font-weight:300; margin-bottom:24px;">
+          Espace <em style="color:var(--v1)">Admin</em> — Tismail
+        </h3>
+        <ul class="objectifs-list">
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Dashboard avec stats</strong>
+              <span>Nombre de commandes, commandes validées, revendeurs actifs.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Gestion des commandes</strong>
+              <span>Liste complète, voir le détail, valider / expédier, supprimer.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Gestion du catalogue</strong>
+              <span>Ajouter, modifier prix/stock, supprimer des produits.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Gestion des revendeurs</strong>
+              <span>Liste avec nombre de commandes, activer/désactiver un compte.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal-right">
+        <h3 style="font-family:var(--serif); font-size:1.6em; font-weight:300; margin-bottom:24px;">
+          Espace <em style="color:var(--v1)">Revendeur</em> — Boutiques
+        </h3>
+        <ul class="objectifs-list">
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Dashboard personnalisé</strong>
+              <span>Accueil avec nom de l'entreprise, historique des commandes, accès rapide.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Catalogue B2B</strong>
+              <span>Tous les produits avec références, prix pro et conditionnements.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Passer une commande</strong>
+              <span>Sélectionner plusieurs produits, saisir les quantités, valider en un clic.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Suivi des commandes</strong>
+              <span>Statut en temps réel : En attente → Validée → Expédiée.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MÉTHODE ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">04 — Développement</div>
+      <h2 class="titre-section">Les <em>étapes</em> du projet</h2>
+    </div>
+    <div class="methode-steps">
+      <div class="step reveal">
+        <div class="step__dot">1</div>
+        <div class="step__title">Analyse & BDD</div>
+        <div class="step__desc">Identification du problème métier, conception des 4 tables MySQL et de leurs relations (clés étrangères).</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">2</div>
+        <div class="step__title">Authentification</div>
+        <div class="step__desc">Système de login sécurisé avec sessions PHP, password_hash, et séparation stricte des rôles admin/revendeur.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">3</div>
+        <div class="step__title">CRUD complet</div>
+        <div class="step__desc">Interfaces admin : gestion des commandes, du catalogue produits et des revendeurs avec opérations Create/Read/Update/Delete.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">4</div>
+        <div class="step__title">Déploiement</div>
+        <div class="step__desc">Mise en ligne sur serveur VPS (Apache/MariaDB), configuration du VirtualHost et import de la base de données en production.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIFFICULTÉS ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">05 — Apprentissages</div>
+      <h2 class="titre-section">Les <em>défis</em> techniques</h2>
+    </div>
+    <div class="difficultes-grid">
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Sécurité SQL</span>
+        <div class="diff-card__title">Injection SQL & requêtes préparées</div>
+        <div class="diff-card__text">
+          Comprendre pourquoi <code>query("WHERE id = $id")</code> est dangereux et comment
+          PDO avec <code>prepare()</code> + <code>execute([$var])</code> protège contre les injections.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Toutes les requêtes avec variables utilisent des requêtes préparées.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">SQL JOIN</span>
+        <div class="diff-card__title">Fusionner deux tables avec LEFT JOIN</div>
+        <div class="diff-card__text">
+          Récupérer les infos revendeur en même temps que les commandes en une seule requête,
+          plutôt que de faire N requêtes en boucle.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          LEFT JOIN entre commandes et users via user_id → une seule requête efficace.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Multi-table INSERT</span>
+        <div class="diff-card__title">Créer une commande multi-produits</div>
+        <div class="diff-card__text">
+          Une commande nécessite un INSERT dans <code>commandes</code> puis plusieurs INSERT dans
+          <code>lignes_commande</code> liés par l'ID généré.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Utilisation de <code>lastInsertId()</code> pour récupérer l'ID de la commande créée.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Déploiement</span>
+        <div class="diff-card__title">Configuration Apache VirtualHost</div>
+        <div class="diff-card__text">
+          Configurer un sous-domaine dédié sur un VPS Debian avec Apache, pointer le DocumentRoot
+          sur le bon dossier et gérer les permissions fichiers.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          VirtualHost configuré sur tismailb2b.mmi25d04.mmi-troyes.fr avec SSL possible.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" data-text="B2B">
+    <div class="cta-left">
+      <div class="cta-label">Prêt à tester ?</div>
+      <h2 class="cta-title">Voir le <em>portail</em><br>en ligne</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:0.88em; margin-top:16px; line-height:1.7;">
+        Comptes démo : <code style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:2px;">admin@tismail.local</code> 
+        ou <code style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:2px;">revendeur1@test.local</code> — mot de passe : <code style="background:rgba(255,255,255,0.1); padding:2px 8px; border-radius:2px;">admin123</code>
+      </p>
+      <div class="cta-actions">
+        <a class="btn-cta-primary" href="http://tismailb2b.mmi25d04.mmi-troyes.fr" target="_blank" rel="noopener">
+          <i class="fa-solid fa-globe"></i> Accéder au portail
+        </a>
+        <a class="btn-cta-ghost" href="https://github.com/Titoox" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i> Code source
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card">
+        <div style="font-size:2.8em; margin-bottom:12px;">🧦</div>
+        <div class="cta-card__text">La Chaussette de France<br>Troyes · Made in France · depuis 1995</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="pied-de-page">
+    <div class="footer-left">
+      <a class="footer-logo" href="index.html">Portfolio</a>
+      <div class="footer-sep"></div>
+      <p class="pied-copyright">
+        © 2026 <span class="pied-nom">GAUCHER Titouan</span>
+        <span> · </span> Tous droits réservés
+      </p>
+    </div>
+    <nav class="icones-footer" aria-label="Réseaux sociaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="bouton-haut" title="Retour en haut" aria-label="Retour en haut de page">
+    <svg height="1.1em" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+  </button>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (cursor && !isTouch) {
+      document.body.style.cursor = 'none';
+      document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      }, { passive: true });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    } else if (cursor) {
+      cursor.style.display = 'none';
+    }
+
+    const btn = document.getElementById('bouton-haut');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
