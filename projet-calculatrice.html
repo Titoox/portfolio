@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Calculatrice JavaScript Vanilla · Projet de Titouan Gaucher" />
+  <title>Calculatrice JS · Titouan Gaucher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&family=Inter:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/scroll.css" />
+  <link rel="stylesheet" href="css/projet.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <header class="en-tete">
+    <a class="logo" href="index.html">
+      <span class="logo-p">P</span>
+      <span class="logo-rest">ortfolio</span>
+    </a>
+    <a class="nav-back" href="index.html#projets">
+      <i class="fa-solid fa-arrow-left"></i> Retour aux projets
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="projet-hero">
+    <span class="projet-hero__bg-num" aria-hidden="true">04</span>
+
+    <div class="projet-hero__left">
+      <div class="projet-meta reveal">
+        <span class="projet-meta__label">Projet JavaScript · R212</span>
+        <span class="projet-meta__annee">2025</span>
+      </div>
+
+      <h1 class="projet-hero__titre reveal">
+        Calcul<em>atrice</em>
+      </h1>
+
+      <p class="projet-hero__desc reveal">
+        Calculatrice web développée en JavaScript vanilla pur — sans bibliothèque, 
+        sans framework. Gestion complète des opérations arithmétiques, 
+        interface responsive en CSS Grid, architecture orientée classe.
+      </p>
+
+      <div class="projet-hero__actions reveal">
+        <a class="btn-demo" href="https://mmi25d04.mmi-troyes.fr/travaux/r212/sequence4" target="_blank" rel="noopener">
+          <i class="fa-solid fa-calculator"></i> Tester la calculatrice
+        </a>
+      </div>
+    </div>
+
+    <div class="projet-hero__right">
+      <div class="preview-wrapper">
+        <span class="preview-badge">Live</span>
+        <div class="preview-frame reveal-right" style="background:#0f0f0f; display:flex; align-items:center; justify-content:center; padding:28px;">
+          <div style="background:#1c1c1e; border-radius:16px; padding:20px; width:100%; max-width:200px; box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+            <div style="background:#0f0f0f; border-radius:10px; padding:10px 14px; text-align:right; margin-bottom:10px;">
+              <div style="font-size:0.6em; color:rgba(255,255,255,0.35); margin-bottom:3px; font-family:'Inter',sans-serif;">15 × 4</div>
+              <div style="font-size:1.8em; color:white; font-weight:300; font-family:'Poppins',sans-serif;">60</div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px;">
+              <button style="grid-column:span 2; background:#3a3a3c; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; font-family:'Poppins',sans-serif; cursor:pointer;">AC</button>
+              <button style="background:#3a3a3c; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">%</button>
+              <button style="background:var(--v1); border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">÷</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">7</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">8</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">9</button>
+              <button style="background:var(--v1); border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">×</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">4</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">5</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">6</button>
+              <button style="background:var(--v1); border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">−</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">1</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">2</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">3</button>
+              <button style="background:var(--v1); border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">+</button>
+              <button style="grid-column:span 2; background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">0</button>
+              <button style="background:#2c2c2e; border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">.</button>
+              <button style="background:var(--v1); border:none; border-radius:8px; padding:10px 0; color:white; font-size:0.72em; cursor:pointer;">=</button>
+            </div>
+          </div>
+        </div>
+        <div class="preview-tag preview-tag--css">
+          <i class="fa-brands fa-js" style="color:#f0db4f"></i> JS
+        </div>
+        <div class="preview-tag preview-tag--js">
+          <i class="fa-brands fa-html5" style="color:#e34f26"></i> HTML
+        </div>
+        <div class="preview-tag preview-tag--html">
+          <i class="fa-brands fa-css3" style="color:#254bde"></i> CSS
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">0</span>
+      <div class="stat-item__num">0</div>
+      <div class="stat-item__label">Librairie utilisée</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">5</span>
+      <div class="stat-item__num">5</div>
+      <div class="stat-item__label">Opérations</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">3</span>
+      <div class="stat-item__num">3</div>
+      <div class="stat-item__label">Fichiers</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">1</span>
+      <div class="stat-item__num">1</div>
+      <div class="stat-item__label">Classe JS</div>
+    </div>
+  </div>
+
+  <!-- CONTEXTE -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">01 — Contexte</div>
+      <h2 class="titre-section">Le <em>projet</em></h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="contexte-text reveal-left">
+        <p>Projet R212 du BUT MMI — développer une calculatrice fonctionnelle en JavaScript vanilla, sans jQuery ni aucune bibliothèque externe. L'objectif : maîtriser la manipulation du DOM, la gestion des événements et la logique algorithmique en JS pur.</p>
+        <p>L'interface est construite avec CSS Grid pour reproduire fidèlement la grille d'une vraie calculatrice. Le layout s'adapte à toutes les tailles d'écran sans media queries.</p>
+      </div>
+      <ul class="objectifs-list reveal-right">
+        <li>
+          <span class="obj-num">1</span>
+          <div class="obj-text">
+            <strong>JavaScript vanilla pur</strong>
+            <span>Aucune dépendance externe — logique métier entièrement codée à la main.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">2</span>
+          <div class="obj-text">
+            <strong>Architecture orientée classe</strong>
+            <span>Classe Calculator qui encapsule l'état et les méthodes de calcul.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">3</span>
+          <div class="obj-text">
+            <strong>CSS Grid</strong>
+            <span>Layout 4 colonnes fidèle à une vraie calculatrice — bouton 0 sur 2 colonnes.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">4</span>
+          <div class="obj-text">
+            <strong>Gestion des edge cases</strong>
+            <span>Division par zéro, nombres décimaux, opérations enchaînées.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">02 — Stack technique</div>
+      <h2 class="titre-section">Les <em>technologies</em></h2>
+    </div>
+    <div class="stack-grid">
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-js" style="color:#f0db4f"></i></div>
+        <div class="tech-card__name">JavaScript</div>
+        <div class="tech-card__desc">Logique complète — classe Calculator, gestion des événements, manipulation du DOM, calculs enchaînés.</div>
+        <div class="tech-card__usage">Classes ES6 · addEventListener · querySelector · data-attributes</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-js"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-html5" style="color:#e34f26"></i></div>
+        <div class="tech-card__name">HTML5</div>
+        <div class="tech-card__desc">Structure sémantique avec data-attributes pour identifier les boutons — séparation stricte HTML/JS.</div>
+        <div class="tech-card__usage">data-number · data-operation · data-output · data-all-clear</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-html5"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-css3" style="color:#254bde"></i></div>
+        <div class="tech-card__name">CSS Grid</div>
+        <div class="tech-card__desc">Layout en grille 4 colonnes — boutons span-two pour le 0 et AC. Responsive sans media queries.</div>
+        <div class="tech-card__usage">grid-template-columns · span · gap · border-radius</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-css3"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉFIS -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">03 — Apprentissages</div>
+      <h2 class="titre-section">Les <em>défis</em> techniques</h2>
+    </div>
+    <div class="difficultes-grid">
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Architecture</span>
+        <div class="diff-card__title">Classe Calculator orientée objet</div>
+        <div class="diff-card__text">
+          Encapsuler toute la logique dans une classe — état courant, opérande précédent, opération en attente — sans variable globale.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Classe ES6 avec méthodes clear(), appendNumber(), chooseOperation(), compute().
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Data attributes</span>
+        <div class="diff-card__title">Séparation HTML / JavaScript</div>
+        <div class="diff-card__text">
+          Identifier les boutons sans ajouter de JS dans le HTML — utilisation des data-attributes pour typer chaque bouton.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          querySelectorAll('[data-number]') — sélection propre sans classes ni IDs.
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">Edge cases</span>
+        <div class="diff-card__title">Gestion des cas limites</div>
+        <div class="diff-card__text">
+          Division par zéro, double virgule, opérations enchaînées, résultat affiché comme opérande.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          Conditions de garde à chaque étape — includes('.'), isNaN(), parseFloat().
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-card__tag">CSS Grid</span>
+        <div class="diff-card__title">Layout fidèle à une vraie calculatrice</div>
+        <div class="diff-card__text">
+          Reproduire la grille d'une calculatrice avec le bouton 0 sur 2 colonnes et AC sur 2 colonnes également.
+        </div>
+        <div class="diff-card__solution">
+          <i class="fa-solid fa-check-circle"></i>
+          grid-column: span 2 — solution CSS pure, aucun hack.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" data-text="JS">
+    <div class="cta-left">
+      <div class="cta-label">Tester en ligne</div>
+      <h2 class="cta-title">Calculatrice<br><em>vanilla JS</em></h2>
+      <div class="cta-actions">
+        <a class="btn-cta-primary" href="https://mmi25d04.mmi-troyes.fr/travaux/r212/sequence4" target="_blank" rel="noopener">
+          <i class="fa-solid fa-calculator"></i> Ouvrir la calculatrice
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card">
+        <div class="cta-card__text">Projet R212<br>BUT MMI · IUT de Troyes · 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="pied-de-page">
+    <div class="footer-left">
+      <a class="footer-logo" href="index.html">Portfolio</a>
+      <div class="footer-sep"></div>
+      <p class="pied-copyright">
+        © 2026 <span class="pied-nom">GAUCHER Titouan</span>
+        <span> · </span> Tous droits réservés
+      </p>
+    </div>
+    <nav class="icones-footer" aria-label="Réseaux sociaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="bouton-haut" title="Retour en haut" aria-label="Retour en haut de page">
+    <svg height="1.1em" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+  </button>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (cursor && !isTouch) {
+      document.body.style.cursor = 'none';
+      document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      }, { passive: true });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    } else if (cursor) { cursor.style.display = 'none'; }
+
+    const btn = document.getElementById('bouton-haut');
+    window.addEventListener('scroll', () => {
+      if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
