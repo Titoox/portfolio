@@ -7,16 +7,8 @@
   <meta name="theme-color" content="#6c5ce7">
   <title>Portfolio · Titouan Gaucher</title>
 
-  <!-- Preconnect + preload fonts (évite le double round-trip du @import) -->
-<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/satoshi">
-
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/scroll.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&family=Inter:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/fa/all.min.css" />
   <link rel="icon" type="image/png" href="./images/favicon.png" />
 </head>
 <body>
@@ -86,7 +78,10 @@
       <div class="hero__right-inner">
         <div class="hero__photo-frame scroll-right">
           <!-- Pas de loading="lazy" sur hero — above the fold -->
-          <img src="images/photo_profil.png" alt="Titouan Gaucher" />
+          <picture>
+            <source srcset="images/photo_profil.webp" type="image/webp" />
+            <img src="images/photo_profil.png" alt="Titouan Gaucher" />
+          </picture>
           <div class="hero__photo-tag">
             <div class="hero__photo-tag-dot"></div>
             <span>Open to work</span>
@@ -164,7 +159,10 @@
         <!-- Photo + stats droite -->
         <div class="profil-photo-col scroll-right">
           <!-- Fix #9 : lazy sur photo profil (below the fold) -->
-          <img loading="lazy" src="images/photo_profil.png" alt="Photo de profil de Titouan Gaucher" />
+          <picture>
+            <source srcset="images/photo_profil.webp" type="image/webp" />
+            <img loading="lazy" src="images/photo_profil.png" alt="Photo de profil de Titouan Gaucher" />
+          </picture>
           <div class="profil-stats">
             <div class="profil-stat">
               <div class="profil-stat-num">3+</div>
