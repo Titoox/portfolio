@@ -762,6 +762,80 @@ input, textarea, select { cursor: text; }
 .competence-liste .fa-brands { font-size: 1.2em; }
 .competence-liste img { width: 18px; }
 
+/* ── Carrousel de technos (marquee défilant) ── */
+.stacks-marquee {
+  display: flex; flex-direction: column; gap: 26px;
+  margin-top: 8px;
+}
+.stacks-groupe { display: flex; flex-direction: column; gap: 14px; }
+
+/* étiquette de catégorie */
+.stacks-tag {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px;
+  font-family: var(--serif); font-style: italic; font-size: 0.82em; font-weight: 500;
+  color: #fff;
+  background: linear-gradient(90deg, var(--v1), var(--v2));
+  border-radius: 999px;
+  box-shadow: 0 4px 14px var(--v-glow);
+}
+.stacks-tag i { font-style: normal; }
+
+/* la rangée masque le débordement + fond dégradé aux bords */
+.stacks-rangee {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* la piste contient 2 copies des pilules → translateX(-50%) = boucle sans couture */
+.stacks-piste {
+  display: flex; align-items: center; gap: 16px; width: max-content;
+  animation: stacks-defile 42s linear infinite;
+  will-change: transform;
+}
+.stacks-piste--inverse {
+  animation-direction: reverse;
+  animation-duration: 34s;
+}
+/* pause au survol de la rangée */
+.stacks-rangee:hover .stacks-piste { animation-play-state: paused; }
+
+@keyframes stacks-defile {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* une pilule = logo + nom */
+.stack-pilule {
+  display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
+  padding: 12px 20px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  font-size: 0.95em; font-weight: 500; color: var(--texte2);
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(108,92,231,0.05);
+  transition: border-color 0.2s ease, transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+}
+.stack-pilule:hover {
+  border-color: var(--bordure2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(108,92,231,0.14);
+}
+.stack-pilule i { font-size: 1.25em; }
+.stack-pilule img { width: 20px; height: 20px; object-fit: contain; }
+
+/* mouvement réduit : on arrête le défilement et on rend la rangée scrollable */
+@media (prefers-reduced-motion: reduce) {
+  .stacks-piste { animation: none; }
+  .stacks-rangee { overflow-x: auto; }
+  .stack-pilule[aria-hidden="true"] { display: none; }
+}
+
 /* ================================================================
    SECTION PROJETS
 ================================================================ */

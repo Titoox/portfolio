@@ -189,35 +189,62 @@
           photographie m'apporte un œil affûté pour la composition et la colorimétrie.
         </p>
 
-        <div class="competences-grille">
-          <div class="carte-competence scroll">
-            <h4><i class="fa-solid fa-code"></i><br/>Langages</h4>
-            <div class="competence-liste">
-              <p><i class="fa-brands fa-html5" style="color:#e96227"></i> HTML5</p>
-              <p><i class="fa-brands fa-css3" style="color:#254bde"></i> CSS3</p>
-              <p><i class="fa-brands fa-php" style="color:#7277ad"></i> PHP</p>
-              <p><i class="fa-brands fa-js" style="color:#efd81d"></i> JavaScript</p>
-              <p><i class="fa-brands fa-wordpress" style="color:#1e7095"></i> WordPress</p>
+        <!-- Carrousel de technos défilant — 2 rangées, sens opposés -->
+        <!-- La 2e copie de chaque set (aria-hidden) sert à la boucle sans couture -->
+        <div class="stacks-marquee scroll">
+
+          <!-- Rangée 1 : langages & outils -->
+          <div class="stacks-groupe">
+            <span class="stacks-tag"><i class="fa-solid fa-code"></i> Langages &amp; outils</span>
+            <div class="stacks-rangee">
+              <div class="stacks-piste" aria-label="HTML5, CSS3, JavaScript, PHP, WordPress, Docker, Ubuntu, SQL, Bootstrap, Serveur">
+                <span class="stack-pilule"><i class="fa-brands fa-html5" style="color:#e96227"></i><span>HTML5</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-css3" style="color:#254bde"></i><span>CSS3</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-js" style="color:#efd81d"></i><span>JavaScript</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-php" style="color:#7277ad"></i><span>PHP</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-wordpress" style="color:#1e7095"></i><span>WordPress</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-docker" style="color:#3d78ee"></i><span>Docker</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-ubuntu" style="color:#df5222"></i><span>Ubuntu</span></span>
+                <span class="stack-pilule"><i class="fa-solid fa-database" style="color:#0f2f70"></i><span>SQL</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i><span>Bootstrap</span></span>
+                <span class="stack-pilule"><i class="fa-solid fa-server" style="color:#16a34a"></i><span>Serveur</span></span>
+                <!-- copie pour la boucle -->
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-html5" style="color:#e96227"></i><span>HTML5</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-css3" style="color:#254bde"></i><span>CSS3</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-js" style="color:#efd81d"></i><span>JavaScript</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-php" style="color:#7277ad"></i><span>PHP</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-wordpress" style="color:#1e7095"></i><span>WordPress</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-docker" style="color:#3d78ee"></i><span>Docker</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-ubuntu" style="color:#df5222"></i><span>Ubuntu</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-database" style="color:#0f2f70"></i><span>SQL</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i><span>Bootstrap</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-server" style="color:#16a34a"></i><span>Serveur</span></span>
+              </div>
             </div>
           </div>
-          <div class="carte-competence scroll">
-            <h4><i class="fa-solid fa-gear"></i><br/>Outils</h4>
-            <div class="competence-liste">
-              <p><i class="fa-brands fa-docker" style="color:#3d78ee"></i> Docker</p>
-              <p><i class="fa-brands fa-ubuntu" style="color:#df5222"></i> Ubuntu</p>
-              <p><i class="fa-solid fa-database" style="color:#0f2f70"></i> SQL</p>
-              <p><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i> Bootstrap</p>
-              <p><i class="fa-solid fa-server" style="color:#16a34a"></i> Serveur</p>
+
+          <!-- Rangée 2 : design (sens inverse) -->
+          <div class="stacks-groupe">
+            <span class="stacks-tag"><i class="fa-solid fa-paintbrush"></i> Design</span>
+            <div class="stacks-rangee">
+              <div class="stacks-piste stacks-piste--inverse" aria-label="Photoshop, Illustrator, Figma, Photographie, Colorimétrie, Composition">
+                <span class="stack-pilule"><img src="./images/adobe-photoshop.256x256.png" alt=""/><span>Photoshop</span></span>
+                <span class="stack-pilule"><img src="./images/adobe-illustrator.256x256.png" alt=""/><span>Illustrator</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-figma" style="color:#a259ff"></i><span>Figma</span></span>
+                <span class="stack-pilule"><i class="fa-solid fa-camera" style="color:#6c5ce7"></i><span>Photographie</span></span>
+                <span class="stack-pilule"><i class="fa-solid fa-palette" style="color:#8b7cf8"></i><span>Colorimétrie</span></span>
+                <span class="stack-pilule"><i class="fa-solid fa-crop-simple" style="color:#6c5ce7"></i><span>Composition</span></span>
+                <!-- copie pour la boucle -->
+                <span class="stack-pilule" aria-hidden="true"><img src="./images/adobe-photoshop.256x256.png" alt=""/><span>Photoshop</span></span>
+                <span class="stack-pilule" aria-hidden="true"><img src="./images/adobe-illustrator.256x256.png" alt=""/><span>Illustrator</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-figma" style="color:#a259ff"></i><span>Figma</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-camera" style="color:#6c5ce7"></i><span>Photographie</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-palette" style="color:#8b7cf8"></i><span>Colorimétrie</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-crop-simple" style="color:#6c5ce7"></i><span>Composition</span></span>
+              </div>
             </div>
           </div>
-          <div class="carte-competence scroll">
-            <h4><i class="fa-solid fa-paintbrush"></i><br/>Design</h4>
-            <div class="competence-liste">
-              <p><img src="./images/adobe-photoshop.256x256.png" alt="Photoshop"/> Photoshop</p>
-              <p><img src="./images/adobe-illustrator.256x256.png" alt="Illustrator"/> Illustrator</p>
-              <p><i class="fa-brands fa-figma"></i> Figma</p>
-            </div>
-          </div>
+
         </div>
       </div>
 

@@ -46,7 +46,7 @@ if (cursor && !isTouch) {
     cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
   }, { passive: true });
 
-  document.querySelectorAll('a, button, .carte-projet, .carte-competence').forEach(el => {
+  document.querySelectorAll('a, button, .carte-projet, .carte-competence, .stack-pilule').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
   });
