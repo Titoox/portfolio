@@ -91,3 +91,65 @@ if (navToggle && navigation) {
     }
   }, { passive: true });
 }
+
+
+// ===== Effet carte holographique : inclinaison 3D + lueur qui suit la souris =====
+const cartesHolo = document.querySelectorAll('.profil-stat');
+const animationReduite = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// On n'active l'effet que si l'utilisateur n'a pas demandé de réduire les animations
+if (!animationReduite) {
+  cartesHolo.forEach(carte => {
+    carte.addEventListener('mousemove', evenement => {
+      const rectangle = carte.getBoundingClientRect();
+      const positionX = evenement.clientX - rectangle.left;
+      const positionY = evenement.clientY - rectangle.top;
+
+      const centreX = rectangle.width / 2;
+      const centreY = rectangle.height / 2;
+
+      // Plus le curseur s'éloigne du centre, plus la carte penche (diviseur = douceur)
+      const rotationX = (positionY - centreY) / 12;
+      const rotationY = (centreX - positionX) / 12;
+
+      carte.style.transform =
+        `perspective(800px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+
+      // Position de la lueur du curseur (--x/--y) pour le dégradé radial du fond
+      const pourcentX = (positionX / rectangle.width) * 100;
+      const pourcentY = (positionY / rectangle.height) * 100;
+      carte.style.setProperty('--x', pourcentX + '%');
+      carte.style.setProperty('--y', pourcentY + '%');
+
+      // Position du reflet métallique (--bg-x/--bg-y) : il balaie la carte à l'inverse
+      carte.style.setProperty('--bg-x', pourcentX + '%');
+      carte.style.setProperty('--bg-y', pourcentY + '%');
+    });
+
+    // Au départ de la souris : la carte revient à plat, lueur et reflet se recentrent
+    carte.addEventListener('mouseleave', () => {
+      carte.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+      carte.style.setProperty('--x', '50%');
+      carte.style.setProperty('--y', '50%');
+      carte.style.setProperty('--bg-x', '50%');
+      carte.style.setProperty('--bg-y', '50%');
+    });
+  });
+
+  // Cartes empilées en éventail : le bord lumineux suit le curseur le long de la bordure.
+  // On pose --x/--y (en pixels) sur la boîte de survol ; le bord ::before s'en sert.
+  const cartesPile = document.querySelectorAll('.carte-pile');
+  cartesPile.forEach(carte => {
+    carte.addEventListener('mousemove', evenement => {
+      const rectangle = carte.getBoundingClientRect();
+      const positionX = evenement.clientX - rectangle.left;
+      const positionY = evenement.clientY - rectangle.top;
+      carte.style.setProperty('--x', positionX + 'px');
+      carte.style.setProperty('--y', positionY + 'px');
+    });
+    carte.addEventListener('mouseleave', () => {
+      carte.style.setProperty('--x', '50%');
+      carte.style.setProperty('--y', '50%');
+    });
+  });
+}

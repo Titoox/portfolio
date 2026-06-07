@@ -659,18 +659,194 @@ input, textarea, select { cursor: text; }
 .profil-photo-col img:hover { transform: scale(1.01); }
 
 .profil-stats { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+
+/* Carte holographique claire : fond blanc + reflet irisé discret qui suit la souris */
 .profil-stat {
-  padding: 16px 20px;
-  background: var(--blanc); border: 1px solid var(--bordure);
-  border-radius: 3px; border-left: 3px solid var(--v1);
+  position: relative;
+  padding: 18px 22px;
+  /* Couche 1 : lueur violette douce du curseur. Couche 2 : fond blanc */
+  background:
+    radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+                    rgba(108,92,231,0.10), transparent 60%),
+    var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: 16px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 20px rgba(108,92,231,0.06);
+  transition: transform 0.4s var(--ease-smooth),
+              box-shadow 0.4s var(--ease-smooth),
+              border-color 0.4s ease;
+  will-change: transform;
 }
+
+/* Le reflet irisé : une bande claire et discrète qui balaie la carte (visible au survol) */
+.profil-stat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg,
+              transparent 32%,
+              rgba(184,175,254,0.22) 48%,
+              rgba(255,255,255,0.55) 52%,
+              rgba(184,175,254,0.22) 56%,
+              transparent 70%);
+  background-size: 250% 250%;
+  background-position: var(--bg-x, 50%) var(--bg-y, 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.profil-stat:hover {
+  border-color: var(--bordure2);
+  box-shadow: 0 16px 36px rgba(108,92,231,0.16);
+}
+.profil-stat:hover::before { opacity: 1; }
+
+/* Le contenu passe au-dessus du reflet et se détache en profondeur (translateZ) */
 .profil-stat-num {
+  position: relative; z-index: 1; transform: translateZ(24px);
   font-family: var(--serif); font-size: 2em; font-weight: 600;
   color: var(--v1); line-height: 1; letter-spacing: -1px;
 }
 .profil-stat-label {
+  position: relative; z-index: 1; transform: translateZ(14px);
   font-size: 0.75em; color: var(--texte3);
   text-transform: uppercase; letter-spacing: 1.5px; margin-top: 3px;
+}
+
+/* === Cartes empilées en éventail ===========================================
+   Port vanilla du composant 21st.dev "display-cards".
+   Principe : les 3 cartes occupent la même cellule de grille (même "grid-area"),
+   donc elles se superposent ; on les décale ensuite avec translate pour créer
+   l'éventail. Les 2 cartes du fond sont grisées, et chaque carte se déploie +
+   reprend ses couleurs au survol. */
+.cartes-empilees {
+  display: grid;
+  grid-template-areas: "pile";   /* une seule zone nommée : tout s'empile dedans */
+  place-items: center;
+  width: 100%;
+  max-width: 300px;              /* même largeur que la photo => l'éventail se centre SOUS la photo, pas dans toute la colonne */
+  min-height: 300px;             /* réserve la place de l'éventail + du soulèvement (plus grand) au survol */
+  padding: 16px 0;
+  margin-top: 28px;              /* on baisse toute la pile => la carte qui monte ne déborde pas sur la photo */
+}
+
+/* Boîte de SURVOL : elle ne bouge jamais au survol => aucun tremblement, même sur les bords.
+   Elle porte la position dans l'éventail (translate) et l'inclinaison signature (skew). */
+.carte-pile {
+  grid-area: pile;               /* toutes dans la même cellule => superposées */
+  position: relative;
+  width: 17rem;
+  height: 9rem;
+  user-select: none;
+  transform: skewY(-8deg);       /* surchargé par chaque variante ci-dessous */
+}
+
+/* Carte VISIBLE : c'est elle qui se soulève au survol.
+   pointer-events: none => elle ne capte jamais la souris, donc la boîte de survol
+   (au-dessus) garde le contrôle et ne perd jamais le :hover. */
+.carte-pile-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border: 2px solid var(--bordure);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.80);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.10);
+  pointer-events: none;
+  transition: transform 0.6s var(--ease-smooth),
+              filter 0.6s ease,
+              border-color 0.4s ease,
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+/* Bord lumineux qui suit le curseur (port vanilla de "spotlight-card").
+   Technique du masque : on ne garde que l'anneau de 2px = la bordure. */
+.carte-pile-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;                  /* épaisseur du halo de bordure */
+  background: radial-gradient(120px 120px at var(--x, 50%) var(--y, 50%),
+              var(--v1), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;   /* garde uniquement la zone du padding = l'anneau */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.carte-pile:hover .carte-pile-inner::before { opacity: 1; }
+
+/* Voile dégradé sur la droite : profondeur (la carte se fond dans l'arrière-plan) */
+.carte-pile-inner::after {
+  content: "";
+  position: absolute;
+  top: -5%;
+  right: -4px;
+  width: 80%;
+  height: 110%;
+  border-radius: inherit;
+  background: linear-gradient(to left, var(--off-white), transparent);
+  pointer-events: none;
+}
+
+/* Contenu de la carte (passe au-dessus du voile) */
+.carte-pile-haut { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; }
+.carte-pile-icone {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--v1); color: #fff; font-size: 0.78em;
+}
+.carte-pile-titre {
+  font-family: var(--serif); font-size: 1.05em; font-weight: 600; color: var(--v1);
+}
+.carte-pile-desc {
+  position: relative; z-index: 1;
+  font-size: 0.95em; color: var(--texte); white-space: nowrap;
+}
+.carte-pile-date { position: relative; z-index: 1; font-size: 0.78em; color: var(--texte3); }
+
+/* Positions de l'éventail : CENTRÉES autour du milieu => bien sous la photo.
+   Le décalage est sur la boîte de survol : la zone de survol colle à la carte visible. */
+.carte-pile--arriere { transform: translate(-44px, -36px) skewY(-8deg); z-index: 1; }
+.carte-pile--milieu  { transform: translate(0, 0)         skewY(-8deg); z-index: 2; }
+.carte-pile--avant   { transform: translate(44px, 36px)   skewY(-8deg); z-index: 3; }
+
+/* Les 2 cartes du fond sont grisées ; la carte avant garde ses couleurs */
+.carte-pile--arriere .carte-pile-inner,
+.carte-pile--milieu  .carte-pile-inner { filter: grayscale(100%); }
+
+/* Au survol : la carte VISIBLE remonte et reprend ses couleurs.
+   La boîte de survol, elle, ne bouge pas => pas de clignotement.
+   PAS de changement de z-index : chaque carte garde sa place dans la pile,
+   elle se contente de monter et on voit son haut dépasser derrière les autres. */
+.carte-pile:hover .carte-pile-inner {
+  transform: translateY(-80px);
+  filter: grayscale(0%);
+  border-color: var(--bordure2);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 22px 45px rgba(108, 92, 231, 0.22);
+}
+
+/* Écrans étroits : on réduit la taille et les décalages */
+@media (max-width: 768px) {
+  .cartes-empilees { min-height: 230px; }
+  .carte-pile { width: 14rem; height: 8rem; }
+  .carte-pile--arriere { transform: translate(-30px, -26px) skewY(-8deg); }
+  .carte-pile--avant   { transform: translate(30px, 26px)   skewY(-8deg); }
+  .carte-pile:hover .carte-pile-inner { transform: translateY(-62px); }
 }
 
 .bouton-cv {
@@ -1923,5 +2099,214 @@ img {
     transition: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ================================================================
+   BOUTON SHINY (CTA) — port vanilla du composant React "ShinyButton"
+   ----------------------------------------------------------------
+   Pourquoi : un seul style de bouton d'action partout sur le site.
+   Le halo bleu d'origine est remplacé par le violet de la charte
+   (--v1 #6c5ce7) pour rester cohérent. Inter est déjà chargé.
+
+   Les @property servent à ANIMER des variables CSS (un angle, un
+   pourcentage, une couleur) — sans elles, le navigateur ne sait pas
+   interpoler ces valeurs et l'animation saute au lieu de glisser.
+
+   À utiliser ainsi (le <span> est OBLIGATOIRE pour le halo intérieur) :
+     <a class="shiny-cta"><span><i class="fa-..."></i> Mon texte</span></a>
+   ================================================================ */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 5%;
+  inherits: false;
+}
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: #ffffff;
+  inherits: false;
+}
+
+.shiny-cta {
+  /* Couleurs de la charte du portfolio (mêmes que les CTA violets du site) */
+  --shiny-cta-fill-1: var(--v1);      /* #6c5ce7 — violet principal */
+  --shiny-cta-fill-2: #4834d4;        /* violet foncé (fin du dégradé des CTA) */
+  --shiny-cta-bg-subtle: rgba(255, 255, 255, 0.14); /* fin liseré clair intérieur */
+  --shiny-cta-fg: #ffffff;
+  --shiny-cta-highlight: var(--v3);   /* #b8affe — lavande clair, ressort sur le violet */
+  --shiny-cta-highlight-subtle: #ffffff;
+  --animation: gradient-angle linear infinite;
+  --duration: 3s;
+  --shadow-size: 2px;
+  --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline-offset: 4px;
+  /* Taille alignée sur les CTA existants du site (plus compact que le démo) */
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  font-family: var(--sans);
+  font-size: 0.86em;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;        /* car on l'applique sur des <a> */
+  border: 1px solid transparent;
+  border-radius: 360px;
+  color: var(--shiny-cta-fg);
+  background: linear-gradient(135deg, var(--shiny-cta-fill-1) 0%, var(--shiny-cta-fill-2) 100%) padding-box,
+    conic-gradient(
+      from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent,
+      var(--shiny-cta-highlight) var(--gradient-percent),
+      var(--gradient-shine) calc(var(--gradient-percent) * 2),
+      var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    ) border-box;
+  box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+  transition: var(--transition);
+  transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+}
+
+.shiny-cta::before,
+.shiny-cta::after,
+.shiny-cta span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.shiny-cta:active {
+  translate: 0 1px;
+}
+
+/* Motif de points (couche décorative en rotation) */
+.shiny-cta::before {
+  --size: calc(100% - var(--shadow-size) * 3);
+  --position: 2px;
+  --space: calc(var(--position) * 2);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(
+    circle at var(--position) var(--position),
+    white calc(var(--position) / 4),
+    transparent 0
+  ) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  mask-image: conic-gradient(
+    from calc(var(--gradient-angle) + 45deg),
+    black,
+    transparent 10% 90%,
+    black
+  );
+  border-radius: inherit;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Reflet intérieur qui tourne */
+.shiny-cta::after {
+  --animation: shimmer linear infinite;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(
+    -50deg,
+    transparent,
+    var(--shiny-cta-highlight),
+    transparent
+  );
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+}
+
+.shiny-cta span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;        /* espace icône / texte */
+}
+
+/* Reflet clair diffus qui "respire" derrière le texte.
+   On utilise un dégradé radial qui s'éteint en transparent : ainsi
+   les bords de l'élément ne se voient JAMAIS (pas de rectangle visible). */
+.shiny-cta span::before {
+  width: 220%;
+  height: 320%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.18) 35%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity var(--transition);
+  animation: calc(var(--duration) * 1.5) breathe linear infinite;
+}
+
+/* Lance les rotations (additionnées entre elles) */
+.shiny-cta,
+.shiny-cta::before,
+.shiny-cta::after {
+  animation: var(--animation) var(--duration),
+    var(--animation) calc(var(--duration) / 0.4) reverse paused;
+  animation-composition: add;
+}
+
+.shiny-cta:is(:hover, :focus-visible) {
+  --gradient-percent: 20%;
+  --gradient-angle-offset: 95deg;
+  --gradient-shine: var(--shiny-cta-highlight-subtle);
+}
+
+.shiny-cta:is(:hover, :focus-visible),
+.shiny-cta:is(:hover, :focus-visible)::before,
+.shiny-cta:is(:hover, :focus-visible)::after {
+  animation-play-state: running;
+}
+
+.shiny-cta:is(:hover, :focus-visible) span::before {
+  opacity: 0.7;
+}
+
+@keyframes gradient-angle {
+  to { --gradient-angle: 360deg; }
+}
+@keyframes shimmer {
+  to { rotate: 360deg; }
+}
+@keyframes breathe {
+  from, to { scale: 1; }
+  50% { scale: 1.2; }
+}
+
+/* Accessibilité : on coupe les animations si l'utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+  .shiny-cta,
+  .shiny-cta::before,
+  .shiny-cta::after,
+  .shiny-cta span::before {
+    animation: none;
   }
 }

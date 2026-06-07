@@ -63,8 +63,8 @@
 
       <div class="hero__actions">
         <!-- Fix #4 : bouton → lien (navigation sémantique) -->
-        <a href="#profil" class="bouton-principal">
-          <i class="fa-solid fa-user"></i> Qui suis-je ?
+        <a href="#profil" class="shiny-cta">
+          <span><i class="fa-solid fa-user"></i> Qui suis-je ?</span>
         </a>
         <a class="hero__link-cv" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
           Mon CV
@@ -145,8 +145,8 @@
             permet d'allier rigueur technique et sensibilité artistique dans
             tous mes projets numériques.
           </p>
-          <a class="bouton-cv" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
-            <i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV
+          <a class="shiny-cta" href="images/Titouan_Gaucher_CV.pdf" target="_blank">
+            <span><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV</span>
           </a>
         </div>
 
@@ -163,15 +163,41 @@
             <source srcset="images/photo_profil.webp" type="image/webp" />
             <img loading="lazy" src="images/photo_profil.png" alt="Photo de profil de Titouan Gaucher" />
           </picture>
-          <div class="profil-stats">
-            <div class="profil-stat">
-              <div class="profil-stat-num">3+</div>
-              <div class="profil-stat-label">Années de formation</div>
-            </div>
-            <div class="profil-stat">
-              <div class="profil-stat-num">6+</div>
-              <div class="profil-stat-label">Projets réalisés</div>
-            </div>
+          <!-- Cartes empilées en éventail : port vanilla de "display-cards" (21st.dev),
+               avec bord lumineux qui suit le curseur (port de "spotlight-card").
+               .carte-pile = zone de survol FIXE (ne bouge pas => pas de tremblement)
+               .carte-pile-inner = carte visible qui se soulève au survol. -->
+          <div class="cartes-empilees" aria-label="Chiffres clés">
+            <article class="carte-pile carte-pile--arriere">
+              <div class="carte-pile-inner">
+                <div class="carte-pile-haut">
+                  <span class="carte-pile-icone"><i class="fa-solid fa-camera"></i></span>
+                  <p class="carte-pile-titre">2 univers</p>
+                </div>
+                <p class="carte-pile-desc">Code &amp; photographie</p>
+                <p class="carte-pile-date">Technique + créatif</p>
+              </div>
+            </article>
+            <article class="carte-pile carte-pile--milieu">
+              <div class="carte-pile-inner">
+                <div class="carte-pile-haut">
+                  <span class="carte-pile-icone"><i class="fa-solid fa-graduation-cap"></i></span>
+                  <p class="carte-pile-titre">3 ans</p>
+                </div>
+                <p class="carte-pile-desc">Formation BUT MMI</p>
+                <p class="carte-pile-date">2025 — 2028</p>
+              </div>
+            </article>
+            <article class="carte-pile carte-pile--avant">
+              <div class="carte-pile-inner">
+                <div class="carte-pile-haut">
+                  <span class="carte-pile-icone"><i class="fa-solid fa-folder-open"></i></span>
+                  <p class="carte-pile-titre">6+ projets</p>
+                </div>
+                <p class="carte-pile-desc">Développement web</p>
+                <p class="carte-pile-date">HTML · CSS · PHP · JS</p>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -325,32 +351,6 @@
                 <i class="fa-brands fa-css3" style="color:rgba(255,255,255,0.9)"></i>
               </span>
               <a class="lien-projet" href="projet-calculatrice.html">Voir le projet</a>
-            </div>
-          </div>
-        </div>
-        <div class="carte-projet scroll">
-          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Projet web HTML CSS PHP"/></div>
-          <div class="projet-infos">
-            <p class="projet-description">Lorem ipsum dolor sit amet</p>
-            <div class="projet-pied">
-              <span class="projet-technos">
-                <i class="fa-brands fa-html5" style="color:rgba(255,255,255,0.9)"></i>
-                <i class="fa-brands fa-css3" style="color:rgba(255,255,255,0.9)"></i>
-              </span>
-              <a class="lien-projet" href="#" target="_blank">Visiter</a>
-            </div>
-          </div>
-        </div>
-        <div class="carte-projet scroll">
-          <div class="projet-image"><img loading="lazy" src="./images/web.png" alt="Projet web Bootstrap PHP"/></div>
-          <div class="projet-infos">
-            <p class="projet-description">Lorem ipsum dolor sit amet</p>
-            <div class="projet-pied">
-              <span class="projet-technos">
-                <i class="fa-brands fa-bootstrap" style="color:rgba(255,255,255,0.9)"></i>
-                <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
-              </span>
-              <a class="lien-projet" href="#" target="_blank">Visiter</a>
             </div>
           </div>
         </div>
