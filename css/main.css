@@ -1050,7 +1050,7 @@ input, textarea, select { cursor: text; }
 .carte-projet:nth-child(2) { grid-column: span 2; }
 .carte-projet:nth-child(3) { grid-column: span 2; }
 .carte-projet:nth-child(4) { grid-column: span 2; }
-.carte-projet:nth-child(5) { grid-column: span 3; }
+.carte-projet:nth-child(5) { grid-column: span 2; }
 .carte-projet:nth-child(6) { grid-column: span 3; }
 
 .carte-projet {
@@ -1818,7 +1818,7 @@ input, textarea, select { cursor: text; }
   .carte-projet:nth-child(2) { grid-column: span 2; }
   .carte-projet:nth-child(3) { grid-column: span 2; }
   .carte-projet:nth-child(4) { grid-column: span 2; }
-  .carte-projet:nth-child(5) { grid-column: span 3; }
+  .carte-projet:nth-child(5) { grid-column: span 2; }
   .carte-projet:nth-child(6) { grid-column: span 3; }
   /* Overlay au hover rétabli */
   .projet-infos { opacity: 0; }
