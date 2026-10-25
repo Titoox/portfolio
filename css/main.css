@@ -1050,8 +1050,26 @@ input, textarea, select { cursor: text; }
 .carte-projet:nth-child(2) { grid-column: span 2; }
 .carte-projet:nth-child(3) { grid-column: span 2; }
 .carte-projet:nth-child(4) { grid-column: span 2; }
-.carte-projet:nth-child(5) { grid-column: span 3; }
+.carte-projet:nth-child(5) { grid-column: span 2; }
 .carte-projet:nth-child(6) { grid-column: span 3; }
+
+/* Filtre projets */
+.filtre-projets { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 32px; }
+.filtre-bouton {
+  min-height: 44px; padding: 0 20px; border-radius: 999px; cursor: pointer;
+  font: 500 0.95em var(--sans);
+  border: 1px solid var(--v1); background: #fff; color: #4a3dc4;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.filtre-bouton:hover { background: rgba(108,92,231,0.08); }
+.filtre-bouton[aria-pressed="true"] { background: var(--v1); color: #fff; }
+.filtre-bouton:focus-visible { outline: 3px solid var(--v1); outline-offset: 3px; }
+.filtre-statut { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.carte-projet[hidden] { display: none; }
+@media (min-width: 1024px) {
+  .projets-grille[data-filtre="ia"] .carte-projet { grid-column: span 3; }
+  .projets-grille[data-filtre="main"] .carte-projet { grid-column: span 2; }
+}
 
 .carte-projet {
   position: relative; border-radius: 4px; overflow: hidden;
@@ -1095,6 +1113,26 @@ input, textarea, select { cursor: text; }
   margin-bottom: 0;
 }
 .carte-projet:hover .projet-description { transform: translateY(0); }
+
+.projet-image > div { transition: opacity 0.3s ease; }
+.carte-projet:hover .projet-image > div { opacity: 0; }
+
+.badge-projet {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  font-size: 0.75em; font-weight: 600; line-height: 1;
+  padding: 7px 12px; border-radius: 999px;
+  border: 1px solid var(--v1);
+}
+.badge-ia { background: var(--v1); color: #fff; }
+.badge-main { background: #fff; color: #4a3dc4; }
+
+.projet-part {
+  font-size: 0.82em; line-height: 1.5; color: rgba(255,255,255,0.92);
+  margin: 6px 0 0;
+  transform: translateY(8px);
+  transition: transform 0.3s 0.02s var(--ease-smooth);
+}
+.carte-projet:hover .projet-part { transform: translateY(0); }
 
 .projet-pied {
   display: flex; justify-content: space-between; align-items: center;
@@ -1531,6 +1569,8 @@ input, textarea, select { cursor: text; }
   }
   .projet-description { transform: translateY(0); font-size: 0.88em; }
   .projet-pied { transform: translateY(0); }
+  .projet-part { transform: translateY(0); }
+  .projet-image > div { opacity: 0; }
 
   /* ── SECTION CONTACT ── */
   .section-contact { padding: 60px 0; }
@@ -1627,6 +1667,8 @@ input, textarea, select { cursor: text; }
   .projet-infos { opacity: 1; }
   .projet-description { transform: translateY(0); }
   .projet-pied { transform: translateY(0); }
+  .projet-part { transform: translateY(0); }
+  .projet-image > div { opacity: 0; }
 
   .section-contact { padding: 72px 0; }
   .contact-container { padding: 0 32px; }
@@ -1733,6 +1775,8 @@ input, textarea, select { cursor: text; }
   .projet-infos { opacity: 1; }
   .projet-description { transform: translateY(0); }
   .projet-pied { transform: translateY(0); }
+  .projet-part { transform: translateY(0); }
+  .projet-image > div { opacity: 0; }
 
   /* Contact */
   .section-contact { padding: 90px 0; }
@@ -1818,7 +1862,7 @@ input, textarea, select { cursor: text; }
   .carte-projet:nth-child(2) { grid-column: span 2; }
   .carte-projet:nth-child(3) { grid-column: span 2; }
   .carte-projet:nth-child(4) { grid-column: span 2; }
-  .carte-projet:nth-child(5) { grid-column: span 3; }
+  .carte-projet:nth-child(5) { grid-column: span 2; }
   .carte-projet:nth-child(6) { grid-column: span 3; }
   /* Overlay au hover rétabli */
   .projet-infos { opacity: 0; }
@@ -2309,4 +2353,40 @@ img {
   .shiny-cta span::before {
     animation: none;
   }
+}
+
+
+/* ================================================================
+   BLOC MÉTHODE AVEC L'IA
+================================================================ */
+.methode-ia {
+  margin-top: 90px; padding: 56px 48px;
+  background: var(--gris-clair); border: 1px solid var(--bordure); border-radius: 8px;
+}
+.methode-entete { text-align: center; margin-bottom: 40px; }
+.methode-titre {
+  font-family: var(--serif); font-size: 2.2em; font-weight: 300;
+  letter-spacing: -1px; line-height: 1.1; color: var(--texte);
+}
+.methode-titre em { font-style: italic; color: var(--v1); }
+.methode-intro { margin-top: 12px; color: var(--texte2); line-height: 1.6; }
+.methode-etapes {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+.methode-etape {
+  background: var(--blanc); border: 1px solid var(--bordure); border-radius: 6px;
+  padding: 24px; display: flex; flex-direction: column; gap: 8px;
+}
+.methode-num { font-family: var(--serif); font-weight: 700; font-size: 1.8em; color: var(--v1); line-height: 1; }
+.methode-etape h4 { font-family: var(--serif); font-weight: 600; font-size: 1.1em; color: var(--texte); }
+.methode-etape p { font-size: 0.92em; line-height: 1.6; color: var(--texte2); }
+@media (max-width: 1023px) {
+  .methode-ia { margin-top: 64px; padding: 36px 24px; }
+  .methode-etapes { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 599px) {
+  .methode-ia { padding: 28px 16px; }
+  .methode-titre { font-size: 1.7em; }
+  .methode-etapes { grid-template-columns: 1fr; gap: 12px; }
 }

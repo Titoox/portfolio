@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Le site du BDE MMI de Troyes, codé en Symfony avec mon binôme : événements, back-office pour le bureau et module de recrutement." />
+  <title>Site du BDE MMI · Titouan Gaucher</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/fa/all.min.css" />
+  <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./images/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="./images/favicon-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <link rel="stylesheet" href="css/projet.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- ── HEADER ── -->
+  <header class="en-tete">
+    <a class="logo" href="index.html">
+      <span class="logo-p">P</span>
+      <span class="logo-rest">ortfolio</span>
+    </a>
+    <a class="nav-back" href="index.html#projets">
+      <i class="fa-solid fa-arrow-left"></i> Retour aux projets
+    </a>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="projet-hero">
+    <span class="projet-hero__bg-num" aria-hidden="true">05</span>
+    <div class="projet-hero__left">
+      <div class="projet-meta reveal">
+        <span class="projet-meta__label">Projet associatif · en binôme</span>
+        <span class="projet-meta__annee">2026</span>
+        <span class="badge-page badge-page--ia">Avec l'IA</span>
+      </div>
+      <h1 class="projet-hero__titre reveal">Site du <em>BDE MMI</em></h1>
+      <p class="projet-hero__desc reveal">Le site du bureau des étudiants MMI de Troyes. Les événements, une page par soirée, un back-office pour que le bureau publie tout seul, et un module de recrutement. Codé en Symfony avec mon binôme, en trois semaines.</p>
+      <div class="projet-hero__actions reveal">
+        <a class="shiny-cta" href="https://github.com/Titoox" target="_blank" rel="noopener">
+          <span><i class="fa-brands fa-github"></i> Mon GitHub</span>
+        </a>
+      </div>
+    </div>
+    <div class="projet-hero__right">
+      <div class="preview-wrapper">
+        <span class="preview-badge">Symfony</span>
+        <div class="preview-frame reveal-right">
+          <img src="images/bde-mmi/desktop-accueil.webp" alt="Page d'accueil du site du BDE MMI avec les prochains événements" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="preview-tag preview-tag--js"><i class="fa-brands fa-symfony" style="color:#1a1a1a"></i> Symfony</div>
+        <div class="preview-tag preview-tag--html"><i class="fa-solid fa-database" style="color:#0f2f70"></i> MySQL</div>
+        <div class="preview-tag preview-tag--css"><i class="fa-solid fa-code" style="color:#6c5ce7"></i> Twig</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-bar">
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">9</span>
+      <div class="stat-item__num">9</div>
+      <div class="stat-item__label">Routes Symfony</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">2</span>
+      <div class="stat-item__num">2</div>
+      <div class="stat-item__label">Entités Doctrine</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">4</span>
+      <div class="stat-item__num">4</div>
+      <div class="stat-item__label">Tests PHPUnit</div>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-item__deco">3</span>
+      <div class="stat-item__num">3</div>
+      <div class="stat-item__label">Semaines</div>
+    </div>
+  </div>
+
+  <!-- ── MA PART / RÔLE DE L'IA ── -->
+  <section class="part-ia reveal" aria-labelledby="titre-part-ia">
+    <div class="part-ia__inner">
+      <h2 class="part-ia__titre" id="titre-part-ia">Ma part et le rôle de l'IA</h2>
+      <ul class="part-ia__liste">
+        <li><strong>Projet en binôme :</strong> le travail est partagé avec mon coéquipier, pas fait seul.</li>
+        <li><strong>Ma part :</strong> le cœur Symfony, avec l'entité, les listes, la page détail et le back-office.</li>
+        <li><strong>L'IA :</strong> je m'en suis servi pour structurer le code et écrire les tests. Je relis et je teste tout ce qu'elle propose.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── CONTEXTE ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">01 — Contexte</div>
+      <h2 class="titre-section">Le <em>point</em> de départ</h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="contexte-text reveal-left">
+        <p>Le BDE avait besoin d'un endroit fixe pour ses événements. La date, le lieu, le prix adhérent et non adhérent, l'affiche, le lien de billetterie. Et surtout, le bureau devait pouvoir tout publier lui-même, sans attendre un développeur.</p>
+        <p>On l'a fait à deux. Mon binôme a monté la structure SCSS mobile-first, la mise en page de l'accueil, le module de recrutement et la mise en prod. Moi j'ai pris le cœur Symfony : l'entité Evenement, les listes à venir et passés, la page détail, le bloc des 3 prochains événements sur l'accueil, et tout le back-office (connexion admin, CRUD, upload des affiches).</p>
+      </div>
+      <ul class="objectifs-list reveal-right">
+        <li>
+          <span class="obj-num">1</span>
+          <div class="obj-text">
+            <strong>Des événements toujours à jour</strong>
+            <span>Une soirée terminée part toute seule dans les archives. Personne n'a à y penser.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">2</span>
+          <div class="obj-text">
+            <strong>Un bureau autonome</strong>
+            <span>Créer, modifier ou retirer un événement depuis un formulaire. Pas de SQL, pas de FTP.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">3</span>
+          <div class="obj-text">
+            <strong>Mobile d'abord</strong>
+            <span>Les étudiants ouvrent le site sur leur téléphone, donc le style part du petit écran.</span>
+          </div>
+        </li>
+        <li>
+          <span class="obj-num">4</span>
+          <div class="obj-text">
+            <strong>Le recrutement au même endroit</strong>
+            <span>Les candidatures pour rejoindre le bureau et les créneaux d'entretien vivent sur le même site.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── STACK TECH ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">02 — Stack technique</div>
+      <h2 class="titre-section">Les <em>outils</em> et pourquoi</h2>
+    </div>
+    <div class="stack-grid stack-grid--bde">
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-symfony" style="color:#1a1a1a"></i></div>
+        <div class="tech-card__name">Symfony 7.4</div>
+        <div class="tech-card__desc">Le framework PHP qui tient tout le projet. Les routes sont déclarées en attributs au-dessus des méthodes, la sécurité et les formulaires sont fournis.</div>
+        <div class="tech-card__usage">Routing · Security · Forms</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-symfony"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-solid fa-database" style="color:#0f2f70"></i></div>
+        <div class="tech-card__name">Doctrine + MySQL</div>
+        <div class="tech-card__desc">Un événement est une classe PHP. Doctrine crée la table, génère les migrations et me rend des objets au lieu de tableaux SQL.</div>
+        <div class="tech-card__usage">Entités · Migrations · QueryBuilder</div>
+        <div class="tech-card__bg"><i class="fa-solid fa-database"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-solid fa-code" style="color:#6c5ce7"></i></div>
+        <div class="tech-card__name">Twig</div>
+        <div class="tech-card__desc">Un gabarit de base que chaque page complète. La carte d'un événement est écrite une fois et réutilisée sur l'accueil et sur la liste.</div>
+        <div class="tech-card__usage">Héritage · Partials · Filtres</div>
+        <div class="tech-card__bg"><i class="fa-solid fa-code"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-sass" style="color:#cd6799"></i></div>
+        <div class="tech-card__name">AssetMapper + Sass</div>
+        <div class="tech-card__desc">Le SCSS est compilé par Symfony lui-même. Pas de Webpack, pas de Node à installer sur le serveur.</div>
+        <div class="tech-card__usage">SCSS · Mobile-first · Sans Node</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-sass"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-brands fa-php" style="color:#7277ad"></i></div>
+        <div class="tech-card__name">PHP natif + PDO</div>
+        <div class="tech-card__desc">Le module de recrutement de mon binôme. Candidatures et créneaux d'entretien, en PHP sans framework, avec des requêtes préparées.</div>
+        <div class="tech-card__usage">PDO · Requêtes préparées</div>
+        <div class="tech-card__bg"><i class="fa-brands fa-php"></i></div>
+      </div>
+      <div class="tech-card reveal">
+        <div class="tech-card__icon"><i class="fa-solid fa-vial" style="color:#2e9e6b"></i></div>
+        <div class="tech-card__name">PHPUnit</div>
+        <div class="tech-card__desc">Quatre tests sur une base dédiée. Un brouillon ne s'affiche jamais, l'admin est verrouillé, et un simple lien ne peut rien supprimer.</div>
+        <div class="tech-card__usage">WebTestCase · Base de test</div>
+        <div class="tech-card__bg"><i class="fa-solid fa-vial"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARCHITECTURE ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">03 — Architecture</div>
+      <h2 class="titre-section">Comment le <em>code</em> tourne</h2>
+    </div>
+
+    <div class="archi-flux reveal" aria-label="Trajet d'une requête dans Symfony">
+      <div class="archi-flux__noeud">
+        <span class="archi-flux__nom">Route</span>
+        <span class="archi-flux__detail">#[Route] sur la méthode</span>
+      </div>
+      <i class="fa-solid fa-arrow-right archi-flux__fleche" aria-hidden="true"></i>
+      <div class="archi-flux__noeud">
+        <span class="archi-flux__nom">Contrôleur</span>
+        <span class="archi-flux__detail">vérifie, décide</span>
+      </div>
+      <i class="fa-solid fa-arrow-right archi-flux__fleche" aria-hidden="true"></i>
+      <div class="archi-flux__noeud">
+        <span class="archi-flux__nom">Repository</span>
+        <span class="archi-flux__detail">QueryBuilder</span>
+      </div>
+      <i class="fa-solid fa-arrow-right archi-flux__fleche" aria-hidden="true"></i>
+      <div class="archi-flux__noeud">
+        <span class="archi-flux__nom">Doctrine · MySQL</span>
+        <span class="archi-flux__detail">objets Evenement</span>
+      </div>
+      <i class="fa-solid fa-arrow-right archi-flux__fleche" aria-hidden="true"></i>
+      <div class="archi-flux__noeud">
+        <span class="archi-flux__nom">Twig</span>
+        <span class="archi-flux__detail">page HTML</span>
+      </div>
+    </div>
+
+    <div class="contexte-grid">
+      <div class="contexte-text reveal-left">
+        <p>Chaque page suit le même trajet. Symfony lit l'URL et trouve la route, déclarée juste au-dessus de la méthode du contrôleur. Le contrôleur demande les données au repository, qui écrit la requête avec le QueryBuilder de Doctrine. Ce qui revient, ce sont des objets Evenement, pas des lignes SQL.</p>
+        <p>Le contrôleur passe ces objets à un template Twig. Tous les templates héritent de base.html.twig, et la carte d'un événement vit dans un partial à part. Le module de recrutement de mon binôme est rangé dans son propre dossier, en PHP natif. Même site, deux codes séparés.</p>
+      </div>
+      <div class="code-bloc reveal-right">
+        <div class="code-bloc__fichier">Arborescence (simplifiée)</div>
+<pre><code>src/
+├── Controller/
+│   ├── AccueilController.php
+│   ├── EvenementController.php
+│   ├── SecurityController.php
+│   └── Admin/EvenementAdminController.php
+├── Entity/        <span class="c-com">Evenement, Utilisateur</span>
+├── Repository/    <span class="c-com">les requêtes Doctrine</span>
+├── Form/          <span class="c-com">EvenementType</span>
+└── Command/       <span class="c-com">créer un admin en ligne de commande</span>
+templates/
+├── base.html.twig
+├── accueil/  evenement/  admin/  security/
+└── partials/_carte_evenement.html.twig
+recrutement/       <span class="c-com">module PHP natif de mon binôme</span>
+tests/Controller/  <span class="c-com">4 tests PHPUnit</span></code></pre>
+      </div>
+    </div>
+
+    <div class="code-rangee">
+      <div class="reveal-left">
+        <h3 class="code-rangee__titre">Les événements <em>à venir</em></h3>
+        <p>Une soirée sur plusieurs jours ne doit pas partir en archive dès le premier soir. COALESCE prend la date de fin si elle existe, sinon la date de début. Les brouillons sont filtrés dans la même requête.</p>
+      </div>
+      <div class="code-bloc reveal-right">
+        <div class="code-bloc__fichier">src/Repository/EvenementRepository.php</div>
+<pre><code><span class="c-mot">public function</span> trouverAVenir(): <span class="c-mot">array</span>
+{
+    <span class="c-mot">return</span> $this-&gt;createQueryBuilder(<span class="c-txt">'e'</span>)
+        -&gt;andWhere(<span class="c-txt">'e.publie = true'</span>)
+        -&gt;andWhere(<span class="c-txt">'COALESCE(e.dateFin, e.dateDebut) &gt;= :maintenant'</span>)
+        -&gt;setParameter(<span class="c-txt">'maintenant'</span>, <span class="c-mot">new</span> \DateTime())
+        -&gt;orderBy(<span class="c-txt">'e.dateDebut'</span>, <span class="c-txt">'ASC'</span>)
+        -&gt;getQuery()
+        -&gt;getResult();
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="code-rangee">
+      <div class="reveal-left">
+        <h3 class="code-rangee__titre">La page d'un <em>événement</em></h3>
+        <p>Le contrôleur ne reçoit pas un numéro mais directement un Evenement. Symfony le cherche en base et renvoie une 404 tout seul si l'id n'existe pas. Un brouillon donne aussi une 404 au public, mais un admin connecté peut le prévisualiser avant de le publier.</p>
+      </div>
+      <div class="code-bloc reveal-right">
+        <div class="code-bloc__fichier">src/Controller/EvenementController.php</div>
+<pre><code>#[Route(<span class="c-txt">'/evenements/{id}'</span>, name: <span class="c-txt">'evenement_detail'</span>)]
+<span class="c-mot">public function</span> detail(Evenement $evenement): Response
+{
+    <span class="c-com">// Un brouillon reste invisible pour le public,</span>
+    <span class="c-com">// mais un admin peut le prévisualiser</span>
+    <span class="c-mot">if</span> (!$evenement-&gt;isPublie() &amp;&amp; !$this-&gt;isGranted(<span class="c-txt">'ROLE_ADMIN'</span>)) {
+        <span class="c-mot">throw</span> $this-&gt;createNotFoundException(<span class="c-txt">'Événement non trouvé'</span>);
+    }
+    <span class="c-mot">return</span> $this-&gt;render(<span class="c-txt">'evenement/detail.html.twig'</span>, [
+        <span class="c-txt">'evenement'</span> =&gt; $evenement,
+    ]);
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="code-rangee">
+      <div class="reveal-left">
+        <h3 class="code-rangee__titre">Supprimer, mais <em>proprement</em></h3>
+        <p>La suppression n'accepte que le POST, avec un jeton CSRF propre à chaque événement. Un lien piégé ou un simple GET tombe sur une erreur 405. Un des tests PHPUnit vérifie exactement ça.</p>
+      </div>
+      <div class="code-bloc reveal-right">
+        <div class="code-bloc__fichier">src/Controller/Admin/EvenementAdminController.php</div>
+<pre><code>#[Route(<span class="c-txt">'/{id}/supprimer'</span>, name: <span class="c-txt">'admin_evenement_supprimer'</span>,
+    requirements: [<span class="c-txt">'id'</span> =&gt; <span class="c-txt">'\d+'</span>], methods: [<span class="c-txt">'POST'</span>])]
+<span class="c-mot">public function</span> supprimer(Evenement $evenement, Request $requete, ...): Response
+{
+    <span class="c-com">// Le jeton CSRF envoyé par le formulaire de la liste doit être le bon</span>
+    $jeton = $requete-&gt;getPayload()-&gt;getString(<span class="c-txt">'_token'</span>);
+    <span class="c-mot">if</span> (!$this-&gt;isCsrfTokenValid(<span class="c-txt">'supprimer'</span> . $evenement-&gt;getId(), $jeton)) {
+        <span class="c-mot">return</span> $this-&gt;redirectToRoute(<span class="c-txt">'admin_evenement_liste'</span>);
+    }
+    $this-&gt;supprimerFichierAffiche($evenement-&gt;getAffiche());
+    $entityManager-&gt;remove($evenement);
+    $entityManager-&gt;flush();
+    <span class="c-com">// ...</span>
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FONCTIONNALITÉS ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">04 — Fonctionnalités</div>
+      <h2 class="titre-section">Ce que fait le <em>site</em></h2>
+    </div>
+    <div class="contexte-grid">
+      <div class="reveal-left">
+        <h3 style="font-family:var(--serif); font-size:1.6em; font-weight:300; margin-bottom:24px;">Côté <em style="color:var(--v1)">étudiants</em></h3>
+        <ul class="objectifs-list">
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>À venir et passés</strong>
+              <span>Deux listes séparées, triées par date. Le passage de l'une à l'autre est automatique.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Une page par événement</strong>
+              <span>Affiche, date, lieu, prix adhérent et non adhérent, lien vers la billetterie.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Les 3 prochains sur l'accueil</strong>
+              <span>Ce qui arrive bientôt, visible dès l'ouverture du site.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Candidater au bureau</strong>
+              <span>Un formulaire pour proposer sa candidature et réserver un créneau d'entretien.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="reveal-right">
+        <h3 style="font-family:var(--serif); font-size:1.6em; font-weight:300; margin-bottom:24px;">Côté <em style="color:var(--v1)">bureau</em></h3>
+        <ul class="objectifs-list">
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Connexion admin</strong>
+              <span>Tout /admin est fermé par le composant Security. Un compte se crée en ligne de commande.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Créer, modifier, supprimer</strong>
+              <span>Un formulaire Symfony, et un message de confirmation après chaque action.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Brouillon ou publié</strong>
+              <span>Une case à cocher décide si le public voit l'événement.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Upload de l'affiche</strong>
+              <span>Le fichier est renommé, rangé, et l'ancienne affiche est supprimée quand on la remplace.</span>
+            </div>
+          </li>
+          <li>
+            <span class="obj-num">→</span>
+            <div class="obj-text">
+              <strong>Suivi du recrutement</strong>
+              <span>Candidatures et planning des entretiens, dans le module de mon binôme.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ÉTAPES ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">05 — Développement</div>
+      <h2 class="titre-section">Les <em>étapes</em> du projet</h2>
+    </div>
+    <div class="methode-steps methode-steps--bde">
+      <div class="step reveal">
+        <div class="step__dot">1</div>
+        <div class="step__title">Fondations</div>
+        <div class="step__desc">Projet Symfony, entité Evenement, première migration. Mon binôme pose le guide Git et la base SCSS.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">2</div>
+        <div class="step__title">Pages publiques</div>
+        <div class="step__desc">Listes à venir et passés, carte réutilisable, page détail, bloc des 3 prochains sur l'accueil.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">3</div>
+        <div class="step__title">Back-office</div>
+        <div class="step__desc">Connexion admin, CRUD complet, upload d'affiche, et les tests PHPUnit sur l'accès.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step__dot">4</div>
+        <div class="step__title">Recrutement et prod</div>
+        <div class="step__desc">Le module de recrutement, la config de production et la mise en ligne, menés par mon binôme.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DÉFIS ── -->
+  <section class="section section--alt">
+    <div class="section-header reveal">
+      <div class="section-label">06 — Défis</div>
+      <h2 class="titre-section">Ce qui a <em>coincé</em></h2>
+    </div>
+    <div class="difficultes-grid">
+      <div class="diff-card reveal">
+        <div class="diff-card__tag">Routing</div>
+        <div class="diff-card__title">L'ordre des routes</div>
+        <div class="diff-card__text">Symfony teste les routes dans l'ordre où il les trouve. Un <code>{id}</code> sans contrainte accepte n'importe quel texte, donc une route peut en avaler une autre.</div>
+        <div class="diff-card__solution"><i class="fa-solid fa-check-circle"></i> <span>La page détail est déclarée après la liste, et côté admin <code>{id}</code> n'accepte que des chiffres (<code>\d+</code>). Une URL bizarre donne une 404 propre.</span></div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-card__tag">Doctrine</div>
+        <div class="diff-card__title">Les événements sur plusieurs jours</div>
+        <div class="diff-card__text">Certains événements ont une date de fin, d'autres non. Filtrer sur la date de début aurait rangé dans les archives un événement encore en cours.</div>
+        <div class="diff-card__solution"><i class="fa-solid fa-check-circle"></i> <span><code>COALESCE(e.dateFin, e.dateDebut)</code> dans le QueryBuilder : la date de fin si elle existe, sinon le début.</span></div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-card__tag">Sécurité</div>
+        <div class="diff-card__title">Les brouillons</div>
+        <div class="diff-card__text">Un événement pas encore publié ne doit apparaître nulle part côté public. Ni dans les listes, ni en tapant son URL.</div>
+        <div class="diff-card__solution"><i class="fa-solid fa-check-circle"></i> <span>Filtre <code>publie = true</code> dans chaque requête publique, 404 sur la page détail sauf pour <code>ROLE_ADMIN</code>, et un test PHPUnit qui le vérifie.</span></div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="diff-card__tag">Fichiers</div>
+        <div class="diff-card__title">L'upload des affiches</div>
+        <div class="diff-card__text">Deux affiches envoyées avec le même nom pouvaient s'écraser. Et un nom de fichier trafiqué ne doit jamais faire sortir la suppression du dossier des affiches.</div>
+        <div class="diff-card__solution"><i class="fa-solid fa-check-circle"></i> <span>Nouveau nom avec le Slugger, <code>uniqid()</code> et la vraie extension. <code>basename()</code> avant de supprimer un fichier.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APERÇU ── -->
+  <section class="section">
+    <div class="section-header reveal">
+      <div class="section-label">07 — Aperçu</div>
+      <h2 class="titre-section">L'interface <em>en image</em></h2>
+    </div>
+    <div class="screens-row">
+      <div class="screen-item reveal-left">
+        <div class="screen-frame">
+          <img loading="lazy" src="images/bde-mmi/desktop-accueil.webp" alt="Accueil du site du BDE MMI sur ordinateur" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Accueil · Desktop</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame screen-frame--mobile">
+          <img loading="lazy" src="images/bde-mmi/mobile-accueil.webp" alt="Accueil du site du BDE MMI sur téléphone" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Accueil · Mobile</div>
+      </div>
+    </div>
+    <div class="screens-row" style="margin-top:48px">
+      <div class="screen-item reveal-left">
+        <div class="screen-frame">
+          <img loading="lazy" src="images/bde-mmi/desktop-evenements.webp" alt="Liste des événements à venir et passés" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Événements · Desktop</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame screen-frame--mobile">
+          <img loading="lazy" src="images/bde-mmi/mobile-detail.webp" alt="Page détail d'un événement sur téléphone" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Détail · Mobile</div>
+      </div>
+    </div>
+    <div class="screens-row" style="margin-top:48px">
+      <div class="screen-item reveal-left">
+        <div class="screen-frame">
+          <img loading="lazy" src="images/bde-mmi/desktop-admin-liste.webp" alt="Liste des événements dans le back-office" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Back-office · Desktop</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame screen-frame--mobile">
+          <img loading="lazy" src="images/bde-mmi/mobile-admin-formulaire.webp" alt="Formulaire d'édition d'un événement sur téléphone" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Formulaire admin · Mobile</div>
+      </div>
+    </div>
+    <div class="screens-row" style="margin-top:48px">
+      <div class="screen-item reveal-left">
+        <div class="screen-frame">
+          <img loading="lazy" src="images/bde-mmi/desktop-recrutement-planning.webp" alt="Planning des entretiens du module de recrutement" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Recrutement · Desktop</div>
+      </div>
+      <div class="screen-item reveal-right">
+        <div class="screen-frame screen-frame--mobile">
+          <img loading="lazy" src="images/bde-mmi/mobile-recrutement-formulaire.webp" alt="Formulaire de candidature sur téléphone" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="screen-label">Candidature · Mobile</div>
+      </div>
+    </div>
+    <p class="credit-photos">Affiches de démo : photos Unsplash de Jordon Conner, Luis Villasmil, Ryan Ancill, Sandra Seitamaa et Laura Peruchi. Données fictives.</p>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" data-text="BDE">
+    <div class="cta-left">
+      <div class="cta-label">Envie de voir le code ?</div>
+      <h2 class="cta-title">Le code se <em>montre</em><br>en entretien</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:0.88em; margin-top:16px; line-height:1.7;">Le dépôt est privé, le site appartient à l'association. Je fais la démo et je montre le code en entretien ou en visio, avec plaisir.</p>
+      <div class="cta-actions">
+        <a class="shiny-cta" href="https://github.com/Titoox" target="_blank" rel="noopener">
+          <span><i class="fa-brands fa-github"></i> Mon GitHub</span>
+        </a>
+      </div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-card"><div class="cta-card__text">Symfony 7.4 · Doctrine · Twig<br>Fait à deux, en 3 semaines</div></div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="pied-de-page">
+    <div class="footer-left">
+      <a class="footer-logo" href="index.html">Portfolio</a>
+      <div class="footer-sep"></div>
+      <p class="pied-copyright">
+        © 2026 <span class="pied-nom">GAUCHER Titouan</span>
+        <span> · </span> Tous droits réservés
+      </p>
+    </div>
+    <nav class="icones-footer" aria-label="Réseaux sociaux">
+      <a href="https://www.linkedin.com/in/titouan-gaucher/" target="_blank" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/Titoox" target="_blank" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </nav>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="bouton-haut" title="Retour en haut" aria-label="Retour en haut de page">
+    <svg height="1.1em" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+  </button>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (cursor && !isTouch) {
+      document.body.style.cursor = 'none';
+      document.addEventListener('mousemove', e => {
+        cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      }, { passive: true });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    } else if (cursor) {
+      cursor.style.display = 'none';
+    }
+
+    const btn = document.getElementById('bouton-haut');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
