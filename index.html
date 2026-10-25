@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Portfolio de GAUCHER Titouan, développeur web junior & étudiant en BUT MMI." />
+  <meta name="description" content="Portfolio de GAUCHER Titouan, développeur web junior & étudiant en BUT MMI, à la recherche d'une alternance. Projets faits avec l'IA et faits main." />
   <meta name="theme-color" content="#6c5ce7">
   <title>Portfolio · Titouan Gaucher</title>
 
@@ -196,7 +196,7 @@
               <div class="carte-pile-inner">
                 <div class="carte-pile-haut">
                   <span class="carte-pile-icone"><i class="fa-solid fa-folder-open"></i></span>
-                  <p class="carte-pile-titre">6+ projets</p>
+                  <p class="carte-pile-titre">5 projets</p>
                 </div>
                 <p class="carte-pile-desc">Développement web</p>
                 <p class="carte-pile-date">HTML · CSS · PHP · JS</p>
@@ -214,9 +214,10 @@
         </div>
 
         <p class="competences-intro scroll">
-          Côté code, je maîtrise les bases du web (HTML5/CSS3) et je dynamise
-          mes pages en PHP et JavaScript. Côté image, ma pratique de la
-          photographie m'apporte un œil affûté pour la composition et la colorimétrie.
+          Côté code, je pars des bases du web (HTML5, CSS3/SCSS, JavaScript) et je
+          monte en PHP 8.3 avec Symfony. J'utilise l'IA pour aller plus vite, mais
+          je relis et je teste tout ce qu'elle produit. Côté image, la photographie
+          m'apporte un œil affûté pour la composition et la colorimétrie.
         </p>
 
         <!-- Carrousel de technos défilant — 2 rangées, sens opposés -->
@@ -227,7 +228,7 @@
           <div class="stacks-groupe">
             <span class="stacks-tag"><i class="fa-solid fa-code"></i> Langages &amp; outils</span>
             <div class="stacks-rangee">
-              <div class="stacks-piste" aria-label="HTML5, CSS3, JavaScript, PHP, WordPress, Docker, Ubuntu, SQL, Bootstrap, Serveur">
+              <div class="stacks-piste" aria-label="HTML5, CSS3, JavaScript, PHP, WordPress, Docker, Ubuntu, SQL, SCSS, Symfony, GSAP, Git, Claude, Serveur">
                 <span class="stack-pilule"><i class="fa-brands fa-html5" style="color:#e96227"></i><span>HTML5</span></span>
                 <span class="stack-pilule"><i class="fa-brands fa-css3" style="color:#254bde"></i><span>CSS3</span></span>
                 <span class="stack-pilule"><i class="fa-brands fa-js" style="color:#efd81d"></i><span>JavaScript</span></span>
@@ -236,7 +237,11 @@
                 <span class="stack-pilule"><i class="fa-brands fa-docker" style="color:#3d78ee"></i><span>Docker</span></span>
                 <span class="stack-pilule"><i class="fa-brands fa-ubuntu" style="color:#df5222"></i><span>Ubuntu</span></span>
                 <span class="stack-pilule"><i class="fa-solid fa-database" style="color:#0f2f70"></i><span>SQL</span></span>
-                <span class="stack-pilule"><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i><span>Bootstrap</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-sass" style="color:#cd6799"></i><span>SCSS</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-symfony" style="color:#1a171b"></i><span>Symfony</span></span>
+                <span class="stack-pilule"><img src="./images/gsap.svg" alt=""/><span>GSAP</span></span>
+                <span class="stack-pilule"><i class="fa-brands fa-git-alt" style="color:#f05032"></i><span>Git</span></span>
+                <span class="stack-pilule"><img src="./images/claude.svg" alt=""/><span>Claude</span></span>
                 <span class="stack-pilule"><i class="fa-solid fa-server" style="color:#16a34a"></i><span>Serveur</span></span>
                 <!-- copie pour la boucle -->
                 <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-html5" style="color:#e96227"></i><span>HTML5</span></span>
@@ -247,7 +252,11 @@
                 <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-docker" style="color:#3d78ee"></i><span>Docker</span></span>
                 <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-ubuntu" style="color:#df5222"></i><span>Ubuntu</span></span>
                 <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-database" style="color:#0f2f70"></i><span>SQL</span></span>
-                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-bootstrap" style="color:#8812f5"></i><span>Bootstrap</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-sass" style="color:#cd6799"></i><span>SCSS</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-symfony" style="color:#1a171b"></i><span>Symfony</span></span>
+                <span class="stack-pilule" aria-hidden="true"><img src="./images/gsap.svg" alt=""/><span>GSAP</span></span>
+                <span class="stack-pilule" aria-hidden="true"><i class="fa-brands fa-git-alt" style="color:#f05032"></i><span>Git</span></span>
+                <span class="stack-pilule" aria-hidden="true"><img src="./images/claude.svg" alt=""/><span>Claude</span></span>
                 <span class="stack-pilule" aria-hidden="true"><i class="fa-solid fa-server" style="color:#16a34a"></i><span>Serveur</span></span>
               </div>
             </div>
@@ -291,11 +300,20 @@
         <h2 class="titre-section" id="titre-projets">Mes <em>projets</em></h2>
       </div>
 
-      <div class="projets-grille">
-        <div class="carte-projet scroll">
+      <div class="filtre-projets scroll" role="group" aria-label="Filtrer les projets">
+        <button type="button" class="filtre-bouton" data-filtre="tous" aria-pressed="true">Tous (5)</button>
+        <button type="button" class="filtre-bouton" data-filtre="ia" aria-pressed="false">Avec l'IA (2)</button>
+        <button type="button" class="filtre-bouton" data-filtre="main" aria-pressed="false">Fait main (3)</button>
+      </div>
+      <p class="filtre-statut" id="filtre-statut" role="status" aria-live="polite"></p>
+
+      <div class="projets-grille" id="projets-grille" data-filtre="tous">
+        <div class="carte-projet scroll" data-type="ia">
+          <span class="badge-projet badge-ia">Avec l'IA</span>
           <div class="projet-image"><img loading="lazy" src="./images/bde-mmi/vignette.webp" alt="Page d'accueil du site du BDE MMI, codé en Symfony"/></div>
           <div class="projet-infos">
             <p class="projet-description">Site du BDE MMI (Symfony)</p>
+            <p class="projet-part">Projet en binôme. J'ai fait le cœur Symfony (entité, listes, détail, back-office), avec l'IA pour structurer et tester.</p>
             <div class="projet-pied">
               <span class="projet-technos">
                 <i class="fa-brands fa-symfony" style="color:rgba(255,255,255,0.9)"></i>
@@ -306,10 +324,12 @@
             </div>
           </div>
         </div>
-        <div class="carte-projet scroll">
+        <div class="carte-projet scroll" data-type="main">
+          <span class="badge-projet badge-main">Fait main</span>
           <div class="projet-image"><img loading="lazy" src="./images/pfc/desktop-step-1.jpg" alt="Jeu Pierre-Feuille-Ciseaux en JavaScript"/></div>
           <div class="projet-infos">
             <p class="projet-description">Jeu Pierre-Feuille-Ciseaux</p>
+            <p class="projet-part">JavaScript vanilla : DOM, manches, score en localStorage. Fait seul, hors cours.</p>
             <div class="projet-pied">
               <span class="projet-technos">
                 <i class="fa-brands fa-html5" style="color:rgba(255,255,255,0.9)"></i>
@@ -320,7 +340,8 @@
             </div>
           </div>
         </div>
-        <div class="carte-projet scroll">
+        <div class="carte-projet scroll" data-type="ia">
+          <span class="badge-projet badge-ia">Avec l'IA</span>
           <div class="projet-image" style="background:#003087; display:flex; align-items:center; justify-content:center;">
             <div style="text-align:center; color:white; font-family:'Outfit',sans-serif;">
               <div style="font-size:0.9em; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-bottom:2px solid #e30613; padding-bottom:6px;">TismailB2B</div>
@@ -328,6 +349,7 @@
           </div>
           <div class="projet-infos">
             <p class="projet-description">Portail B2B revendeurs — La Chaussette de France</p>
+            <p class="projet-part">Catalogue, commandes, 2 rôles. J'ai cadré le besoin et relu la sécurité (PDO, hash).</p>
             <div class="projet-pied">
               <span class="projet-technos">
                 <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
@@ -338,13 +360,15 @@
             </div>
           </div>
         </div>
-        <div class="carte-projet scroll">
+        <div class="carte-projet scroll" data-type="main">
+          <span class="badge-projet badge-main">Fait main</span>
           <div class="projet-image" style="background:#111; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
             <div style="font-family:'Poppins',sans-serif; font-size:0.75em; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:white; border-bottom:2px solid #e63946; padding-bottom:6px;">Mode & Marques</div>
             <div style="font-size:0.6em; color:rgba(255,255,255,0.4); letter-spacing:0.08em;">SAE203 · PHP/MySQL</div>
           </div>
           <div class="projet-infos">
             <p class="projet-description">Répertoire de marques de mode</p>
+            <p class="projet-part">CRUD admin, recherche, upload, déployé sur VPS. Codé seul pour apprendre.</p>
             <div class="projet-pied">
               <span class="projet-technos">
                 <i class="fa-brands fa-php" style="color:rgba(255,255,255,0.9)"></i>
@@ -355,13 +379,15 @@
             </div>
           </div>
         </div>
-        <div class="carte-projet scroll">
+        <div class="carte-projet scroll" data-type="main">
+          <span class="badge-projet badge-main">Fait main</span>
           <div class="projet-image" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
             <div style="font-family:'Poppins',sans-serif; font-size:0.75em; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:white; border-bottom:2px solid #e67e22; padding-bottom:6px;">Calculatrice</div>
             <div style="font-size:0.6em; color:rgba(255,255,255,0.4); letter-spacing:0.08em;">R212 · JavaScript Vanilla</div>
           </div>
           <div class="projet-infos">
             <p class="projet-description">Calculatrice JavaScript vanilla</p>
+            <p class="projet-part">Classe Calculator en JS pur, CSS Grid, cas limites gérés. Projet R212.</p>
             <div class="projet-pied">
               <span class="projet-technos">
                 <i class="fa-brands fa-js" style="color:rgba(255,255,255,0.9)"></i>
@@ -372,6 +398,20 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="methode-ia" id="methode" role="region" aria-labelledby="titre-methode">
+        <div class="methode-entete">
+          <div class="section-label">Méthode</div>
+          <h3 class="methode-titre" id="titre-methode">Ma méthode <em>avec l'IA</em></h3>
+          <p class="methode-intro">L'IA accélère, mais c'est moi qui décide, relis et teste.</p>
+        </div>
+        <ol class="methode-etapes">
+          <li class="methode-etape"><span class="methode-num">1</span><h4>Cadrer</h4><p>J'écris l'objectif, les contraintes et le périmètre avant de demander du code.</p></li>
+          <li class="methode-etape"><span class="methode-num">2</span><h4>Relire</h4><p>Je lis chaque modification et je refuse ce que je ne comprends pas.</p></li>
+          <li class="methode-etape"><span class="methode-num">3</span><h4>Tester</h4><p>Tests, navigateur mobile et desktop : rien n'est fini sans preuve.</p></li>
+          <li class="methode-etape"><span class="methode-num">4</span><h4>Comprendre</h4><p>Je code les bases à la main pour pouvoir encadrer l'IA ensuite.</p></li>
+        </ol>
       </div>
 
     </div>
@@ -452,6 +492,9 @@
   </footer>
 
   <script src="scroll.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/filtre-projets.js"></script>
+  <script src="js/methode.js"></script>
 
 </body>
 </html>

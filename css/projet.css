@@ -522,3 +522,28 @@
   .methode-steps--bde { row-gap: 44px; }
   .methode-steps--bde .step { padding: 0 12px; }
 }
+
+/* Badge « Avec l'IA » / « Fait main » et encadré « Ma part » */
+.badge-page {
+  font-size: 0.72em; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--v1); line-height: 1;
+}
+.badge-page--ia { background: var(--v1); color: #fff; }
+.badge-page--main { background: #fff; color: #4a3dc4; }
+.projet-meta { flex-wrap: wrap; }
+
+.part-ia { padding: 48px 80px 24px; }
+.part-ia__inner {
+  max-width: 900px; margin: 0 auto; padding: 28px 32px;
+  background: #fff; border: 1px solid var(--bordure); border-left: 4px solid var(--v1);
+  border-radius: 16px;
+}
+.part-ia__titre { font-family: var(--serif); font-size: 1.25em; font-weight: 600; margin-bottom: 14px; }
+.part-ia__liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.part-ia__liste li { color: var(--texte); line-height: 1.7; }
+.part-ia__liste strong { color: var(--texte); font-weight: 600; }
+@media (max-width: 1023px) { .part-ia { padding: 40px 48px 16px; } }
+@media (max-width: 599px) {
+  .part-ia { padding: 32px 24px 8px; }
+  .part-ia__inner { padding: 20px; }
+}
