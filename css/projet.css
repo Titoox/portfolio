@@ -533,17 +533,18 @@
 .projet-meta { flex-wrap: wrap; }
 
 .part-ia { padding: 48px 80px 24px; }
+/* Même style que .tech-card / .diff-card (sans barre latérale) */
 .part-ia__inner {
-  max-width: 900px; margin: 0 auto; padding: 28px 32px;
-  background: #fff; border: 1px solid var(--bordure); border-left: 4px solid var(--v1);
-  border-radius: 16px;
+  max-width: 900px; margin: 0 auto; padding: 36px 32px;
+  background: var(--blanc); border: 1px solid var(--bordure);
+  border-radius: 4px;
 }
-.part-ia__titre { font-family: var(--serif); font-size: 1.25em; font-weight: 600; margin-bottom: 14px; }
+.part-ia__titre { font-weight: 700; font-size: 1em; margin-bottom: 10px; }
 .part-ia__liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-.part-ia__liste li { color: var(--texte); line-height: 1.7; }
+.part-ia__liste li { font-size: 0.88em; color: var(--texte2); line-height: 1.8; }
 .part-ia__liste strong { color: var(--texte); font-weight: 600; }
 @media (max-width: 1023px) { .part-ia { padding: 40px 48px 16px; } }
 @media (max-width: 599px) {
   .part-ia { padding: 32px 24px 8px; }
-  .part-ia__inner { padding: 20px; }
+  .part-ia__inner { padding: 28px 24px; }
 }
