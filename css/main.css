@@ -1053,24 +1053,6 @@ input, textarea, select { cursor: text; }
 .carte-projet:nth-child(5) { grid-column: span 2; }
 .carte-projet:nth-child(6) { grid-column: span 3; }
 
-/* Filtre projets */
-.filtre-projets { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 32px; }
-.filtre-bouton {
-  min-height: 44px; padding: 0 20px; border-radius: 999px; cursor: pointer;
-  font: 500 0.95em var(--sans);
-  border: 1px solid var(--v1); background: #fff; color: #4a3dc4;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-.filtre-bouton:hover { background: rgba(108,92,231,0.08); }
-.filtre-bouton[aria-pressed="true"] { background: var(--v1); color: #fff; }
-.filtre-bouton:focus-visible { outline: 3px solid var(--v1); outline-offset: 3px; }
-.filtre-statut { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.carte-projet[hidden] { display: none; }
-@media (min-width: 1024px) {
-  .projets-grille[data-filtre="ia"] .carte-projet { grid-column: span 3; }
-  .projets-grille[data-filtre="main"] .carte-projet { grid-column: span 2; }
-}
-
 .carte-projet {
   position: relative; border-radius: 4px; overflow: hidden;
   background: var(--gris-clair); border: 1px solid var(--bordure);
@@ -1116,15 +1098,6 @@ input, textarea, select { cursor: text; }
 
 .projet-image > div { transition: opacity 0.3s ease; }
 .carte-projet:hover .projet-image > div { opacity: 0; }
-
-.badge-projet {
-  position: absolute; top: 12px; left: 12px; z-index: 2;
-  font-size: 0.75em; font-weight: 600; line-height: 1;
-  padding: 7px 12px; border-radius: 999px;
-  border: 1px solid var(--v1);
-}
-.badge-ia { background: var(--v1); color: #fff; }
-.badge-main { background: #fff; color: #4a3dc4; }
 
 .projet-part {
   font-size: 0.82em; line-height: 1.5; color: rgba(255,255,255,0.92);
@@ -2389,4 +2362,84 @@ img {
   .methode-ia { padding: 28px 16px; }
   .methode-titre { font-size: 1.7em; }
   .methode-etapes { grid-template-columns: 1fr; gap: 12px; }
+}
+
+
+/* ================================================================
+   MOBILE < 768px — Header blanc uni + cartes projets épurées
+================================================================ */
+@media screen and (max-width: 767px) {
+
+  /* ── Header : barre blanche, sans flou ni bordure ── */
+  .en-tete {
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  /* Le menu fermé restait visible par-dessus le header (rectangle flou,
+     "CONTACT" en haut, ombre sous la barre) : on le cache vraiment */
+  .navigation {
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s var(--ease-smooth), opacity 0.3s ease, visibility 0s 0.3s;
+  }
+  .navigation.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    box-shadow: 0 12px 24px rgba(108,92,231,0.08);
+    transition: transform 0.3s var(--ease-smooth), opacity 0.3s ease, visibility 0s;
+  }
+
+  /* Zones de clic 44px */
+  .logo { padding: 9px 0; }
+  .navigation__liste a { padding-top: 15px; padding-bottom: 15px; }
+  .nav-toggle {
+    width: 44px; height: 44px;
+    align-items: center;
+    margin-right: -8px;
+  }
+
+  /* ── Cartes projets : logos + bouton seulement ── */
+  /* Masquage visuel : le texte reste lu par les lecteurs d'écran */
+  .projet-description,
+  .projet-part {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .projet-infos {
+    padding: 12px;
+    background: linear-gradient(to top, rgba(108,92,231,0.92) 0%, rgba(108,92,231,0.75) 30%, transparent 52%);
+  }
+  .projet-technos { filter: drop-shadow(0 1px 2px rgba(0,0,0,0.45)); }
+  /* Sans description, le titre des cartes sans capture redevient visible */
+  .projet-image > div,
+  .carte-projet:hover .projet-image > div { opacity: 1; }
+  .projet-pied {
+    margin-top: 0;
+    gap: 8px;
+  }
+  .lien-projet {
+    min-height: 44px;
+    padding: 0 12px;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .navigation,
+  .navigation.open { transform: none; transition: none; }
 }
